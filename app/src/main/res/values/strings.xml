@@ -1,3 +1,16 @@
 <resources>
+    <!-- App Config -->
     <string name="app_name">SherEats</string>
+
+    <!-- Main Page-->
+    <string name="nav_text_one">Dishes</string>
+    <string name="nav_text_two">Cart</string>
+    <string name="nav_text_three">Restaurant</string>
+    <string name="nav_text_four">Orders</string>
+    <string name="nav_text_five">Friends</string>
+
+    <!-- Tags -->
+    <string name="Exception">Exception</string>
+    <string name="MainPage">MainPage</string>
+
 </resources>
