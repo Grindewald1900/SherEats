@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_one"
+        android:id="@+id/dishFragment"
         android:icon="@drawable/ic_baseline_local_cafe_24"
         android:title="@string/nav_text_one"/>
     <item
-        android:id="@+id/nav_two"
+        android:id="@+id/cartFragment"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/nav_text_two"/>
     <item
-        android:id="@+id/nav_three"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/nav_text_three"/>
     <item
-        android:id="@+id/nav_four"
+        android:id="@+id/orderFragment"
         android:icon="@drawable/ic_baseline_assignment_24"
         android:title="@string/nav_text_four"/>
     <item
-        android:id="@+id/nav_five"
+        android:id="@+id/friendFragment"
         android:icon="@drawable/ic_baseline_group_24"
         android:title="@string/nav_text_five"/>
 </menu>
