@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SherEats">
         <activity
-            android:name=".view.MainActivity">
+            android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

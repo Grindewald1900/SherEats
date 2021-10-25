@@ -1,6 +1,5 @@
 package com.example.shereats.view.fragment
 
-import android.database.DatabaseUtils
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.shereats.R
 import com.example.shereats.databinding.DishFragmentBinding
+import com.example.shereats.model.viewmodel.DishViewModel
 
 class DishFragment : Fragment() {
     private lateinit var viewModel: DishViewModel
@@ -24,7 +24,7 @@ class DishFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         bingding = DataBindingUtil.inflate(inflater, R.layout.dish_fragment, container, false)
         return bingding.root
     }

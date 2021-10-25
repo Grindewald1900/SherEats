@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="Widget.Theme.SherEats.MyView" parent="">
+        <item name="android:background">@color/gray_400</item>
+        <item name="exampleColor">@color/light_blue_400</item>
+    </style>
+    <declare-styleable name="mImageView">
+        <attr name="mCornerRadius" format="float"/>
+    </declare-styleable>
+</resources>

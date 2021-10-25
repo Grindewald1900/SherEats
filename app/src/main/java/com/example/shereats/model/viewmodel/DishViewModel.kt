@@ -1,4 +1,4 @@
-package com.example.shereats.view.fragment
+package com.example.shereats.model.viewmodel
 
 import androidx.lifecycle.ViewModel
 

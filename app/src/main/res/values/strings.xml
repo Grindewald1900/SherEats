@@ -8,6 +8,163 @@
     <string name="nav_text_three">Restaurant</string>
     <string name="nav_text_four">Orders</string>
     <string name="nav_text_five">Friends</string>
+    <string name="home_page">Home page</string>
+    <string name="chat">Chat</string>
+    <string name="join">join</string>
+    <string name="contact">Contact</string>
+    <string name="all">all</string>
+    <string-array name="home_search_type">
+        <item>All</item>
+        <item>Price low to high</item>
+        <item>Price low to high</item>
+        <item>A - Z</item>
+        <item>Random</item>
+    </string-array>
+
+
+    <!-- Activity Page -->
+    <string name="activity_permission">Permission of event </string>
+    <string name="activity_release">Post</string>
+    <string name="hint_location"> Location of your activity</string>
+    <string name="hint_date"> date of your activity</string>
+    <string name="hint_description">Describe your event briefly</string>
+    <string name="hint_participant">Who can join your activity</string>
+    <string name="hint_additional">Additional information</string>
+    <string name="hint_invite">Invite other users</string>
+    <string-array name="activity_permission">
+        <item>Public(everyone can join)</item>
+        <item>Private(only people invited can join)</item>
+        <item>Private(only people approved can join)</item>
+        <item>Private(only people in the same major can join)</item>
+    </string-array>
+    <string-array name="activity_type">
+        <item>Sports</item>
+        <item>Reading meeting</item>
+        <item>Study group</item>
+        <item>Career development</item>
+        <item>Volunteer</item>
+        <item>Others</item>
+    </string-array>
+
+    <!-- Login Page -->
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="register">Register</string>
+    <string name="login">LOGIN</string>
+    <string name="login_google">LOGIN WITH GOOGLE</string>
+    <string name="login_facebook">LOGIN WITH FACEBOOK</string>
+    <string name="hint_username">Input your user name or ID</string>
+    <string name="hint_password">Input your password</string>
+    <string name="login_with">Or login with</string>
+    <string name="identify_with">Identify with email or mobile phone</string>>
+
+    <!-- Verify Page -->
+    <string name="verify">Verify</string>
+    <string name="done">Done</string>
+    <string name="send_email">Send Email</string>
+
+    <!-- Register Page -->
+    <string name="reg_password1">Please input your password</string>
+    <string name="reg_password2">Please repeat your password</string>
+    <string name="reg_email">Please input your email</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="contact_us">Contact us</string>
+    <string name="register_success">Congratulations! You\'ve register successfully!</string>
+
+    <!-- Event Page -->
+    <string name="title">Title</string>
+    <string name="hint_no_title">Please input the event title</string>
+    <string name="hint_no_location">Please input the location</string>
+    <string name="hint_no_date">Please select the date</string>
+    <string name="hint_no_participants">Please input the participants</string>
+    <string name="hint_no_type">Please select the type</string>
+    <string name="hint_no_permission">Please select the permission</string>
+    <string name="upload_success"> Uploaded Successfully!</string>
+    <string name="upload_fail">Failed to upload, please try again</string>
+    <string name="upload_cancel">Upload canceled</string>
+
+
+    <!-- Search Page -->
+    <string name="search_history">Browsing History</string>
+    <string name="search">Search</string>
+    <string name="general">General</string>
+    <string name="publisher">Publisher</string>
+    <string name="Location">Location</string>
+    <string name="permission_level">Permission level: </string>
+    <string name="type">Type</string>
+    <string name="permission">permission</string>
+
+
+    <!-- User Info Page -->
+    <string name="my_orders">Orders</string>
+    <string name="my_favorites">Favorites</string>
+    <string name="my_reservations">My reservations</string>
+    <string name="my_teams">My teams</string>
+
+    <!-- Shopping Cart Page -->
+    <string name="item_price">${item.price} $</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="subtotal">Subtotal: </string>
+    <string name="check_out">Checkout</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="checkout_successful">Your order has been placed!</string>
+    <string name="checkout_fail">Fail to place your order, please try again!</string>
+    <string name="total_price">Order Total: </string>
+
+
+    <!-- Order page -->
+    <string name="order_detail">Order Detail</string>
+
+    <!-- Tags -->
+    <string name="tag_main">tag_main</string>
+    <string name="tag_activity">tag_activity</string>
+    <string name="tag_home">tag_home</string>
+
+    <!-- Hint -->
+    <string name="hint_max_image_upload">You can upload 6 images at most!</string>
+    <string name="hint_no_name">Please input the user name!</string>
+    <string name="hint_no_email">Please input the email address!</string>
+    <string name="hint_no_password">Please input the password!</string>
+    <string name="hint_pwd_different">Your password should be identical!</string>
+    <string name="hint_invalid_password_length">Please input the password of 8 ~ 20 characters!</string>
+    <string name="hint_invalid_email">Please input the valid email address!</string>
+    <string name="hint_login_fail">Login failed, please try again</string>
+    <string name="hint_login_success">Login successfully!</string>
+    <string name="hint_welcome_bu">Welcome back, Gaiters!</string>
+    <string name="hint_no_login">Please log in before checkout!</string>
+    <string name="hint_collect">Restaurant marked!</string>
+    <string name="hint_collect_cancel">Restaurant unmarked!</string>
+    <string name="hint_no_perm">Please agree with the permission request!</string>
+    <string name="hint_input_msg">Input message here</string>
+    <string name="hint_net_error">Network error!</string>
+
+
+    <!-- Fake data -->
+    <string name="f_uid">HKVdrJBD8gRVFU4uxay6kwJYx5u2</string>
+    <string name="f_user_name">Grindewald</string>
+    <string name="f_major">Computer Science</string>
+    <string name="f_time">2021/01/02</string>
+    <string name="f_month">Jan</string>
+
+    <string name="f_email">grindewald1504@gmail.com</string>
+    <string name="f_password">ry19940924</string>
+    <string name="f_location">Oxford</string>
+    <string name="f_home_activity"> My Activity \n activity1 \n July 9, 2021, Oxford \n activity2 \n July 10, 2021, Oxford \n activity3 \n July 12, 2021, Oxford</string>
+    <string name="f_price">0.00 $</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Others -->
+    <string name="map">Map</string>
+    <string name="menu">Menu</string>
+    <string name="all_done">All Done!</string>
+    <string name="try_again">Please try again!</string>
+    <string name="request_upload">We\'re processing your request.</string>
+    <string name="visitor">Visitor</string>
+    <string name="send">Send</string>
+
 
     <!-- Tags -->
     <string name="Exception">Exception</string>

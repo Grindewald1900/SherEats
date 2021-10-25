@@ -1,4 +1,4 @@
-package com.example.shereats.view
+package com.example.shereats.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.shereats.R
+import com.example.shereats.model.viewmodel.CartViewModel
 
 class CartFragment : Fragment() {
 
