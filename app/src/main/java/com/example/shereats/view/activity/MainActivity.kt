@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun initView(){
+        setSupportActionBar(findViewById(R.id.toolbar))
         navController = findNavController(R.id.nav_host_main)
         // Bottom nav controller, which also handle the click event of bottom nav
         binding.bottomNavMain.setupWithNavController(navController)
