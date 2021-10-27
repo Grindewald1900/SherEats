@@ -19,7 +19,6 @@ import com.example.shereats.view.adapter.RestaurantAdapter
 
 class HomeFragment : Fragment() {
     private lateinit var binding: HomeFragmentBinding
-    private lateinit var model: HomeViewModel
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -32,7 +31,7 @@ class HomeFragment : Fragment() {
         Log.e(R.string.MainPage.toString(), "onCreateView")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
-        model = HomeViewModel()
+        viewModel = HomeViewModel()
         return binding.root
     }
 
@@ -43,8 +42,8 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.rvFragmentHome.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentHome.itemAnimator = DefaultItemAnimator()
-        model.setRestaurant()
-        model.getRestaurant().observe(viewLifecycleOwner, Observer {
+        viewModel.setRestaurant()
+        viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
             binding.rvFragmentHome.adapter = RestaurantAdapter(it)
         })
 
