@@ -19,12 +19,11 @@ import com.example.shereats.view.adapter.RestaurantAdapter
 
 class HomeFragment : Fragment() {
     private lateinit var binding: HomeFragmentBinding
+    private lateinit var viewModel: HomeViewModel
 
     companion object {
         fun newInstance() = HomeFragment()
     }
-
-    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
