@@ -28,7 +28,6 @@ class OrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.order_fragment, container, false)
-        viewModel = OrderViewModel()
         return binding.root
     }
 

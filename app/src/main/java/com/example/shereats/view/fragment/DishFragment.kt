@@ -28,7 +28,6 @@ class DishFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bingding = DataBindingUtil.inflate(inflater, R.layout.dish_fragment, container, false)
-        viewModel = DishViewModel()
         return bingding.root
     }
 

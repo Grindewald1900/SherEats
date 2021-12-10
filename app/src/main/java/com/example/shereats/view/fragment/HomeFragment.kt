@@ -27,10 +27,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        Log.e(R.string.MainPage.toString(), "onCreateView")
-
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
-        viewModel = HomeViewModel()
         return binding.root
     }
 

@@ -1,10 +1,13 @@
 package com.example.shereats.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -17,6 +20,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityMainBinding
+import com.example.shereats.utils.HttpUtil
 import com.example.shereats.view.fragment.*
 
 
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
-    private var isInitial = true
+    private lateinit var headerView: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -44,8 +48,15 @@ class MainActivity : AppCompatActivity(){
         // Set: The set of destinations by id considered at the top level of your information hierarchy.
         // Here we need to keep the id of destination fragments same as menu.xml e.g. dishFragment has the same id in menu.xml and navigation.xml
         appBarConfiguration = AppBarConfiguration(setOf(R.id.dishFragment, R.id.cartFragment, R.id.homeFragment, R.id.orderFragment, R.id.friendFragment), binding.drawerLayoutMain)
-
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        headerView = binding.leftNavMain.inflateHeaderView(R.layout.nav_header_main)
+        headerView.findViewById<ImageView>(R.id.iv_main_header_portrait).setOnClickListener {
+            startActivity(Intent(this, UserInfoActivity::class.java))
+        }
+        Thread{
+            val result = HttpUtil.getRestaurantByPost(1,1)
+        }.start()
     }
 
     // Bottom nav
