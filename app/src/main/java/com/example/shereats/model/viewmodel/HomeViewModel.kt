@@ -36,18 +36,6 @@ class HomeViewModel : ViewModel() {
             }
         })
 
-//        call.enqueue(object : Callback<ResponseBody> {
-//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                if (response.isSuccessful) {
-//                    val r = response.body().toString()
-//                    val a = response.body()
-////                    restaurants.postValue(response.body())
-//                }
-//            }
-//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-//                t.stackTrace
-//            }
-//        })
     }
 }
 

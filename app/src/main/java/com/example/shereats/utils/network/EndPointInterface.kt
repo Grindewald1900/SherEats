@@ -1,5 +1,6 @@
 package com.example.shereats.utils.network
 
+import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.entity.Restaurant
 import com.example.shereats.utils.ConstantUtil
 import okhttp3.ResponseBody
@@ -17,6 +18,8 @@ import retrofit2.http.Query
 interface EndPointInterface {
     @POST(ConstantUtil.SERVLET_RESTAURANT)
     fun getRestaurants(@Query("id") id: Int, @Query("daoType") daoType: Int): Call<List<Restaurant>>
-//    fun getRestaurants(@Query("id") id: Int, @Query("daoType") daoType: Int): Call<List<Restaurant>>
+
+    @POST(ConstantUtil.SERVLET_DISH)
+    fun getDishes(@Query("id") id: Int): Call<List<Dish>>
 
 }

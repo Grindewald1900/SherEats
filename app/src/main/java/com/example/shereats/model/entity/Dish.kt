@@ -15,11 +15,15 @@ package com.example.shereats.model.entity
  * @param promotion: e.g. 0.1 means 10% off
  */
 data class Dish(
-        val id: Int,
-        val restaurantId: Int,
-        val name: String,
-        val price: Float,
-        val image: String,
-        val rate: Float,
-        val promotion: Float,
+        val restaurant_id: Int,
+        val restaurant_name: String,
+        val item_id: Int,
+        val item_name: String,
+        val item_genre: String,
+        val item_price: Float,
+        val item_pic: String,
+        val item_discount: Float,
+        val item_taste: Float,
+        val item_environment: Float,
+        val item_service: Float,
 )

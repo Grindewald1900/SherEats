@@ -16,7 +16,7 @@ class CartViewModel : ViewModel() {
     fun setOrders(){
         val list: MutableList<OrderItem> = mutableListOf()
         for (i in 1 .. 10){
-            list.add(OrderItem(Dish(i, i, "McDonald", 15f, " ", 4f, 0.1f), i))
+            list.add(OrderItem(Dish(i, "McDonald", i, "Burger", "Fast",15f, " ", 4f, 0.1f, 5f, 4f), i))
         }
         orders.postValue(list)
     }
