@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.rvFragmentHome.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentHome.itemAnimator = DefaultItemAnimator()
-        viewModel.setRestaurant()
+        viewModel.setRestaurant(1,1)
         viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
             binding.rvFragmentHome.adapter = RestaurantAdapter(it)
         })

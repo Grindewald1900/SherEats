@@ -19,13 +19,13 @@ package com.example.shereats.model.entity
  */
 
 data class Restaurant(
-        val id: Int,
-        val name: String,
-        val address: String,
-        val genre: String,
-        val averagePrice: Float,
-        val tel: String,
-        val lat: Float,
-        val long: Float,
-        var isFavourite: Boolean,
+        val restaurant_id: Int,
+        val restaurant_name: String,
+        val restaurant_address: String,
+        val restaurant_genre: String,
+        val restaurant_average: Float,
+        val restaurant_tel: String,
+        val restaurant_lat: Float,
+        val restaurant_long: Float,
+        var restaurant_isfav: Boolean,
 )

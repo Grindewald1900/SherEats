@@ -21,7 +21,7 @@ class HttpUtil {
      */
     companion object{
         fun getRestaurantByPost(id: Int?, daoType: Int?): String? {
-            val address: String = ConstantUtil.SERVER_URL + ConstantUtil.SERVLET_STORE
+            val address: String = ConstantUtil.SERVER_URL + ConstantUtil.SERVLET_RESTAURANT
             var result: String? = ""
             try {
                 val url = URL(address)

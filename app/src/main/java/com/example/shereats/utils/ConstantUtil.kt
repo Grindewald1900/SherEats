@@ -35,7 +35,7 @@ object ConstantUtil {
     const val SERVLET_LOGIN: String = "Servlet.LoginServlet.do"
     const val SERVLET_ADD_ORDER: String = "Servlet.OrderServlet.do"
     const val SERVLET_DISH: String = "Servlet.DishServlet.do"
-    const val SERVLET_STORE: String = "Servlet.RestaurantServlet.do"
+    const val SERVLET_RESTAURANT: String = "Servlet.RestaurantServlet.do"
     const val SERVLET_EVENT: String = "Servlet.EventServlet.do"
 
 

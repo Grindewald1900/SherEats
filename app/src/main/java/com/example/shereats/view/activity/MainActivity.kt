@@ -20,14 +20,20 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityMainBinding
+import com.example.shereats.model.entity.Restaurant
 import com.example.shereats.utils.HttpUtil
+import com.example.shereats.utils.network.EndPointInterface
+import com.example.shereats.utils.network.ServiceBuilder
 import com.example.shereats.view.fragment.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 /**
  * The Entry activity of the app, including 5 tabs in the main page
  */
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
@@ -38,7 +44,7 @@ class MainActivity : AppCompatActivity(){
         initView()
     }
 
-    private fun initView(){
+    private fun initView() {
         setSupportActionBar(findViewById(R.id.toolbar))
         navController = findNavController(R.id.nav_host_main)
         // Bottom nav controller, which also handle the click event of bottom nav
@@ -47,16 +53,22 @@ class MainActivity : AppCompatActivity(){
         binding.leftNavMain.setupWithNavController(navController)
         // Set: The set of destinations by id considered at the top level of your information hierarchy.
         // Here we need to keep the id of destination fragments same as menu.xml e.g. dishFragment has the same id in menu.xml and navigation.xml
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.dishFragment, R.id.cartFragment, R.id.homeFragment, R.id.orderFragment, R.id.friendFragment), binding.drawerLayoutMain)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.dishFragment,
+                R.id.cartFragment,
+                R.id.homeFragment,
+                R.id.orderFragment,
+                R.id.friendFragment
+            ), binding.drawerLayoutMain
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         headerView = binding.leftNavMain.inflateHeaderView(R.layout.nav_header_main)
         headerView.findViewById<ImageView>(R.id.iv_main_header_portrait).setOnClickListener {
             startActivity(Intent(this, UserInfoActivity::class.java))
         }
-        Thread{
-            val result = HttpUtil.getRestaurantByPost(1,1)
-        }.start()
+
     }
 
     // Bottom nav
