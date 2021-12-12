@@ -42,7 +42,7 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
         holder.title.text = dataSlice.restaurant_name
         holder.location.text = dataSlice.restaurant_address
         holder.price.text = dataSlice.restaurant_average.toString()
-        if (dataSlice.restaurant_isfav){
+        if (dataSlice.restaurant_isfav == "T"){
             holder.heart.background = mContext.getDrawable(R.drawable.ic_baseline_favorite_48)
         }else{
             holder.heart.background = mContext.getDrawable(R.drawable.ic_baseline_favorite_border_48)

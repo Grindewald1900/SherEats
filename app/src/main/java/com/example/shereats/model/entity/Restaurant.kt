@@ -27,5 +27,5 @@ data class Restaurant(
         val restaurant_tel: String,
         val restaurant_lat: Float,
         val restaurant_long: Float,
-        var restaurant_isfav: Boolean,
+        var restaurant_isfav: String,
 )

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shereats.R
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.utils.TextUtil
+import kotlin.random.Random
 
 
 /**
@@ -42,7 +43,10 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dataSlice = data[position]
-        var starCount = (dataSlice.item_service + dataSlice.item_environment + dataSlice.item_taste)/3
+        // We don't have rate data in our database, so fake some data here
+        // From 2.0 to 5.0
+        var starCount = 2 + Random.nextFloat() * 3
+//        var starCount = (dataSlice.item_service + dataSlice.item_environment + dataSlice.item_taste)/3
         holder.title.text = dataSlice.item_name
         holder.price.text = TextUtil.getItemPrice(dataSlice.item_price)
         if (dataSlice.item_discount < 1f){
@@ -58,7 +62,6 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
         }
 
         holder.rate.removeAllViews()
-        starCount = 3.5f
         for (i in 1..5){
             starCount -= 1
             if (starCount >= 0.75) {
