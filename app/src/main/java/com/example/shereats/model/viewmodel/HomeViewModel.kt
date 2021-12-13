@@ -3,6 +3,7 @@ package com.example.shereats.model.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shereats.model.entity.Restaurant
 import com.example.shereats.utils.network.EndPointInterface
 import com.example.shereats.utils.network.ServiceBuilder
@@ -19,18 +20,20 @@ class HomeViewModel : BaseViewModel() {
     fun getRestaurant(): LiveData<List<Restaurant>> {
         return restaurants
     }
-    fun setRestaurant(id: Int, daoType: Int) {
+    fun setRestaurant(id: Int, daoType: Int, swipe: SwipeRefreshLayout) {
         call = request.getRestaurants(id, daoType)
 
         call.enqueue(object : Callback<List<Restaurant>> {
             override fun onResponse(
                 call: Call<List<Restaurant>>, response: Response<List<Restaurant>>
             ) {
+                swipe.isRefreshing = false
                 if (response.isSuccessful) {
                     restaurants.postValue(response.body())
                 }
             }
             override fun onFailure(call: Call<List<Restaurant>>, t: Throwable) {
+                swipe.isRefreshing = false
                 t.stackTrace
             }
         })

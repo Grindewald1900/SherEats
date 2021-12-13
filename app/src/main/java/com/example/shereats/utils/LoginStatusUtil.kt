@@ -1,6 +1,7 @@
 package com.example.shereats.utils
 
 import com.example.shereats.model.entity.User
+import java.util.*
 
 
 /**
@@ -14,6 +15,14 @@ class LoginStatusUtil {
 
         fun isLogin(): Boolean{
             return mUser != null
+        }
+
+        fun getUser(): User{
+            return if (null != mUser){
+                mUser!!
+            }else{
+                User(0,"Click to login","", Date(), 'F', "000", "", "")
+            }
         }
     }
 }

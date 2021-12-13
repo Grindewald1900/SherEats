@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shereats.R
 import com.example.shereats.databinding.HomeFragmentBinding
 import com.example.shereats.model.viewmodel.HomeViewModel
@@ -38,10 +39,18 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.rvFragmentHome.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentHome.itemAnimator = DefaultItemAnimator()
-        viewModel.setRestaurant(1,1)
+        binding.swipeFragmentHome.setColorSchemeColors(resources.getColor(R.color.colorPrimary),resources.getColor(R.color.google), resources.getColor(R.color.facebook))
+        binding.swipeFragmentHome.setOnRefreshListener {
+            viewModel.setRestaurant(1, 1, binding.swipeFragmentHome)
+        }
+
+
+
+        viewModel.setRestaurant(1,1, binding.swipeFragmentHome)
         viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
             binding.rvFragmentHome.adapter = RestaurantAdapter(it)
         })
+
 
 
     }

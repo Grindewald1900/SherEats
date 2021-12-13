@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -80,6 +81,30 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(LoginStatusUtil.isLogin()){
+            val user = LoginStatusUtil.getUser()
+            headerView.findViewById<TextView>(R.id.tv_main_header_name).text = user.user_name
+            headerView.findViewById<TextView>(R.id.tv_main_header_email).text = user.user_mail
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     // Bottom nav

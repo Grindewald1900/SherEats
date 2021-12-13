@@ -26,15 +26,16 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <ImageView
+    <com.example.shereats.view.custom.RoundCornerImageView
         android:id="@+id/btn_activity_user_info_portrait"
         android:layout_width="@dimen/dimen_70"
         android:layout_height="@dimen/dimen_70"
         android:layout_marginTop="@dimen/dimen_50"
         android:layout_marginStart="@dimen/dimen_50"
+        android:src="@drawable/ic_dining_room_48"
+        app:mCornerRadius="40"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-
         />
 
     <TextView
