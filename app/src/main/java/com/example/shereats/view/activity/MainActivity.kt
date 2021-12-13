@@ -7,12 +7,15 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.Window
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -22,6 +25,7 @@ import com.example.shereats.R
 import com.example.shereats.databinding.ActivityMainBinding
 import com.example.shereats.model.entity.Restaurant
 import com.example.shereats.utils.HttpUtil
+import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.network.EndPointInterface
 import com.example.shereats.utils.network.ServiceBuilder
 import com.example.shereats.view.fragment.*
@@ -46,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         setSupportActionBar(findViewById(R.id.toolbar))
+        // Remove the default toolbar title
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         navController = findNavController(R.id.nav_host_main)
         // Bottom nav controller, which also handle the click event of bottom nav
         binding.bottomNavMain.setupWithNavController(navController)
@@ -64,9 +70,14 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // Set the header of left navigation
         headerView = binding.leftNavMain.inflateHeaderView(R.layout.nav_header_main)
         headerView.findViewById<ImageView>(R.id.iv_main_header_portrait).setOnClickListener {
-            startActivity(Intent(this, UserInfoActivity::class.java))
+            if (LoginStatusUtil.isLogin()){
+                startActivity(Intent(this, UserInfoActivity::class.java))
+            }else{
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
         }
 
     }

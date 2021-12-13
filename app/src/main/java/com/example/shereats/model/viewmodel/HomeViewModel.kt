@@ -12,9 +12,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.EnumSet.range
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
     private val restaurants: MutableLiveData<List<Restaurant>> = MutableLiveData()
-    private val request = ServiceBuilder.ServiceBuilder.buildService(EndPointInterface::class.java)
     private lateinit var call: Call<List<Restaurant>>
 
     fun getRestaurant(): LiveData<List<Restaurant>> {

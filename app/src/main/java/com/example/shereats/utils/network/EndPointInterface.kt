@@ -2,6 +2,7 @@ package com.example.shereats.utils.network
 
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.entity.Restaurant
+import com.example.shereats.model.entity.User
 import com.example.shereats.utils.ConstantUtil
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -21,5 +22,8 @@ interface EndPointInterface {
 
     @POST(ConstantUtil.SERVLET_DISH)
     fun getDishes(@Query("id") id: Int): Call<List<Dish>>
+
+    @POST(ConstantUtil.SERVLET_LOGIN)
+    fun getUser(@Query("name") name: String, @Query("password") password: String): Call<List<User>>
 
 }

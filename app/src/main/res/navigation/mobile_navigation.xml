@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.shereats.view.ui.home.MHomeFragment"
+        android:name="com.example.shereats.view.ui.home.UserInfoFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_user_info" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -46,6 +46,6 @@
         android:id="@+id/friendFragment"
         android:name="com.example.shereats.view.fragment.FriendFragment"
         android:label="friend_fragment"
-        tools:layout="@layout/friend_fragment" />
+        tools:layout="@layout/fragment_friend" />
 
 </navigation>

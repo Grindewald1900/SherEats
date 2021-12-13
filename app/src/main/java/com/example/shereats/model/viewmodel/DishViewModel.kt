@@ -10,9 +10,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DishViewModel : ViewModel() {
+class DishViewModel : BaseViewModel() {
     private var dishes: MutableLiveData<List<Dish>> = MutableLiveData()
-    private val request = ServiceBuilder.ServiceBuilder.buildService(EndPointInterface::class.java)
     private lateinit var call: Call<List<Dish>>
 
     fun getDishes(): LiveData<List<Dish>> {
