@@ -2,7 +2,6 @@
 
     <style name="Widget.Theme.SherEats.MyView" parent="">
         <item name="android:background">@color/gray_400</item>
-        <item name="exampleColor">@color/light_blue_400</item>
     </style>
 
     <style name="NormalButton">
@@ -20,12 +19,21 @@
         <item name="android:layout_marginTop">@dimen/dimen_10</item>
     </style>
 
-    <declare-styleable name="mImageView">
-        <attr name="mCornerRadius" format="float"/>
+    <declare-styleable name="RoundCornerImageView">
+        <attr name="mCornerRadius" format="float" />
     </declare-styleable>
 
-    <declare-styleable name="mButton">
-        <attr name="border_color" format="color"/>
-        <attr name="background_color" format="color"/>
+    <declare-styleable name="RoundCornerButton">
+        <attr name="border_color" format="color" />
+        <attr name="background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundFab">
+        <attr name="fab_type" format="enum">
+            <enum name="square" value="0"/>
+            <enum name="circle" value="1"/>
+            <enum name="roundCorner" value="2"/>
+        </attr>
+        <attr name="fab_corner_radius" format="float"/>
     </declare-styleable>
 </resources>

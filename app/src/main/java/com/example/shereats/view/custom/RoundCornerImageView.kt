@@ -20,8 +20,8 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
     private val bkColor = Color.WHITE
     private var cornerRadius: Float
     init {
-        val attr = context.obtainStyledAttributes(attrs, R.styleable.mImageView)
-        cornerRadius = attr.getFloat(R.styleable.mImageView_mCornerRadius, 20f)
+        val attr = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerImageView)
+        cornerRadius = attr.getFloat(R.styleable.RoundCornerImageView_mCornerRadius, 20f)
         paint = Paint()
     }
 
@@ -35,7 +35,6 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
     override fun onDraw(canvas: Canvas?) {
         val mDrawable: Drawable? = drawable
         if(null != mDrawable){
-            Log.d("mImageView","not null")
             val bitmap: Bitmap = mDrawable.toBitmap()
             val b: Bitmap =getRoundBitmap(bitmap, cornerRadius)
             val rectSrc = Rect(0,0,b.width,b.height)
@@ -43,7 +42,6 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
             paint!!.reset()
             canvas!!.drawBitmap(b, rectSrc, rectDest , paint)
         }else{
-            Log.d("mImageView","null")
             super.onDraw(canvas)
         }
 

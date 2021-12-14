@@ -44,6 +44,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:menu="@menu/bottom_navigation" />
 
+            <com.example.shereats.view.custom.RoundFab
+                android:id="@+id/fab_main"
+                android:layout_width="@dimen/dimen_100"
+                android:layout_height="@dimen/dimen_100"
+                android:src="@drawable/ic_dining_room_48"
+                app:fab_type="circle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -55,5 +67,8 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:menu="@menu/activity_main_drawer" />
+
+
     </androidx.drawerlayout.widget.DrawerLayout>
+
 </layout>

@@ -40,9 +40,9 @@ open class RoundCornerButton(context: Context, attrs: AttributeSet?): androidx.a
     private var borderColor by Delegates.notNull<Int>()
 
     init {
-        val attr = context.obtainStyledAttributes(attrs, R.styleable.mButton)
-        borderColor = attr.getColor(R.styleable.mButton_background_color, Color.BLACK)
-        bkColor = attr.getColor(R.styleable.mButton_background_color, Color.WHITE)
+        val attr = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerButton)
+        borderColor = attr.getColor(R.styleable.RoundCornerButton_background_color, Color.BLACK)
+        bkColor = attr.getColor(R.styleable.RoundCornerButton_background_color, Color.WHITE)
         initView()
     }
 

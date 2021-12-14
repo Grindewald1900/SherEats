@@ -44,14 +44,10 @@ class HomeFragment : Fragment() {
             viewModel.setRestaurant(1, 1, binding.swipeFragmentHome)
         }
 
-
-
         viewModel.setRestaurant(1,1, binding.swipeFragmentHome)
         viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
             binding.rvFragmentHome.adapter = RestaurantAdapter(it)
         })
-
-
 
     }
 

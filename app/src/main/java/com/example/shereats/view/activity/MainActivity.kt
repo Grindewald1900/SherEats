@@ -91,21 +91,6 @@ class MainActivity : AppCompatActivity() {
             headerView.findViewById<TextView>(R.id.tv_main_header_email).text = user.user_mail
         }
     }
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 
     // Bottom nav
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
