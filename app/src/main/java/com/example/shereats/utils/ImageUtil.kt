@@ -76,5 +76,39 @@ class ImageUtil {
             height = display.height
             return height
         }
+
+        /**
+         * Return a position(left, top, right, bottom) of a image when action up.
+         * @param x: x position of the image
+         * @param y: y position of the image
+         * @param viewWidth: width of the image
+         * @param viewHeight: height of the image
+         * @param mode: MODE_EDGE- go to the nearest edge, MODE_POINT- go to a certain point on the screen
+         */
+        fun getPositionByMode(x: Int, y: Int, viewWidth: Int, viewHeight: Int, mode: Int, context: Context): List<Int>{
+            val width = getScreenWidth(context)
+            val height = getScreenHeight(context)
+            // By default, go to the middle of right side.
+            var result: MutableList<Int> = mutableListOf(width - viewWidth, height * 0.5.toInt(), width,  height * 0.5.toInt() + viewHeight)
+            when(mode){
+                ConstantUtil.MODE_EDGE -> {
+                    result = if(x > width/2){
+                        mutableListOf(width - viewWidth, y - viewHeight/2, width, y + viewHeight/2)
+                    }else{
+                        mutableListOf(0, y - viewHeight/2, viewWidth, y + viewHeight/2)
+                    }
+                }
+                ConstantUtil.MODE_POINT -> {
+                    val top = height * 0.6.toInt()
+                    result = mutableListOf(width - viewWidth, top, width, top + viewHeight)
+                }
+            }
+            // If out of bottom bound, go to bottom.
+            if (result[3] > height){
+                result[3] = height
+                result[1] = height - viewHeight
+            }
+            return result
+        }
     }
 }

@@ -57,10 +57,6 @@ object ConstantUtil {
     // onActivityResult
     const val SELECT_IMAGE: Int = 101
 
-    // ResultActivity
-    const val RESULT_DEFAULT : Int = 500
-    const val RESULT_CORRECT : Int = 501
-    const val RESULT_INCORRECT : Int = 502
 
 
     // User type
@@ -74,6 +70,15 @@ object ConstantUtil {
     const val HANDLER_DISH: Int = 304
     const val HANDLER_STORE: Int = 305
 
+
+    // ResultActivity
+    const val RESULT_DEFAULT : Int = 500
+    const val RESULT_CORRECT : Int = 501
+    const val RESULT_INCORRECT : Int = 502
+
+    // Image Mode
+    const val MODE_EDGE: Int = 601
+    const val MODE_POINT: Int = 602
 
     // Constant amount
     const val MAX_UPLOAD_IMAGE: Int = 5
