@@ -26,4 +26,7 @@ interface EndPointInterface {
     @POST(ConstantUtil.SERVLET_LOGIN)
     fun getUser(@Query("name") name: String, @Query("password") password: String): Call<List<User>>
 
+    @POST(ConstantUtil.SERVLET_REGISTER)
+    fun register(@Query("id") id: String, @Query("name") name: String, @Query("password") password: String, @Query("email") email: String): Call<String>
+
 }

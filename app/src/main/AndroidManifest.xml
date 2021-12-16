@@ -3,7 +3,6 @@
     package="com.example.shereats">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,15 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SherEats"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".model.viewmodel.ResultActivity"></activity>
+        <activity android:name=".view.activity.RegisterActivity" />
         <activity
             android:name=".view.activity.LoginActivity"
-            android:label="@string/title_activity_login">
-        </activity>
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".view.activity.UserInfoActivity"
-            android:label="@string/title_activity_user_info">
-        </activity>
+            android:label="@string/title_activity_user_info" />
         <activity
             android:name=".view.activity.MainActivity"
             android:label="@string/app_name"

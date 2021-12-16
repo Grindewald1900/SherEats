@@ -71,7 +71,8 @@
     <string name="reg_email">Please input your email</string>
     <string name="privacy">Privacy Policy</string>
     <string name="contact_us">Contact us</string>
-    <string name="register_success">Congratulations! You\'ve register successfully!</string>
+    <string name="register_success">You\'ve register successfully!</string>
+    <string name="register_fail">Please try again</string>
 
     <!-- Event Page -->
     <string name="title">Title</string>
@@ -130,6 +131,7 @@
     <string name="hint_pwd_different">Your password should be identical!</string>
     <string name="hint_invalid_password_length">Please input the password of 8 ~ 20 characters!</string>
     <string name="hint_invalid_email">Please input the valid email address!</string>
+    <string name="hint_invalid_user">Invalid username or password, please try again</string>
     <string name="hint_login_fail">Login failed, please try again</string>
     <string name="hint_login_success">Login successfully!</string>
     <string name="hint_welcome_bu">Welcome back, Gaiters!</string>

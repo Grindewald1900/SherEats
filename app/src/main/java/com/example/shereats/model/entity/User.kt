@@ -13,7 +13,7 @@ import java.util.*
  * @param user_icon: undefined
  */
 data class User (
-    val user_id: Int,
+    val user_id: String,
     val user_name: String,
     val user_password: String,
     val user_birthday: Date,

@@ -1,5 +1,6 @@
 package com.example.shereats.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -22,6 +23,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initView(){
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        binding.tvLoginRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
         binding.btnLoginLogin.setOnClickListener {
             if (binding.etLoginName.text.isNullOrEmpty()){
                 ToastUtil.showShortMessage(getString(R.string.hint_no_email), this)
@@ -33,10 +37,13 @@ class LoginActivity : AppCompatActivity() {
             }
             viewModel.setUser(binding.etLoginName.text.toString(), binding.etLoginPwd.text.toString())
             viewModel.getUser().observe(this,{
-                if (it[0].user_name == binding.etLoginName.text.toString()){
+                // If valid user, go back to main page, else go to register page
+                if (it.isNotEmpty()){
                     LoginStatusUtil.mUser = it[0]
                     ToastUtil.showShortMessage(getString(R.string.hint_login_success), this)
                     finish()
+                }else{
+                    ToastUtil.showShortMessage(getString(R.string.hint_invalid_user), this)
                 }
             })
 

@@ -97,6 +97,7 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
 
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
+        // Todo: Custom view RoundFab overrides onTouchEvent but not performClick
         if (event == null) return true
         var downX = 0f
         var downY = 0f
@@ -177,14 +178,7 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
             } else if (currentMode == MODE_ROUND_CORNER) {
                 val bitmap = ImageUtil.drawableToBitmap(drawable, imageMatrix, width, height)
                 mPaint.shader = BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-                canvas.drawRoundRect(
-                    RectF(
-                        paddingLeft.toFloat(),
-                        paddingTop.toFloat(),
-                        (width - paddingRight).toFloat(),
-                        (height - paddingBottom).toFloat()
-                    ), cornerRadius, cornerRadius, mPaint
-                )
+                canvas.drawRoundRect(RectF(paddingLeft.toFloat(), paddingTop.toFloat(), (width - paddingRight).toFloat(), (height - paddingBottom).toFloat()), cornerRadius, cornerRadius, mPaint)
             } else {
                 if (imageMatrix != null) {
                     canvas.concat(imageMatrix)

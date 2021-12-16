@@ -17,11 +17,15 @@ class LoginStatusUtil {
             return mUser != null
         }
 
+        fun setUser(id: String, name: String, pwd: String, email: String){
+            mUser = User(id, name, pwd, Date(), 'F', "000", email,"")
+        }
+
         fun getUser(): User{
             return if (null != mUser){
                 mUser!!
             }else{
-                User(0,"Click to login","", Date(), 'F', "000", "", "")
+                User("000","Click to login","", Date(), 'F', "000", "", "")
             }
         }
     }

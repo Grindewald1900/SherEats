@@ -97,7 +97,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/tv_login_forget_v2"
+            android:id="@+id/tv_login_forget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
@@ -109,19 +109,19 @@
             />
 
         <TextView
-            android:id="@+id/tv_login_register_v2"
+            android:id="@+id/tv_login_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="@dimen/dimen_20"
             android:layout_marginStart="@dimen/dimen_20"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login_forget_v2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_forget"
             app:layout_constraintLeft_toLeftOf="parent"
             />
 
         <TextView
-            android:id="@+id/tv_login_login_with_v2"
+            android:id="@+id/tv_login_login_with"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_with"
