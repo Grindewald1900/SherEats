@@ -73,6 +73,9 @@
     <string name="contact_us">Contact us</string>
     <string name="register_success">You\'ve register successfully!</string>
     <string name="register_fail">Please try again</string>
+    <string name="register_duplicate_id">You\'ve already registered, please login</string>
+    <string name="register_duplicate_name">Your name has been registered, please try another one</string>
+
 
     <!-- Event Page -->
     <string name="title">Title</string>

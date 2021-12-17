@@ -60,8 +60,11 @@ object ConstantUtil {
 
 
     // User type
-    const val USER_STUDENT: Int = 201
-    const val USER_PROFESSOR: Int = 202
+    const val REGISTER_DEFAULT: Int = 200
+    const val REGISTER_SUCCESS: Int = 201
+    const val REGISTER_DUPLICATE_ID: Int = 202
+    const val REGISTER_DUPLICATE_NAME: Int = 203
+
 
     // Handler
     const val HANDLER_LOGIN: Int = 301

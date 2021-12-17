@@ -13,5 +13,5 @@ import retrofit2.Call
  * Email: grindewald1504@gmail.com
  */
 abstract class BaseViewModel: ViewModel() {
-    protected val request = ServiceBuilder.ServiceBuilder.buildService(EndPointInterface::class.java)
+    protected var request = ServiceBuilder.ServiceBuilder.buildService(EndPointInterface::class.java)
 }

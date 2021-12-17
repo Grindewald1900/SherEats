@@ -44,8 +44,6 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (binding.etRegisterPwd1.text.toString() != binding.etRegisterPwd2.text.toString()){
-                val a = binding.etRegisterPwd1.text
-                val b = binding.etRegisterPwd2.text
                 ToastUtil.showShortMessage(getString(R.string.hint_pwd_different), this)
                 return@setOnClickListener
             }
@@ -58,12 +56,26 @@ class RegisterActivity : AppCompatActivity() {
 
         }
         viewModel.getIsSuccess().observe(this, {
-            if (it == ConstantUtil.SERVER_SUCCESS){
-                LoginStatusUtil.setUser(userData[0], userData[1], userData[2], userData[3])
-                ToastUtil.showLongMessage(getString(R.string.register_success), this)
-                finish()
-            }else{
-                ToastUtil.showLongMessage(getString(R.string.register_fail), this)
+            if (it == null) return@observe
+            when(it.result){
+                ConstantUtil.REGISTER_SUCCESS -> {
+                    LoginStatusUtil.setUser(userData[0], userData[1], userData[2], userData[3])
+                    ToastUtil.showLongMessage(getString(R.string.register_success), this)
+                    finish()
+                }
+                ConstantUtil.REGISTER_DEFAULT -> {
+                    ToastUtil.showLongMessage(getString(R.string.register_fail), this)
+                }
+                ConstantUtil.REGISTER_DUPLICATE_ID -> {
+                    ToastUtil.showShortMessage(getString(R.string.register_duplicate_id), this)
+                    finish()
+                }
+                ConstantUtil.REGISTER_DUPLICATE_NAME -> {
+                    ToastUtil.showShortMessage(getString(R.string.register_duplicate_name), this)
+                }
+                else -> {
+                    ToastUtil.showLongMessage(getString(R.string.register_fail), this)
+                }
             }
         })
 
