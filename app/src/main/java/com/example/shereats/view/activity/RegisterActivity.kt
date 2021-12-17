@@ -1,5 +1,6 @@
 package com.example.shereats.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -7,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityRegisterBinding
 import com.example.shereats.model.viewmodel.RegisterViewModel
+import com.example.shereats.model.viewmodel.ResultActivity
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.ToastUtil
@@ -60,8 +62,8 @@ class RegisterActivity : AppCompatActivity() {
             when(it.result){
                 ConstantUtil.REGISTER_SUCCESS -> {
                     LoginStatusUtil.setUser(userData[0], userData[1], userData[2], userData[3])
+                    startActivity(Intent(this, ResultActivity::class.java).putExtra(ConstantUtil.STRING_RESULT_ACTIVITY, ConstantUtil.RESULT_CORRECT))
                     ToastUtil.showLongMessage(getString(R.string.register_success), this)
-                    finish()
                 }
                 ConstantUtil.REGISTER_DEFAULT -> {
                     ToastUtil.showLongMessage(getString(R.string.register_fail), this)

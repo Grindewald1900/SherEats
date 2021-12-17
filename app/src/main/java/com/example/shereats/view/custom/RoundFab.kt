@@ -96,6 +96,9 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
     }
 
 
+    /**
+     * Deal with different motion event
+     */
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         // Todo: Custom view RoundFab overrides onTouchEvent but not performClick
         if (event == null) return true
@@ -147,8 +150,8 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
                         bottom = screenHeight
                         top = bottom - fabHeight
                     }
+                    // Move the view a little bit to top left, which means the touching point is at the center of FAB
                     this.layout(left - fabSize, top - fabSize, right - fabSize, bottom - fabSize)
-
 //                    this.layout(left, top, right, bottom)
                 }
             }

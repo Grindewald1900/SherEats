@@ -88,5 +88,6 @@ object ConstantUtil {
     const val MAX_SEARCH_HISTORY: Int = 5
     const val MIN_TRANSFORM_SCALE = 0.8f
     const val MIN_TRANSFORM_ALPHA = 0.5f
+    const val RESULT_ACTIVITY_TIME: Long = 3000
 
 }
