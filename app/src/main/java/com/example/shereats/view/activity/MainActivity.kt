@@ -81,6 +81,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.fabMain.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
+
     }
 
     override fun onStart() {

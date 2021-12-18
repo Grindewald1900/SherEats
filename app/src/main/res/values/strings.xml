@@ -91,6 +91,7 @@
 
 
     <!-- Search Page -->
+    <string name="recommend">Recommend for you</string>
     <string name="search_history">Browsing History</string>
     <string name="search">Search</string>
     <string name="general">General</string>

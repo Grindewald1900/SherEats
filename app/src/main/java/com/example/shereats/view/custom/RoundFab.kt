@@ -2,12 +2,9 @@ package com.example.shereats.view.custom
 
 import android.content.Context
 import android.graphics.*
-import android.graphics.drawable.Drawable
-import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
-import android.view.View
-import android.widget.ImageView
 import com.example.shereats.R
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
@@ -37,6 +34,11 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
     private var fabWidth = 0
     private var fabHeight = 0
     private var fabSize = 0
+
+    // The position when event down
+    private var downX = 0f
+    private var downY = 0f
+
 
     constructor(context: Context) : super(context) {
         initView(null, 0, context)
@@ -92,7 +94,6 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
         if (fabHeight == fabWidth) {
             fabSize = fabWidth/2
         }
-
     }
 
 
@@ -100,19 +101,22 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
      * Deal with different motion event
      */
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        // Todo: Custom view RoundFab overrides onTouchEvent but not performClick
         if (event == null) return true
-        var downX = 0f
-        var downY = 0f
-
-        val y = event.y
 
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                downX = event.x
-                downY = event.y
+                downX = event.rawX
+                downY = event.rawY
+                Log.d("LogRoundFab", "ACTION_DOWN")
+                Log.d("LogRoundFab", "x ${event.rawX.toString()}")
+                Log.d("LogRoundFab", "y ${event.rawY.toString()}")
             }
             MotionEvent.ACTION_UP -> {
+                Log.d("LogRoundFab", "ACTION_UP")
+                Log.d("LogRoundFab", "x ${event.rawX.toString()}")
+                Log.d("LogRoundFab", "y ${event.rawY.toString()}")
+
+                // Move the FAB to the proper position, according to the Mode
                 val position = ImageUtil.getPositionByMode(
                     event.rawX.toInt(),
                     event.rawY.toInt(),
@@ -122,45 +126,37 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
                     mContext
                 )
                 this.layout(position[0], position[1], position[2], position[3])
+                if(abs(downX - event.rawX) < 10 && abs(downY - event.rawY) < 10){
+                    performClick()
+                }
+
             }
             MotionEvent.ACTION_MOVE -> {
-                var left: Int
-                var right: Int
-                var top: Int
-                var bottom: Int
-                // Moved distance
-                val distanceX = event.x - downX
-                val distanceY = event.y - downY
-                if (abs(distanceX) > 10 || abs(distanceY) > 10) {
-                    left = getLeft() + distanceX.toInt()
+                var left: Int; var right: Int; var top: Int; var bottom: Int
+                left = event.rawX.toInt()
+                right = left + fabWidth
+                top = event.rawY.toInt()
+                bottom = top + fabHeight
+                // Avoid FAB out of the screen area
+                if (left < 0) {
+                    left = 0
                     right = left + fabWidth
-                    top = getTop() + distanceY.toInt()
-                    bottom = top + height
-                    if (left < 0) {
-                        left = 0
-                        right = left + fabWidth
-                    } else if (right > screenWidth + fabWidth) {
-                        right = screenWidth
-                        left = right - fabWidth
-                    }
-                    if (top < 0) {
-                        top = 0
-                        bottom = top + fabHeight
-                    } else if (bottom > screenHeight + fabHeight) {
-                        bottom = screenHeight
-                        top = bottom - fabHeight
-                    }
-                    // Move the view a little bit to top left, which means the touching point is at the center of FAB
-                    this.layout(left - fabSize, top - fabSize, right - fabSize, bottom - fabSize)
-//                    this.layout(left, top, right, bottom)
+                } else if (right > screenWidth + fabWidth) {
+                    right = screenWidth
+                    left = right - fabWidth
                 }
+                if (top < 0) {
+                    top = 0
+                    bottom = top + fabHeight
+                } else if (bottom > screenHeight + fabHeight) {
+                    bottom = screenHeight
+                    top = bottom - fabHeight
+                }
+                // Move the view a little bit to top left, which means the touching point is at the center of FAB
+                this.layout(left , top-fabHeight, right, bottom-fabHeight)
             }
         }
         return true
-    }
-
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
     }
 
     override fun onDraw(canvas: Canvas) {
