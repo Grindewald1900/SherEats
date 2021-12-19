@@ -74,48 +74,50 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_activity_event_search_general"
+            android:id="@+id/tv_activity_event_search_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/general"
+            android:text="@string/restaurant"
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
             app:layout_constraintTop_toBottomOf="@+id/rl_activity_event_search"
             app:layout_constraintLeft_toLeftOf="@+id/et_activity_event_search"
             />
         <TextView
-            android:id="@+id/tv_activity_event_search_publisher"
+            android:id="@+id/tv_activity_event_search_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/publisher"
+            android:text="@string/dish"
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_general"
-            app:layout_constraintLeft_toRightOf="@+id/tv_activity_event_search_general"
-            app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_one"
+            app:layout_constraintLeft_toRightOf="@+id/tv_activity_event_search_one"
+            app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_three"
             />
         <TextView
-            android:id="@+id/tv_activity_event_search_title"
+            android:id="@+id/tv_activity_event_search_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title"
+            android:text="@string/price"
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_general"
-            app:layout_constraintLeft_toRightOf="@+id/tv_activity_event_search_publisher"
-            app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_location"
+            app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_one"
+            app:layout_constraintLeft_toRightOf="@+id/tv_activity_event_search_two"
+            app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_four"
             />
         <TextView
-            android:id="@+id/tv_activity_event_search_location"
+            android:id="@+id/tv_activity_event_search_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/publisher"
+            android:text="@string/location"
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
             android:layout_marginRight="@dimen/dimen_10"
-            app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_general"
+            app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_one"
             app:layout_constraintRight_toRightOf="@+id/et_activity_event_search"
             />
         <EditText
@@ -131,7 +133,7 @@
             android:layout_marginStart="@dimen/dimen_20"
             android:layout_marginEnd="@dimen/dimen_5"
             android:layout_marginTop="@dimen/dimen_5"
-            app:layout_constraintTop_toBottomOf="@+id/tv_activity_event_search_general"
+            app:layout_constraintTop_toBottomOf="@+id/tv_activity_event_search_one"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_search"
             />
@@ -202,16 +204,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_activity_event_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
             android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/cl_activity_event_search_filter"
+            app:layout_constraintTop_toBottomOf="@+id/et_activity_event_search"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

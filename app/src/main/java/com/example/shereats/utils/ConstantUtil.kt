@@ -84,7 +84,7 @@ object ConstantUtil {
     const val MODE_POINT: Int = 602
 
     // Constant amount
-    const val MAX_RECOMMEND_ITEM: Int = 30
+    const val MAX_RECOMMEND_ITEM: Int = 20
     const val MAX_UPLOAD_IMAGE: Int = 5
     const val MAX_SEARCH_HISTORY: Int = 5
     const val MIN_TRANSFORM_SCALE = 0.8f
