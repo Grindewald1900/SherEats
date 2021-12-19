@@ -20,7 +20,7 @@ class DishViewModel : BaseViewModel() {
 
     fun setDishes(){
         // The parameter for getDishes(): larger than 0 will return a certain dish with id, otherwise return all the dishes
-        call = request.getDishes(0, 0)
+        call = request.getDishes(0, 0,"")
 
         call.enqueue(object: Callback<List<Dish>>{
             override fun onResponse(call: Call<List<Dish>>, response: Response<List<Dish>>) {

@@ -26,10 +26,7 @@ interface EndPointInterface {
      * @param count: the amount of rows to be retrieved
      */
     @POST(ConstantUtil.SERVLET_DISH)
-    fun getDishes(@Query("id") id: Int, @Query("count") count: Int): Call<List<Dish>>
-
-    @POST(ConstantUtil.SERVLET_DISH)
-    fun getDishByKeyword(@Query("keyword") keyword: String): Call<List<Dish>>
+    fun getDishes(@Query("id") id: Int, @Query("count") count: Int, @Query("keyword") keyword: String): Call<List<Dish>>
 
     @POST(ConstantUtil.SERVLET_LOGIN)
     fun getUser(@Query("name") name: String, @Query("password") password: String): Call<List<User>>

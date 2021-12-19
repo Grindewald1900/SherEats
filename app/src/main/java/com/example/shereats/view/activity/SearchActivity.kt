@@ -47,11 +47,11 @@ class SearchActivity : FragmentActivity() {
         setSearchType()
         binding.tvActivityEventSearchSearch.setOnClickListener {
             val keyword = binding.etActivityEventSearch.text.toString()
-            if(keyword.isNullOrEmpty()){
+            if(keyword.isEmpty()){
                 ToastUtil.showShortMessage(getString(R.string.hint_no_input), this)
                 return@setOnClickListener
             }
-            viewModel.setSearchResult(keyword)
+            viewModel.setSearchResult(0, keyword)
         }
         viewModel.getSearchResult().observe(this,{
             binding.rvActivityEventSearch.adapter = SearchAdapter(it)

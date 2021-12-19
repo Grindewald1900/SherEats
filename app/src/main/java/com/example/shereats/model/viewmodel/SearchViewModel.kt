@@ -27,7 +27,7 @@ class SearchViewModel: BaseViewModel() {
     }
 
     fun setDishes(count: Int){
-        call = request.getDishes(0, count)
+        call = request.getDishes(0, count, "")
         call.enqueue(object: Callback<List<Dish>>{
             override fun onResponse(call: Call<List<Dish>>, response: Response<List<Dish>>) {
                 if (response.isSuccessful){
@@ -41,8 +41,18 @@ class SearchViewModel: BaseViewModel() {
         })
     }
 
-    fun setSearchResult(keyword: String){
-
+    fun setSearchResult(count: Int, keyword: String){
+        call = request.getDishes(0, 0, keyword)
+        call.enqueue(object: Callback<List<Dish>>{
+            override fun onResponse(call: Call<List<Dish>>, response: Response<List<Dish>>) {
+                if (response.isSuccessful){
+                    searchResult.postValue(response.body())
+                }
+            }
+            override fun onFailure(call: Call<List<Dish>>, t: Throwable) {
+                t.stackTrace
+            }
+        })
     }
 
 
