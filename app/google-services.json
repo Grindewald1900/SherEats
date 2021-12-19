@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "186646804879",
+    "firebase_url": "https://simplechat-c1447.firebaseio.com",
+    "project_id": "simplechat-c1447",
+    "storage_bucket": "simplechat-c1447.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186646804879:android:f053dbc90b0ba68405b3fa",
+        "android_client_info": {
+          "package_name": "com.example.shereats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186646804879-lmn8uc9ejfvlcciuhtbhadnn6ee6dp16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shereats",
+            "certificate_hash": "008321ede1b4f99d3564b0c8a13c5698ee4f4df7"
+          }
+        },
+        {
+          "client_id": "186646804879-h71hg3ag18gglq501cg8flrn2fkddkph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7VBlL5FoFC_VRN-0MYApxOmtqoGnexxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186646804879-h71hg3ag18gglq501cg8flrn2fkddkph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186646804879:android:5643f00ffc5f694b05b3fa",
+        "android_client_info": {
+          "package_name": "com.example.simplechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186646804879-524phcsna845lppjk7k3q28j4voj9tgp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.simplechat",
+            "certificate_hash": "008321ede1b4f99d3564b0c8a13c5698ee4f4df7"
+          }
+        },
+        {
+          "client_id": "186646804879-h71hg3ag18gglq501cg8flrn2fkddkph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7VBlL5FoFC_VRN-0MYApxOmtqoGnexxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186646804879-h71hg3ag18gglq501cg8flrn2fkddkph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
