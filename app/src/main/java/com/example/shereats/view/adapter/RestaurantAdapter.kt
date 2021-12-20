@@ -10,8 +10,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.model.entity.Restaurant
+import com.example.shereats.utils.firebase.StorageUtil
 
 
 /**
@@ -24,6 +26,7 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
 
     class RestaurantHolder(view: View): RecyclerView.ViewHolder(view){
         var layout: View = view.findViewById(R.id.view_restaurant_background)
+        var image: ImageView = view.findViewById(R.id.iv_restaurant_image)
         var title: TextView = view.findViewById(R.id.tv_restaurant_title)
         var location: TextView = view.findViewById(R.id.tv_restaurant_location)
         val price: TextView = view.findViewById(R.id.tv_restaurant_price)
@@ -47,10 +50,29 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
         }else{
             holder.heart.background = mContext.getDrawable(R.drawable.ic_baseline_favorite_border_48)
         }
+        setRestaurantImage(dataSlice.restaurant_id, holder.image)
     }
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    private fun setRestaurantImage(id: Int, view: ImageView){
+        var imageUrl = "https://github.com/Grindewald1900/Notebook/blob/master/Image/Others/Sher.jpg?raw=true"
+        var childPath = "restaurant/$id.jpg"
+        val pathReference = StorageUtil.reference.child(childPath)
+        pathReference.downloadUrl.addOnSuccessListener {
+            Glide.with(mContext)
+                .load(it.toString())
+                .placeholder(R.drawable.ic_dining_room_48)
+                .into(view)
+        }.addOnFailureListener {
+            it.stackTrace
+        }.addOnCompleteListener {
+            val a = 0
+        }.addOnCanceledListener {
+            val b = 0
+        }
     }
 
 

@@ -3,36 +3,17 @@ package com.example.shereats.view.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityMainBinding
-import com.example.shereats.model.entity.Restaurant
-import com.example.shereats.utils.HttpUtil
 import com.example.shereats.utils.LoginStatusUtil
-import com.example.shereats.utils.network.EndPointInterface
-import com.example.shereats.utils.network.ServiceBuilder
-import com.example.shereats.view.fragment.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 /**

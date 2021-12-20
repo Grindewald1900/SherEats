@@ -1,6 +1,7 @@
-package com.example.shereats.utils
+package com.example.shereats.utils.network
 
 import android.util.Log
+import com.example.shereats.utils.ConstantUtil
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.net.HttpURLConnection
