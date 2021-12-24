@@ -2,9 +2,7 @@ package com.example.shereats.utils
 
 import android.app.Activity
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Matrix
+import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.DisplayMetrics
@@ -34,30 +32,6 @@ class ImageUtil {
             drawable.draw(canvas)
             return bitmap
         }
-
-//        fun getScreenWidth(activity: Activity): Int{
-//            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-//                val windowMetrics = activity.windowManager.currentWindowMetrics
-//                val insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
-//                windowMetrics.bounds.width() - insets.left - insets.right
-//            }else{
-//                val displayMatrix = DisplayMetrics()
-//                activity.windowManager.defaultDisplay.getMetrics((displayMatrix))
-//                displayMatrix.widthPixels
-//            }
-//        }
-//
-//        fun getScreenHeight(activity: Activity): Int{
-//            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-//                val windowMetrics = activity.windowManager.currentWindowMetrics
-//                val insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
-//                windowMetrics.bounds.height() - insets.top - insets.bottom
-//            }else{
-//                val displayMatrix = DisplayMetrics()
-//                activity.windowManager.defaultDisplay.getMetrics((displayMatrix))
-//                displayMatrix.heightPixels
-//            }
-//        }
 
         fun getScreenWidth(context: Context): Int {
             val width: Int
@@ -110,5 +84,23 @@ class ImageUtil {
             }
             return result
         }
+
+        /**
+         * Return a circle bitmap with given size and resource
+         * @param source: source bitmap
+         * @param radius: the radius of the circle
+         * @param size: the diameter of the circle
+         */
+        fun getCircleImage(source: Bitmap, radius: Float, size: Int): Bitmap{
+            val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+            val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            val scaledSource = Bitmap.createScaledBitmap(source, size, size, true)
+            canvas.drawCircle(radius, radius, radius, paint)
+            paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+            canvas.drawBitmap(scaledSource,0f,0f,paint)
+            return bitmap
+        }
+
     }
 }

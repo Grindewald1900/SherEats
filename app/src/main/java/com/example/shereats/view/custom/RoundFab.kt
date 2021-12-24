@@ -82,6 +82,8 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
      */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        x
+        translationX
         // requested width and mode
         if (currentMode == MODE_CIRCLE) {
             val size = measuredHeight.coerceAtMost(measuredWidth)

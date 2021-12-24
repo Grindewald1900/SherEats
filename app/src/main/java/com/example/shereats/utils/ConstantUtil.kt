@@ -7,6 +7,7 @@ package com.example.shereats.utils
  * Email: grindewald1504@gmail.com
  */
 object ConstantUtil {
+    var DEBUG_MODE = true
 
     // URL
     const val DATABASE_USER: String = "Users"
@@ -46,7 +47,6 @@ object ConstantUtil {
     const val SERVER_SUCCESS = "success"
     const val SERVER_FAIL = "fail"
 
-    //
 
     // States
     const val STATE_NULL = -1

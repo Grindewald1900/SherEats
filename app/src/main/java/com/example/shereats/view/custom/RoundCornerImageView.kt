@@ -12,7 +12,7 @@ import androidx.core.graphics.drawable.toBitmap
 import com.example.shereats.R
 
 /**
- * TODO: document your custom view class.
+ * Round Corner ImageView
  */
 open class RoundCornerImageView(context: Context, attrs: AttributeSet?): androidx.appcompat.widget.AppCompatImageView(context, attrs) {
     private var mGradientDrawable: GradientDrawable? = null
@@ -49,12 +49,12 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
 
     private fun getRoundBitmap(bitmap: Bitmap, radius: Float): Bitmap {
         var output: Bitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
-        var canvas: Canvas = Canvas(output)
-        val rect: Rect = Rect(0, 0, bitmap.width, bitmap.height)
-        val rectF: RectF = RectF(rect)
+        var canvas = Canvas(output)
+        val rect = Rect(0, 0, bitmap.width, bitmap.height)
+        val rectF = RectF(rect)
         paint!!.isAntiAlias = true
         paint?.let { canvas.drawRoundRect(rectF, radius, radius, it) }
-        paint!!.setXfermode(PorterDuffXfermode(PorterDuff.Mode.SRC_IN))
+        paint!!.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
         canvas.drawBitmap(bitmap, rect, rect, paint)
         return output
     }
