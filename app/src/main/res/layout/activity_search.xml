@@ -86,6 +86,7 @@
             android:paddingRight="@dimen/dimen_10"
             app:layout_constraintTop_toBottomOf="@+id/rl_activity_event_search"
             app:layout_constraintLeft_toLeftOf="@+id/et_activity_event_search"
+            app:layout_constraintRight_toLeftOf="@id/tv_activity_event_search_two"
             />
         <TextView
             android:id="@+id/tv_activity_event_search_two"
@@ -94,6 +95,8 @@
             android:text="@string/dish"
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
             app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_one"
             app:layout_constraintLeft_toRightOf="@+id/tv_activity_event_search_one"
             app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_three"
@@ -102,9 +105,11 @@
             android:id="@+id/tv_activity_event_search_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/price"
+            android:text="@string/cuisine"
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
             app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_one"
             app:layout_constraintLeft_toRightOf="@+id/tv_activity_event_search_two"
             app:layout_constraintRight_toLeftOf="@+id/tv_activity_event_search_four"
@@ -117,7 +122,10 @@
             android:textSize="@dimen/text_size_title"
             android:textColor="@color/colorPrimary"
             android:layout_marginRight="@dimen/dimen_10"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
             app:layout_constraintTop_toTopOf="@+id/tv_activity_event_search_one"
+            app:layout_constraintLeft_toRightOf="@id/tv_activity_event_search_three"
             app:layout_constraintRight_toRightOf="@+id/et_activity_event_search"
             />
         <EditText

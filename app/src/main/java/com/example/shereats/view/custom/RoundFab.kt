@@ -82,8 +82,6 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
      */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        x
-        translationX
         // requested width and mode
         if (currentMode == MODE_CIRCLE) {
             val size = measuredHeight.coerceAtMost(measuredWidth)
@@ -109,15 +107,18 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
             MotionEvent.ACTION_DOWN -> {
                 downX = event.rawX
                 downY = event.rawY
-                Log.d("LogRoundFab", "ACTION_DOWN")
-                Log.d("LogRoundFab", "x ${event.rawX.toString()}")
-                Log.d("LogRoundFab", "y ${event.rawY.toString()}")
+                if (ConstantUtil.DEBUG_MODE){
+                    Log.d("LogRoundFab", "ACTION_DOWN")
+                    Log.d("LogRoundFab", "x ${event.rawX.toString()}")
+                    Log.d("LogRoundFab", "y ${event.rawY.toString()}")
+                }
             }
             MotionEvent.ACTION_UP -> {
-                Log.d("LogRoundFab", "ACTION_UP")
-                Log.d("LogRoundFab", "x ${event.rawX.toString()}")
-                Log.d("LogRoundFab", "y ${event.rawY.toString()}")
-
+                if(ConstantUtil.DEBUG_MODE){
+                    Log.d("LogRoundFab", "ACTION_UP")
+                    Log.d("LogRoundFab", "x ${event.rawX.toString()}")
+                    Log.d("LogRoundFab", "y ${event.rawY.toString()}")
+                }
                 // Move the FAB to the proper position, according to the Mode
                 val position = ImageUtil.getPositionByMode(
                     event.rawX.toInt(),
@@ -155,14 +156,13 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
                     top = bottom - fabHeight
                 }
                 // Move the view a little bit to top left, which means the touching point is at the center of FAB
-                this.layout(left , top-fabHeight, right, bottom-fabHeight)
+                this.layout(left-fabSize , top-fabHeight, right-fabSize, bottom-fabHeight)
             }
         }
         return true
     }
 
     override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
         if (drawable.intrinsicWidth == 0 || drawable.intrinsicHeight == 0 || drawable == null) {
             return
         }

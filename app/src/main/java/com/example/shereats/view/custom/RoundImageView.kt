@@ -23,7 +23,8 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
     private var mSrc: Bitmap
     private var mWidth: Int = 100
     private var mHeight: Int = 100
-    private var mSize = 100
+    private var mImageSize = 100
+    private var mBorderSize = 100
 
     private var mBorderPaint: Paint
     private var mBorderColor: Int
@@ -32,7 +33,7 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
         val attr = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView)
         // Attributes related to border
         mBorderColor = attr.getColor(R.styleable.RoundImageView_image_border_color, Color.BLACK)
-        mBorderWidth = attr.getFloat(R.styleable.RoundImageView_border_width, 0f)
+        mBorderWidth = attr.getDimension(R.styleable.RoundImageView_border_width, 0f)
         mBorderPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mBorderPaint.style = Paint.Style.STROKE
         mBorderPaint.color = mBorderColor
@@ -46,18 +47,23 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         mWidth = measuredWidth
         mHeight = measuredHeight
-        mSize = min(mWidth, mHeight)
-        mBitmap = ImageUtil.getCircleImage(mSrc, mSize/2f, mSize)
+        if (mBorderWidth > 0){
+            mBorderSize = min(mWidth, mHeight)
+            mImageSize = mBorderSize - mBorderWidth.toInt()*2
+        }else{
+            mImageSize = min(mWidth, mHeight)
+        }
+        mBitmap = ImageUtil.getCircleImage(mSrc, mImageSize/2f, mImageSize/2, mImageSize/2, mImageSize)
     }
 
 
 
      override fun onDraw(canvas: Canvas){
          super.onDraw(canvas)
-         canvas.drawBitmap(mBitmap,0f,0f, null)
+         canvas.drawBitmap(mBitmap, mBorderWidth, mBorderWidth, null)
          // If border width, draw a circle outside of the image
          if (mBorderWidth > 0){
-             canvas.drawCircle(mSize/2f, mSize/2f, (mSize/2f) + mBorderWidth, mBorderPaint)
+             canvas.drawCircle(mBorderSize/2f, mBorderSize/2f, (mBorderSize - mBorderWidth)/2f , mBorderPaint)
          }
          if (ConstantUtil.DEBUG_MODE){
              canvas.drawText(mBorderWidth.toString(), 0f, 0f, Paint())

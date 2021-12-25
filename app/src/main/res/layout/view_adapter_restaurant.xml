@@ -36,7 +36,7 @@
         android:layout_height="@dimen/dimen_140"
         android:src="@drawable/img_sample"
         android:layout_margin="@dimen/dimen_2"
-        app:mCornerRadius="40"
+        app:mCornerRadius="16"
         app:layout_constraintTop_toTopOf="@+id/view_restaurant_background"
         app:layout_constraintLeft_toLeftOf="@+id/view_restaurant_background"
         app:layout_constraintRight_toRightOf="@+id/view_restaurant_background"

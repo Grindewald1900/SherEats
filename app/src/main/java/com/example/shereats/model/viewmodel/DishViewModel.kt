@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shereats.model.entity.Dish
+import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.utils.EntityUtil
 import com.example.shereats.utils.network.EndPointInterface
 import com.example.shereats.utils.network.ServiceBuilder
 import retrofit2.Call
@@ -13,6 +15,7 @@ import retrofit2.Response
 class DishViewModel : BaseViewModel() {
     private var dishes: MutableLiveData<List<Dish>> = MutableLiveData()
     private lateinit var call: Call<List<Dish>>
+    private var sort = ConstantUtil.SORT_BY_PRICE // By default, we provide the dishes with promotion at first
 
     fun getDishes(): LiveData<List<Dish>> {
         return dishes
@@ -24,8 +27,17 @@ class DishViewModel : BaseViewModel() {
 
         call.enqueue(object: Callback<List<Dish>>{
             override fun onResponse(call: Call<List<Dish>>, response: Response<List<Dish>>) {
-                if(response.isSuccessful){
-                    dishes.postValue(response.body())
+                if(response.isSuccessful && response.body()!!.isNotEmpty()){
+                    val data: List<Dish>
+                    when(sort){
+                        ConstantUtil.SORT_BY_ID ->{}
+                        ConstantUtil.SORT_BY_PRICE ->{
+                            data = EntityUtil.sortDishByPrice(response.body()!!.toMutableList())
+                            dishes.postValue(data)
+                        }
+                        ConstantUtil.SORT_BY_PROMO -> {
+                        }
+                    }
                 }
             }
 

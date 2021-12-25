@@ -14,11 +14,13 @@
 
     <com.example.shereats.view.custom.RoundImageView
         android:id="@+id/iv_main_header_portrait"
-        android:layout_width="@dimen/dimen_50"
-        android:layout_height="@dimen/dimen_50"
+        android:layout_width="@dimen/dimen_60"
+        android:layout_height="@dimen/dimen_60"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:image_border_src="@drawable/img_portrait"
+        app:border_width="@dimen/dimen_2"
+        app:image_border_color="@color/black"
         />
 
     <TextView

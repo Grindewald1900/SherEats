@@ -58,8 +58,7 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
     }
 
     private fun setRestaurantImage(id: Int, view: ImageView){
-        var imageUrl = "https://github.com/Grindewald1900/Notebook/blob/master/Image/Others/Sher.jpg?raw=true"
-        var childPath = "restaurant/$id.jpg"
+        val childPath = "restaurant/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {
             Glide.with(mContext)

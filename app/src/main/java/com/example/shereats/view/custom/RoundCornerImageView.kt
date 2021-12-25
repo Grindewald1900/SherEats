@@ -10,26 +10,20 @@ import android.util.Log
 import android.view.View
 import androidx.core.graphics.drawable.toBitmap
 import com.example.shereats.R
+import com.example.shereats.utils.ImageUtil
 
 /**
  * Round Corner ImageView
  */
 open class RoundCornerImageView(context: Context, attrs: AttributeSet?): androidx.appcompat.widget.AppCompatImageView(context, attrs) {
-    private var mGradientDrawable: GradientDrawable? = null
     private var paint: Paint? = null
     private val bkColor = Color.WHITE
     private var cornerRadius: Float
     init {
         val attr = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerImageView)
-        cornerRadius = attr.getFloat(R.styleable.RoundCornerImageView_mCornerRadius, 20f)
+        val dpRadius = attr.getFloat(R.styleable.RoundCornerImageView_mCornerRadius, 20f)
+        cornerRadius = ImageUtil.dpToPx(dpRadius)
         paint = Paint()
-    }
-
-
-    private fun initView(){
-        mGradientDrawable = GradientDrawable()
-        mGradientDrawable!!.cornerRadius = cornerRadius
-        background = mGradientDrawable
     }
 
     override fun onDraw(canvas: Canvas?) {

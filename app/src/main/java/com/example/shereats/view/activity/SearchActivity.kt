@@ -1,6 +1,7 @@
 package com.example.shereats.view.activity
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.DataBindingUtil
@@ -12,11 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivitySearchBinding
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.viewmodel.SearchViewModel
 import com.example.shereats.utils.ToastUtil
+import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.adapter.RecommendAdapter
 import com.example.shereats.view.adapter.SearchAdapter
 import com.example.shereats.view.fragment.ViewpagerSearchFragment
@@ -27,6 +30,7 @@ class SearchActivity : FragmentActivity() {
     private lateinit var viewModel: SearchViewModel
     private lateinit var mPager: ViewPager2
     private lateinit var pagerAdapter: FragmentStateAdapter
+    // We have 4(actually 3) types of search condition: restaurant name, dish name, cuisine type
     private var searchType: MutableList<Boolean> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,13 +49,11 @@ class SearchActivity : FragmentActivity() {
             setViewPager(it)
         })
         setSearchType()
+        // By Default, we could search by keywords
         binding.tvActivityEventSearchSearch.setOnClickListener {
             val keyword = binding.etActivityEventSearch.text.toString()
-            if(keyword.isEmpty()){
-                ToastUtil.showShortMessage(getString(R.string.hint_no_input), this)
-                return@setOnClickListener
-            }
-            viewModel.setSearchResult(0, keyword)
+            val isTypeAll = !searchType[0] && !searchType[1] && !searchType[2] && !searchType[3]
+            viewModel.setSearchResult(0, keyword, searchType[0], searchType[1], searchType[2], searchType[3], isTypeAll)
         }
         viewModel.getSearchResult().observe(this,{
             binding.rvActivityEventSearch.adapter = SearchAdapter(it)
@@ -86,7 +88,11 @@ class SearchActivity : FragmentActivity() {
         setTextViewBackground(binding.tvActivityEventSearchFour,3)
     }
 
+    /**
+     * Set click listener for 4 search conditions
+     */
     private fun setTextViewBackground(view: TextView, index: Int){
+        searchType.add(index, false)
         view.setOnClickListener {
             if (it.background == null){
                 searchType[index] = true
@@ -97,5 +103,7 @@ class SearchActivity : FragmentActivity() {
             }
         }
     }
+
+
 
 }

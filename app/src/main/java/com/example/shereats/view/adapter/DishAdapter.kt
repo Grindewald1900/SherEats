@@ -11,9 +11,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.utils.TextUtil
+import com.example.shereats.utils.firebase.StorageUtil
+import com.example.shereats.view.custom.RoundCornerImageView
 import kotlin.random.Random
 
 
@@ -33,6 +36,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
         val promotion: TextView = view.findViewById(R.id.tv_dish_promotion)
         val promotionBackGround: View = view.findViewById(R.id.view_dish_promotion)
         val rate: LinearLayout = view.findViewById(R.id.ll_dish_rate)
+        val image: RoundCornerImageView = view.findViewById(R.id.iv_dish_image)
 
     }
 
@@ -74,6 +78,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
                 holder.rate.addView(addStar(1))
             }
         }
+        setDishImage(dataSlice.item_id, holder.image)
     }
 
     override fun getItemCount(): Int {
@@ -111,5 +116,21 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
             ivStar.background = AppCompatResources.getDrawable(mContext, R.drawable.ic_star3)
         }
         return ivStar
+    }
+
+    /**
+     * Get image for the dish
+     */
+    private fun setDishImage(id: Int, view: ImageView){
+        val childPath = "item/$id.jpg"
+        val pathReference = StorageUtil.reference.child(childPath)
+        pathReference.downloadUrl.addOnSuccessListener {
+            Glide.with(mContext)
+                .load(it.toString())
+                .placeholder(R.drawable.ic_dining_room_48)
+                .into(view)
+        }.addOnFailureListener {
+            it.stackTrace
+        }
     }
 }

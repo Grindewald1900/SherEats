@@ -27,7 +27,7 @@
         <attr name="image_border_color" format="color"/>
         <attr name="image_border_src" format="reference|color"/>
         <attr name="image_border_url" format="string"/>
-        <attr name="border_width" format="float"/>
+        <attr name="border_width" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="RoundCornerButton">

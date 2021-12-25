@@ -2,6 +2,7 @@ package com.example.shereats.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -33,6 +34,9 @@ class ImageUtil {
             return bitmap
         }
 
+        /**
+         * get width of screen in pixel
+         */
         fun getScreenWidth(context: Context): Int {
             val width: Int
             val manager = context
@@ -42,6 +46,9 @@ class ImageUtil {
             return width
         }
 
+        /**
+         * get height of screen in pixel
+         */
         fun getScreenHeight(context: Context): Int {
             val height: Int
             val manager = context
@@ -49,6 +56,14 @@ class ImageUtil {
             val display = manager.defaultDisplay
             height = display.height
             return height
+        }
+
+        /**
+         * Convert dp to pixel
+         */
+        fun dpToPx(dp: Float): Float{
+            val density = Resources.getSystem().displayMetrics.density
+            return dp*density
         }
 
         /**
@@ -91,7 +106,7 @@ class ImageUtil {
          * @param radius: the radius of the circle
          * @param size: the diameter of the circle
          */
-        fun getCircleImage(source: Bitmap, radius: Float, size: Int): Bitmap{
+        fun getCircleImage(source: Bitmap, radius: Float, x: Int, y: Int, size: Int): Bitmap{
             val paint = Paint(Paint.ANTI_ALIAS_FLAG)
             val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)

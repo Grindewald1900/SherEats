@@ -83,6 +83,11 @@ object ConstantUtil {
     const val MODE_EDGE: Int = 601
     const val MODE_POINT: Int = 602
 
+    // Dish sort
+    const val SORT_BY_PROMO = 701
+    const val SORT_BY_ID = 702
+    const val SORT_BY_PRICE = 703
+
     // Constant amount
     const val MAX_RECOMMEND_ITEM: Int = 20
     const val MAX_UPLOAD_IMAGE: Int = 5
