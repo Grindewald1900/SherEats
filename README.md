@@ -21,8 +21,8 @@
         <img src="https://img.shields.io/github/last-commit/Grindewald1900/SherEats"></a>
     <a href="https://github.com/Grindewald1900/Notebook/blob/master/LICENSE.txt">
         <img src="https://img.shields.io/badge/license-MIT-green"/></a> 
-    <a href="https://www.linkedin.com/in/yee-ren-19940924/">
-      <img alt="Code Climate issues" src="https://img.shields.io/codeclimate/issues/Grindewald1900/GoBishp"></a>
+    <a href="https://wakatime.com/badge/github/Grindewald1900/SherEats">
+        <img src="https://wakatime.com/badge/github/Grindewald1900/SherEats.svg" alt="wakatime"></a>
 </p>
 
 
