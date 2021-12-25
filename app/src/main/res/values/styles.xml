@@ -35,6 +35,10 @@
         <attr name="background_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="SearchFilterLayout">
+        <attr name="search_filter_text" format="string"/>
+    </declare-styleable>
+
     <declare-styleable name="RoundFab">
         <attr name="fab_type" format="enum">
             <enum name="square" value="0"/>

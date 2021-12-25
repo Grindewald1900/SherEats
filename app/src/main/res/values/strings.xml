@@ -95,8 +95,10 @@
     <string name="restaurant">Restaurant</string>
     <string name="dish">Dish</string>
     <string name="price">Price</string>
+    <string name="rate">Rate</string>
     <string name="cuisine">Cuisine</string>
     <string name="location">Location</string>
+    <string name="promotion">Promotion</string>
 
 
     <string name="search_history">Browsing History</string>

@@ -88,6 +88,11 @@ object ConstantUtil {
     const val SORT_BY_ID = 702
     const val SORT_BY_PRICE = 703
 
+    // Search Filter state
+    const val FILTER_STATE_NONE = 800
+    const val FILTER_STATE_UP = 801
+    const val FILTER_STATE_DOWN = 802
+
     // Constant amount
     const val MAX_RECOMMEND_ITEM: Int = 20
     const val MAX_UPLOAD_IMAGE: Int = 5

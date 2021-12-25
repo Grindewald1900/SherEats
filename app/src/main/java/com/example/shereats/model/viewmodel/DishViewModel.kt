@@ -47,4 +47,8 @@ class DishViewModel : BaseViewModel() {
 
         })
     }
+
+    fun resetDishes(data: List<Dish>){
+        dishes.postValue(data)
+    }
 }

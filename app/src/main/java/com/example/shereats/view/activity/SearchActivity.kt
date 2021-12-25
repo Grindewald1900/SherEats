@@ -49,6 +49,9 @@ class SearchActivity : FragmentActivity() {
             setViewPager(it)
         })
         setSearchType()
+        binding.btnActivityEventSearchBack.setOnClickListener {
+            onBackPressed()
+        }
         // By Default, we could search by keywords
         binding.tvActivityEventSearchSearch.setOnClickListener {
             val keyword = binding.etActivityEventSearch.text.toString()
