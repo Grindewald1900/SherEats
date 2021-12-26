@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -16,24 +17,36 @@
         android:id="@+id/iv_main_header_portrait"
         android:layout_width="@dimen/dimen_60"
         android:layout_height="@dimen/dimen_60"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_10"
         android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:image_border_src="@drawable/img_portrait"
+        app:image_border_src="@drawable/img_user_unknown"
         app:border_width="@dimen/dimen_2"
         app:image_border_color="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/tv_main_header_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginBottom="@dimen/dimen_5"
+        android:maxLength="20"
+        app:layout_constraintBottom_toTopOf="@+id/tv_main_header_email"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_main_header_email"
+        />
 
     <TextView
         android:id="@+id/tv_main_header_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
-</LinearLayout>
+        android:layout_marginStart="@dimen/dimen_10"
+        android:text="@string/nav_header_subtitle"
+        android:maxLength="20"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_main_header_portrait"
+        app:layout_constraintLeft_toRightOf="@+id/iv_main_header_portrait"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

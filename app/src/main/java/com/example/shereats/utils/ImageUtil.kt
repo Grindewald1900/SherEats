@@ -1,14 +1,14 @@
 package com.example.shereats.utils
 
-import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import android.os.Build
-import android.util.DisplayMetrics
-import android.view.WindowInsets
 import android.view.WindowManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.example.shereats.R
 
 
 /**
@@ -114,6 +114,36 @@ class ImageUtil {
             canvas.drawCircle(radius, radius, radius, paint)
             paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
             canvas.drawBitmap(scaledSource,0f,0f,paint)
+            return bitmap
+        }
+
+
+        /**
+         * Return the badge color according to its rarity
+         */
+        fun getBadgeColor(rarity: Int): Int{
+            return ConstantUtil.MAP_BADGE_COLOR[rarity] ?: Color.parseColor("#000000")
+        }
+
+        /**
+         * Return a bitmap with Glide, according to the given uri
+         */
+        fun getBitmapFromGlide(context: Context, uri: String): Bitmap{
+            var bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.img_portrait)
+            Glide.with(context)
+                .asBitmap()
+                .load(uri)
+                .into(object: CustomTarget<Bitmap>(){
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
+                        bitmap = resource
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                    }
+                })
             return bitmap
         }
 

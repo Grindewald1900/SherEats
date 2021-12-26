@@ -6,24 +6,31 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_5"
+        android:background="@color/gray_3"
         tools:context=".view.activity.UserInfoActivity">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_activity_event_user_info_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2"
+            />
 
         <ImageButton
             android:id="@+id/btn_activity_user_info_back"
             style="@style/BackButton"
-            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:background="@drawable/ic_iconmonstr_undo_1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <ImageButton
-            android:id="@+id/btn_activity_user_info_chat"
+            android:id="@+id/btn_activity_user_info_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_antoutline_message"
+            android:background="@drawable/ic_baseline_settings_24"
             android:layout_marginEnd="@dimen/dimen_20"
-            android:layout_marginTop="@dimen/dimen_10"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_activity_user_info_back"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_activity_user_info_back"
             app:layout_constraintRight_toRightOf="parent"
             />
 
@@ -31,11 +38,11 @@
             android:id="@+id/btn_activity_user_info_portrait"
             android:layout_width="@dimen/dimen_70"
             android:layout_height="@dimen/dimen_70"
-            android:layout_marginTop="@dimen/dimen_50"
             android:layout_marginStart="@dimen/dimen_50"
             android:src="@drawable/img_portrait"
             app:mCornerRadius="40"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_activity_user_bk"
+            app:layout_constraintBottom_toBottomOf="@+id/view_activity_user_bk"
             app:layout_constraintLeft_toLeftOf="parent"
             />
 
@@ -46,8 +53,9 @@
             android:text="@string/f_user_name"
             android:textSize="@dimen/text_size_large_title"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:layout_marginStart="@dimen/dimen_20"
+            android:maxLength="18"
             app:layout_constraintBottom_toTopOf="@+id/tv_activity_user_id"
             app:layout_constraintTop_toTopOf="@+id/btn_activity_user_info_portrait"
             app:layout_constraintLeft_toRightOf="@+id/btn_activity_user_info_portrait"
@@ -59,21 +67,28 @@
             android:layout_height="wrap_content"
             android:text="@string/f_uid"
             android:textSize="@dimen/text_size_main_title"
-            android:textStyle="bold"
-            android:textColor="@color/gray_2"
-            android:maxLength="15"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:maxLength="20"
             android:layout_marginStart="@dimen/dimen_20"
             app:layout_constraintBottom_toBottomOf="@+id/btn_activity_user_info_portrait"
             app:layout_constraintTop_toBottomOf="@+id/tv_activity_user_info_name"
             app:layout_constraintLeft_toRightOf="@+id/btn_activity_user_info_portrait"
             />
-
+        <View
+            android:id="@+id/view_activity_user_bk"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_200"
+            android:background="@drawable/ic_search_background"
+            android:translationZ="-10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_activity_user_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_10"
-            app:layout_constraintTop_toBottomOf="@+id/tv_activity_user_id"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/view_activity_user_bk"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

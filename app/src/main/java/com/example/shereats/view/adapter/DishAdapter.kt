@@ -77,7 +77,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
             }
             starCount -= 1
         }
-        setDishImage(dataSlice.item_id, holder.image)
+        getDishImage(dataSlice.item_id, holder.image)
     }
 
     override fun getItemCount(): Int {
@@ -120,7 +120,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
     /**
      * Get image for the dish
      */
-    private fun setDishImage(id: Int, view: ImageView){
+    private fun getDishImage(id: Int, view: ImageView){
         val childPath = "item/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {

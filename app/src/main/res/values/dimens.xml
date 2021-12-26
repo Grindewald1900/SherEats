@@ -48,6 +48,9 @@
     <dimen name="button_length_small">30dp</dimen>
     <dimen name="button_length_middle">40dp</dimen>
     <dimen name="button_length_large">80dp</dimen>
+    <dimen name="widget_size_little">24dp</dimen>
+    <dimen name="widget_size_middle">36dp</dimen>
+
 
     <!--Text font size -->
     <dimen name="text_size_logo">36sp</dimen>

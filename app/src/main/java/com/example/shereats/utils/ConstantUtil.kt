@@ -1,5 +1,7 @@
 package com.example.shereats.utils
 
+import android.graphics.Color
+
 
 /**
  * Created by Yee on 2021-12-03.
@@ -102,4 +104,10 @@ object ConstantUtil {
     const val MIN_TRANSFORM_ALPHA = 0.5f
     const val RESULT_ACTIVITY_TIME: Long = 3000
 
+    val MAP_BADGE_COLOR: Map<Int, Int> = mapOf(
+        1 to Color.parseColor("#6aa84f"),
+        2 to Color.parseColor("#a0604a"),
+        3 to Color.parseColor("#5bc0de"),
+        4 to Color.parseColor("#7926A9"),
+        5 to Color.parseColor("#d9534f"),)
 }

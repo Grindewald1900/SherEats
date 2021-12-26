@@ -1,6 +1,7 @@
 package com.example.shereats.view.activity
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -39,6 +40,19 @@ class SearchActivity : FragmentActivity() {
         initView()
     }
 
+    // Deal with enter key, start search when clicked
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        return when(keyCode){
+            KeyEvent.KEYCODE_ENTER ->{
+                onSearchClicked()
+                true
+            }
+            else -> {
+                super.onKeyUp(keyCode, event)
+            }
+        }
+    }
+
     private fun initView(){
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         viewModel.setDishes(20)
@@ -54,13 +68,17 @@ class SearchActivity : FragmentActivity() {
         }
         // By Default, we could search by keywords
         binding.tvActivityEventSearchSearch.setOnClickListener {
-            val keyword = binding.etActivityEventSearch.text.toString()
-            val isTypeAll = !searchType[0] && !searchType[1] && !searchType[2] && !searchType[3]
-            viewModel.setSearchResult(0, keyword, searchType[0], searchType[1], searchType[2], searchType[3], isTypeAll)
+            onSearchClicked()
         }
         viewModel.getSearchResult().observe(this,{
             binding.rvActivityEventSearch.adapter = SearchAdapter(it)
         })
+    }
+
+    private fun onSearchClicked(){
+        val keyword = binding.etActivityEventSearch.text.toString()
+        val isTypeAll = !searchType[0] && !searchType[1] && !searchType[2] && !searchType[3]
+        viewModel.setSearchResult(0, keyword, searchType[0], searchType[1], searchType[2], searchType[3], isTypeAll)
     }
 
     private fun setViewPager(dishes: List<Dish>){

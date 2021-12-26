@@ -2,6 +2,7 @@ package com.example.shereats.view.custom
 
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Debug
 import android.util.AttributeSet
@@ -39,7 +40,7 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
         mBorderPaint.color = mBorderColor
         mBorderPaint.strokeWidth = mBorderWidth
 
-        // The source image
+        // The source image by default
         mSrc = BitmapFactory.decodeResource(resources, attr.getResourceId(R.styleable.RoundImageView_image_border_src, R.drawable.img_portrait))
     }
 
@@ -69,5 +70,11 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
              canvas.drawText(mBorderWidth.toString(), 0f, 0f, Paint())
          }
     }
+
+    fun setImage(bitmap: Bitmap){
+        mBitmap = ImageUtil.getCircleImage(bitmap, mImageSize/2f, mImageSize/2, mImageSize/2, mImageSize)
+        invalidate()
+    }
+
 
 }
