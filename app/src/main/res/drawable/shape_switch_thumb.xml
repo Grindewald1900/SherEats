@@ -4,7 +4,7 @@
         <shape android:shape="oval">
             <stroke android:color="@color/purple_700" android:width="@dimen/dimen_2"/>
             <size android:width="@dimen/dimen_20" android:height="@dimen/dimen_20" />
-            <solid android:color="@color/colorPrimary"/>
+            <solid android:color="@color/purple_500"/>
         </shape>
     </item>
 </layer-list>

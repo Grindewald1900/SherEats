@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        tools:context=".model.viewmodel.ResultActivity">
+        tools:context=".view.activity.ResultActivity">
 
         <ImageButton
             android:id="@+id/btn_activity_result_back"

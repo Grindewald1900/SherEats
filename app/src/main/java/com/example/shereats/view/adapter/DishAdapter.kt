@@ -48,8 +48,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dataSlice = data[position]
         // We don't have rate data in our database, so fake some data here
-        // From 2.0 to 5.0
-        var starCount = 2 + Random.nextFloat() * 3
+        var starCount = dataSlice.item_taste
 //        var starCount = (dataSlice.item_service + dataSlice.item_environment + dataSlice.item_taste)/3
         holder.title.text = dataSlice.item_name
         holder.price.text = TextUtil.getItemPrice(dataSlice.item_price)
@@ -67,7 +66,6 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
 
         holder.rate.removeAllViews()
         for (i in 1..5){
-            starCount -= 1
             if (starCount >= 0.75) {
                 holder.rate.addView(addStar(3))
             }
@@ -77,6 +75,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
             if(starCount < 0.25){
                 holder.rate.addView(addStar(1))
             }
+            starCount -= 1
         }
         setDishImage(dataSlice.item_id, holder.image)
     }

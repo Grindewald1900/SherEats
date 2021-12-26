@@ -3,6 +3,7 @@ package com.example.shereats.model.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.EntityUtil
@@ -21,18 +22,19 @@ class DishViewModel : BaseViewModel() {
         return dishes
     }
 
-    fun setDishes(){
+    fun setDishes(swipe: SwipeRefreshLayout){
         // The parameter for getDishes(): larger than 0 will return a certain dish with id, otherwise return all the dishes
         call = request.getDishes(0, 0,"")
 
         call.enqueue(object: Callback<List<Dish>>{
             override fun onResponse(call: Call<List<Dish>>, response: Response<List<Dish>>) {
+                swipe.isRefreshing = false
                 if(response.isSuccessful && response.body()!!.isNotEmpty()){
                     val data: List<Dish>
                     when(sort){
                         ConstantUtil.SORT_BY_ID ->{}
                         ConstantUtil.SORT_BY_PRICE ->{
-                            data = EntityUtil.sortDishByPrice(response.body()!!.toMutableList())
+                            data = EntityUtil.sortDishByPrice(response.body()!!.toMutableList(), true)
                             dishes.postValue(data)
                         }
                         ConstantUtil.SORT_BY_PROMO -> {

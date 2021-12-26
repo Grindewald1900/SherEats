@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView(){
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.tvLoginRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))

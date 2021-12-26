@@ -1,9 +1,6 @@
 package com.example.shereats.utils.network
 
-import com.example.shereats.model.entity.Dish
-import com.example.shereats.model.entity.IntResult
-import com.example.shereats.model.entity.Restaurant
-import com.example.shereats.model.entity.User
+import com.example.shereats.model.entity.*
 import com.example.shereats.utils.ConstantUtil
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -38,6 +35,9 @@ interface EndPointInterface {
 
     @POST(ConstantUtil.SERVLET_REGISTER)
     fun register(@Query("id") id: String, @Query("name") name: String, @Query("password") password: String, @Query("email") email: String): Call<IntResult>
+
+    @POST(ConstantUtil.SERVLET_BADGE)
+    fun getBadges(@Query("id") id: String): Call<List<Badge>>
 
 
 }

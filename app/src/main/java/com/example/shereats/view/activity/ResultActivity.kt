@@ -1,4 +1,4 @@
-package com.example.shereats.model.viewmodel
+package com.example.shereats.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

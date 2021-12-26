@@ -38,6 +38,7 @@ object ConstantUtil {
     const val SERVLET_DISH: String = "Servlet.DishServlet.do"
     const val SERVLET_RESTAURANT: String = "Servlet.RestaurantServlet.do"
     const val SERVLET_EVENT: String = "Servlet.EventServlet.do"
+    const val SERVLET_BADGE: String = "Servlet.BadgeServlet.do"
 
 
 

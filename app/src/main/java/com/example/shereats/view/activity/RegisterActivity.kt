@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityRegisterBinding
 import com.example.shereats.model.viewmodel.RegisterViewModel
-import com.example.shereats.model.viewmodel.ResultActivity
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.ToastUtil

@@ -16,7 +16,7 @@ class EntityUtil {
         /**
          * Reset the dishes order by price
          */
-        fun sortDishByPrice(dishes: MutableList<Dish>): List<Dish>{
+        fun sortDishByPrice(dishes: MutableList<Dish>, isAscending: Boolean): List<Dish>{
             val result: MutableList<Dish> = mutableListOf()
             var minPrice = Float.MAX_VALUE
             var minIndex= 0
@@ -31,7 +31,36 @@ class EntityUtil {
                 dishes.removeAt(minIndex)
                 minPrice = Float.MAX_VALUE
             }
-            return result
+            return if (isAscending){
+                result
+            }else{
+                result.reversed()
+            }
+        }
+
+        /**
+         * Reset the dishes order by price
+         */
+        fun sortDishByRate(dishes: MutableList<Dish>, isAscending: Boolean): List<Dish>{
+            val result: MutableList<Dish> = mutableListOf()
+            var minRate = Float.MAX_VALUE
+            var minIndex= 0
+            while (dishes.isNotEmpty()){
+                dishes.forEach {
+                    if (it.item_taste < minRate){
+                        minRate = it.item_taste
+                        minIndex = dishes.indexOf(it)
+                    }
+                }
+                result.add(dishes[minIndex])
+                dishes.removeAt(minIndex)
+                minRate = Float.MAX_VALUE
+            }
+            return if (isAscending){
+                result
+            }else{
+                result.reversed()
+            }
         }
 
         /**
@@ -42,10 +71,13 @@ class EntityUtil {
             dishes.forEach {
                 if (it.item_discount < 1){
                     result.add(it)
-                    dishes.remove(it)
                 }
             }
-            result.addAll(dishes)
+            dishes.forEach {
+                if (it.item_discount == 1f){
+                    result.add(it)
+                }
+            }
             return result
         }
     }
