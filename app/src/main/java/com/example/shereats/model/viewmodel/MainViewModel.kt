@@ -9,10 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.example.shereats.R
 import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.custom.RoundImageView
-
 
 /**
  * Created by Yee on 2021-12-26.

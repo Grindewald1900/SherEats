@@ -39,7 +39,7 @@
             android:layout_width="@dimen/dimen_70"
             android:layout_height="@dimen/dimen_70"
             android:layout_marginStart="@dimen/dimen_50"
-            android:src="@drawable/img_portrait"
+            android:src="@drawable/img_user_unknown"
             app:mCornerRadius="40"
             app:layout_constraintTop_toTopOf="@+id/view_activity_user_bk"
             app:layout_constraintBottom_toBottomOf="@+id/view_activity_user_bk"

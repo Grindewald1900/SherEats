@@ -26,13 +26,14 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
     private var mHeight: Int = 100
     private var mImageSize = 100
     private var mBorderSize = 100
-
+    private val src: Int?
     private var mBorderPaint: Paint
     private var mBorderColor: Int
     private var mBorderWidth: Float
     init {
         val attr = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView)
         // Attributes related to border
+        src = attrs?.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "src", 0)
         mBorderColor = attr.getColor(R.styleable.RoundImageView_image_border_color, Color.BLACK)
         mBorderWidth = attr.getDimension(R.styleable.RoundImageView_border_width, 0f)
         mBorderPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -40,7 +41,10 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
         mBorderPaint.color = mBorderColor
         mBorderPaint.strokeWidth = mBorderWidth
 
-        // The source image by default
+        /**
+         * If you set attribute {@see image_border_src}, the bitmap will be constructed with that resource
+         * The source image by default,R.drawable.img_portrait
+         */
         mSrc = BitmapFactory.decodeResource(resources, attr.getResourceId(R.styleable.RoundImageView_image_border_src, R.drawable.img_portrait))
     }
 

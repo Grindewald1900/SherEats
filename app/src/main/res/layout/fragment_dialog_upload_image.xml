@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_fragment_dialog_upload_close"
+        android:layout_width="@dimen/widget_size_middle"
+        android:layout_height="@dimen/widget_size_middle"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:background="@drawable/ic_iconmonstr_x_mark_4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <ImageView
+        android:id="@+id/iv_fragment_dialog_upload"
+        android:layout_width="@dimen/dimen_150"
+        android:layout_height="@dimen/dimen_150"
+        android:layout_marginStart="@dimen/dimen_80"
+        android:layout_marginEnd="@dimen/dimen_80"
+        android:background="@drawable/ic_baseline_add_photo_alternate_24"
+        app:layout_constraintTop_toBottomOf="@+id/iv_fragment_dialog_upload_close"
+        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_dialog_upload_confirm"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_fragment_dialog_upload_confirm"
+        android:layout_width="@dimen/button_width_little"
+        android:layout_height="@dimen/button_length_middle"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:text="@string/confirm"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_title"
+        android:background="@drawable/shape_round_corner_20"
+        app:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/iv_fragment_dialog_upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_dialog_upload_cancel"
+        />
+
+    <Button
+        android:id="@+id/btn_fragment_dialog_upload_cancel"
+        android:layout_width="@dimen/button_width_little"
+        android:layout_height="@dimen/button_length_middle"
+        android:text="@string/cancel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_title"
+        android:background="@drawable/shape_round_corner_20"
+        app:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/btn_fragment_dialog_upload_confirm"
+        app:layout_constraintLeft_toRightOf="@+id/btn_fragment_dialog_upload_confirm"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

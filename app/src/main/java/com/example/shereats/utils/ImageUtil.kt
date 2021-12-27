@@ -2,8 +2,11 @@ package com.example.shereats.utils
 
 import android.content.Context
 import android.content.res.Resources
+import android.database.Cursor
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.provider.MediaStore
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
@@ -74,17 +77,34 @@ class ImageUtil {
          * @param viewHeight: height of the image
          * @param mode: MODE_EDGE- go to the nearest edge, MODE_POINT- go to a certain point on the screen
          */
-        fun getPositionByMode(x: Int, y: Int, viewWidth: Int, viewHeight: Int, mode: Int, context: Context): List<Int>{
+        fun getPositionByMode(
+            x: Int,
+            y: Int,
+            viewWidth: Int,
+            viewHeight: Int,
+            mode: Int,
+            context: Context
+        ): List<Int>{
             val width = getScreenWidth(context)
             val height = getScreenHeight(context)
             // By default, go to the middle of right side.
-            var result: MutableList<Int> = mutableListOf(width - viewWidth, height * 0.5.toInt(), width,  height * 0.5.toInt() + viewHeight)
+            var result: MutableList<Int> = mutableListOf(
+                width - viewWidth,
+                height * 0.5.toInt(),
+                width,
+                height * 0.5.toInt() + viewHeight
+            )
             when(mode){
                 ConstantUtil.MODE_EDGE -> {
-                    result = if(x > width/2){
-                        mutableListOf(width - viewWidth, y - viewHeight/2, width, y + viewHeight/2)
-                    }else{
-                        mutableListOf(0, y - viewHeight/2, viewWidth, y + viewHeight/2)
+                    result = if (x > width / 2) {
+                        mutableListOf(
+                            width - viewWidth,
+                            y - viewHeight / 2,
+                            width,
+                            y + viewHeight / 2
+                        )
+                    } else {
+                        mutableListOf(0, y - viewHeight / 2, viewWidth, y + viewHeight / 2)
                     }
                 }
                 ConstantUtil.MODE_POINT -> {
@@ -113,7 +133,7 @@ class ImageUtil {
             val scaledSource = Bitmap.createScaledBitmap(source, size, size, true)
             canvas.drawCircle(radius, radius, radius, paint)
             paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-            canvas.drawBitmap(scaledSource,0f,0f,paint)
+            canvas.drawBitmap(scaledSource, 0f, 0f, paint)
             return bitmap
         }
 
@@ -133,7 +153,7 @@ class ImageUtil {
             Glide.with(context)
                 .asBitmap()
                 .load(uri)
-                .into(object: CustomTarget<Bitmap>(){
+                .into(object : CustomTarget<Bitmap>() {
                     override fun onResourceReady(
                         resource: Bitmap,
                         transition: Transition<in Bitmap>?
@@ -145,6 +165,24 @@ class ImageUtil {
                     }
                 })
             return bitmap
+        }
+
+        /**
+         * Get the image format, given a image uri
+         */
+        fun getImageFormat(uri: Uri, context: Context?): String{
+            var type: String = ""
+            if (null == context) {
+                return type
+            }
+            val cursor: Cursor? = context.contentResolver.query(uri, arrayOf(MediaStore.MediaColumns.MIME_TYPE), null, null, null)
+            if(null != cursor && cursor.moveToNext()){
+                val s = cursor.toString()
+                val size = cursor.columnCount
+                val count = cursor.count
+                type = cursor.getString(0)
+            }
+            return type
         }
 
     }

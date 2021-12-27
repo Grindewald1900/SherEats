@@ -63,7 +63,7 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
         pathReference.downloadUrl.addOnSuccessListener {
             Glide.with(mContext)
                 .load(it.toString())
-                .placeholder(R.drawable.ic_dining_room_48)
+                .placeholder(R.drawable.loading_spinner_1s_200px)
                 .into(view)
         }.addOnFailureListener {
             it.stackTrace

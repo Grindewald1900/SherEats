@@ -43,13 +43,12 @@ object ConstantUtil {
     const val SERVLET_BADGE: String = "Servlet.BadgeServlet.do"
 
 
-
-
-
     const val SERVER_RESULT = "result"
     const val SERVER_SUCCESS = "success"
     const val SERVER_FAIL = "fail"
 
+    // Tags
+    const val TAG_DIALOG_UPLOAD_IMAGE = "TAG_DIALOG_UPLOAD_IMAGE"
 
     // States
     const val STATE_NULL = -1

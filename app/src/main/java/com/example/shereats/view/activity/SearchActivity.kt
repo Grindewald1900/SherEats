@@ -45,7 +45,7 @@ class SearchActivity : FragmentActivity() {
         return when(keyCode){
             KeyEvent.KEYCODE_ENTER ->{
                 onSearchClicked()
-                true
+                false
             }
             else -> {
                 super.onKeyUp(keyCode, event)

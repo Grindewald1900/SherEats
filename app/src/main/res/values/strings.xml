@@ -117,6 +117,8 @@
     <string name="my_favorites">Favorites</string>
     <string name="my_reservations">My reservations</string>
     <string name="my_teams">My teams</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Shopping Cart Page -->
     <string name="item_price">${item.price} $</string>
@@ -155,6 +157,8 @@
     <string name="hint_no_perm">Please agree with the permission request!</string>
     <string name="hint_input_msg">Input message here</string>
     <string name="hint_net_error">Network error!</string>
+    <string name="hint_no_image">Please select a image</string>
+    <string name="hint_no_jpg">Please select a image with jpg(jpeg) format</string>
 
 
     <!-- Fake data -->

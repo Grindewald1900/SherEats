@@ -17,8 +17,8 @@ import com.example.shereats.utils.ImageUtil
  */
 open class RoundCornerImageView(context: Context, attrs: AttributeSet?): androidx.appcompat.widget.AppCompatImageView(context, attrs) {
     private var paint: Paint? = null
-    private val bkColor = Color.WHITE
     private var cornerRadius: Float
+    private lateinit var mBitmap: Bitmap
     init {
         val attr = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerImageView)
         val dpRadius = attr.getFloat(R.styleable.RoundCornerImageView_mCornerRadius, 20f)
@@ -27,10 +27,10 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
     }
 
     override fun onDraw(canvas: Canvas?) {
-        val mDrawable: Drawable? = drawable
+        val mDrawable = drawable
         if(null != mDrawable){
-            val bitmap: Bitmap = mDrawable.toBitmap()
-            val b: Bitmap =getRoundBitmap(bitmap, cornerRadius)
+            mBitmap = mDrawable.toBitmap()
+            val b: Bitmap =getRoundBitmap(mBitmap, cornerRadius)
             val rectSrc = Rect(0,0,b.width,b.height)
             val rectDest = Rect(0,0,width, height)
             paint!!.reset()
@@ -51,5 +51,10 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
         paint!!.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
         canvas.drawBitmap(bitmap, rect, rect, paint)
         return output
+    }
+
+    fun setImage(bitmap: Bitmap){
+        mBitmap = bitmap
+        invalidate()
     }
 }

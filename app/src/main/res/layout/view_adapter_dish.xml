@@ -25,7 +25,6 @@
         android:id="@+id/iv_dish_image"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_120"
-        android:src="@drawable/img_sample"
         android:scaleType="centerCrop"
         android:layout_margin="@dimen/dimen_2"
         app:mCornerRadius="16"
