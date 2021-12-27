@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SherEats"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activity.SearchActivity"></activity>
+        <activity android:name=".view.activity.DetailDishActivity"></activity>
+        <activity android:name=".view.activity.SearchActivity" />
         <activity android:name=".view.activity.ResultActivity" />
         <activity android:name=".view.activity.RegisterActivity" />
         <activity

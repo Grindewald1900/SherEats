@@ -62,6 +62,9 @@
     <dimen name="text_size_title">16sp</dimen>
     <dimen name="text_size_sub_title">12sp</dimen>
     <dimen name="text_size_small">10sp</dimen>
+
+<!--    UI Size-->
+    <dimen name="size_stroke">2dp</dimen>
     <!--
     Because the window insets on round devices are larger than 15dp, this padding only applies
     to square screens.
