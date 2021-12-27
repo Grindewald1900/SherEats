@@ -42,12 +42,16 @@ open class RoundCornerImageView(context: Context, attrs: AttributeSet?): android
     }
 
     private fun getRoundBitmap(bitmap: Bitmap, radius: Float): Bitmap {
-        var output: Bitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
-        var canvas = Canvas(output)
+        val output: Bitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(output)
         val rect = Rect(0, 0, bitmap.width, bitmap.height)
         val rectF = RectF(rect)
         paint!!.isAntiAlias = true
-        paint?.let { canvas.drawRoundRect(rectF, radius, radius, it) }
+        paint?.let {
+            canvas.drawRoundRect(rectF, radius, radius, it)
+            canvas.drawRect(0f, height-radius, radius, height.toFloat(), it)
+            canvas.drawRect(rect.right-radius, rect.bottom-radius, rect.right.toFloat(), rect.bottom.toFloat(), it)
+        }
         paint!!.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
         canvas.drawBitmap(bitmap, rect, rect, paint)
         return output

@@ -68,9 +68,7 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
         }.addOnFailureListener {
             it.stackTrace
         }.addOnCompleteListener {
-            val a = 0
         }.addOnCanceledListener {
-            val b = 0
         }
     }
 

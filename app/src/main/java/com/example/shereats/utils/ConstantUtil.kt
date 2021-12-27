@@ -80,6 +80,7 @@ object ConstantUtil {
     const val RESULT_DEFAULT : Int = 500
     const val RESULT_CORRECT : Int = 501
     const val RESULT_INCORRECT : Int = 502
+    const val RESULT_DIALOG_UPLOAD_IMAGE = 511
 
     // Image Mode
     const val MODE_EDGE: Int = 601

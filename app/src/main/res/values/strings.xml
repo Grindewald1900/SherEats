@@ -186,6 +186,7 @@
     <string name="send">Send</string>
 
 
+
     <!-- Tags -->
     <string name="Exception">Exception</string>
     <string name="MainPage">MainPage</string>
@@ -201,6 +202,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
+
+    <string name="default_description">default_description</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
