@@ -2,14 +2,12 @@ package com.example.shereats.view.fragment
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -25,7 +23,7 @@ import com.example.shereats.view.adapter.DishAdapter
 import com.example.shereats.view.custom.SearchFilterLayout
 
 class DishFragment : Fragment() {
-    private lateinit var bingding: DishFragmentBinding
+    private lateinit var binding: DishFragmentBinding
     private lateinit var viewModel: DishViewModel
     private lateinit var topLayout: LinearLayout
     private lateinit var sfFilterOne: SearchFilterLayout
@@ -35,26 +33,26 @@ class DishFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bingding = DataBindingUtil.inflate(inflater, R.layout.dish_fragment, container, false)
-        return bingding.root
+        binding = DataBindingUtil.inflate(inflater, R.layout.dish_fragment, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DishViewModel::class.java)
-        viewModel.setDishes(bingding.swipeFragmentDish)
-        topLayout = bingding.llFragmentDishTop
-        sfFilterOne = bingding.sfFragmentDishOne
-        sfFilterTwo = bingding.sfFragmentDishTwo
-        bingding.switchFragmentDish.switchPadding = 10
-        bingding.rvFragmentDish.layoutManager = LinearLayoutManager(context)
-        bingding.rvFragmentDish.itemAnimator = DefaultItemAnimator()
+        viewModel.setDishes(binding.swipeFragmentDish)
+        topLayout = binding.llFragmentDishTop
+        sfFilterOne = binding.sfFragmentDishOne
+        sfFilterTwo = binding.sfFragmentDishTwo
+        binding.switchFragmentDish.switchPadding = 10
+        binding.rvFragmentDish.layoutManager = LinearLayoutManager(context)
+        binding.rvFragmentDish.itemAnimator = DefaultItemAnimator()
 
-        viewModel.getDishes().observe(viewLifecycleOwner, {
-            bingding.rvFragmentDish.adapter = DishAdapter(it)
-        })
-        bingding.swipeFragmentDish.setOnRefreshListener {
-            viewModel.setDishes(bingding.swipeFragmentDish)
+        viewModel.getDishes().observe(viewLifecycleOwner) {
+            binding.rvFragmentDish.adapter = DishAdapter(it)
+        }
+        binding.swipeFragmentDish.setOnRefreshListener {
+            viewModel.setDishes(binding.swipeFragmentDish)
         }
 
         setScrollListener()
@@ -63,8 +61,7 @@ class DishFragment : Fragment() {
     }
 
     /**
-     * Price filter, if this filter is selected, we set other filters unselected
-     * Rate filter, if this filter is selected, we set other filters unselected
+     * Price and Rate filter, if this filter is selected, we set other filters unselected
      */
     private fun setFilterListener(){
         sfFilterOne.setOnClickListener {
@@ -75,11 +72,11 @@ class DishFragment : Fragment() {
             val currentData = viewModel.getDishes().value as List<Dish>
             when(sfFilterOne.getState()){
                 ConstantUtil.FILTER_STATE_UP -> {
-                    bingding.switchFragmentDish.isChecked = false
+                    binding.switchFragmentDish.isChecked = false
                     viewModel.resetDishes(EntityUtil.sortDishByPrice(currentData.toMutableList(), true))
                 }
                 ConstantUtil.FILTER_STATE_DOWN -> {
-                    bingding.switchFragmentDish.isChecked = false
+                    binding.switchFragmentDish.isChecked = false
                     viewModel.resetDishes(EntityUtil.sortDishByPrice(currentData.toMutableList(), false))
                 }
             }
@@ -92,11 +89,11 @@ class DishFragment : Fragment() {
             val currentData = viewModel.getDishes().value as List<Dish>
             when(sfFilterTwo.getState()){
                 ConstantUtil.FILTER_STATE_UP -> {
-                    bingding.switchFragmentDish.isChecked = false
+                    binding.switchFragmentDish.isChecked = false
                     viewModel.resetDishes(EntityUtil.sortDishByRate(currentData.toMutableList(), true))
                 }
                 ConstantUtil.FILTER_STATE_DOWN -> {
-                    bingding.switchFragmentDish.isChecked = false
+                    binding.switchFragmentDish.isChecked = false
                     viewModel.resetDishes(EntityUtil.sortDishByRate(currentData.toMutableList(), false))
                 }
             }
@@ -108,7 +105,7 @@ class DishFragment : Fragment() {
      * When the promotion button is checked, we'll set other filters unselected
      */
     private fun setOnCheckedListener(){
-        bingding.switchFragmentDish.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchFragmentDish.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked){
                 val currentData = viewModel.getDishes().value as List<Dish>
                 viewModel.resetDishes(EntityUtil.sortDishByPromo(currentData.toMutableList()))
@@ -123,7 +120,7 @@ class DishFragment : Fragment() {
      * The bar get back to top.until the view stops {@link #RecyclerView.SCROLL_STATE_IDLE}
      */
     private fun setScrollListener(){
-        bingding.rvFragmentDish.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+        binding.rvFragmentDish.addOnScrollListener(object: RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(view: RecyclerView, newState: Int){
                 when(newState){
                     RecyclerView.SCROLL_STATE_IDLE -> {

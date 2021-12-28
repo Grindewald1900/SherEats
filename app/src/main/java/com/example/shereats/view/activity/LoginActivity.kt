@@ -37,16 +37,16 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             viewModel.setUser(binding.etLoginName.text.toString(), binding.etLoginPwd.text.toString())
-            viewModel.getUser().observe(this,{
+            viewModel.getUser().observe(this) {
                 // If valid user, go back to main page, else go to register page
-                if (it.isNotEmpty()){
+                if (it.isNotEmpty()) {
                     LoginStatusUtil.mUser = it[0]
                     ToastUtil.showShortMessage(getString(R.string.hint_login_success), this)
                     finish()
-                }else{
+                } else {
                     ToastUtil.showShortMessage(getString(R.string.hint_invalid_user), this)
                 }
-            })
+            }
 
         }
     }

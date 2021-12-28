@@ -1,18 +1,20 @@
 package com.example.shereats.model.entity
 
+import java.io.Serializable
+
 
 /**
  * Created by Yee on 2021-10-26.
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  *
- * @param id: item id
- * @param restaurantId: ID of the restaurant which provide this item
- * @param name: item name
- * @param price: item price
- * @param image: descriptive picture of the item(URI or Link)
- * @param rate: from 1 star to 5 star
- * @param promotion: e.g. 0.1 means 10% off
+ * @param item_id: item id
+ * @param restaurant_id: ID of the restaurant which provide this item
+ * @param item_name: item name
+ * @param item_price: item price
+ * @param item_pic: descriptive picture of the item(URI or Link)
+ * @param item_taste: from 1 star to 5 star(This is the only rate filled in our database)
+ * @param item_discount: e.g. 0.1 means 10% off
  */
 data class Dish(
         val restaurant_id: Int,
@@ -26,4 +28,4 @@ data class Dish(
         val item_taste: Float,
         val item_environment: Float,
         val item_service: Float,
-)
+): Serializable

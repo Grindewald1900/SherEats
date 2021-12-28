@@ -30,7 +30,7 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
         var title: TextView = view.findViewById(R.id.tv_restaurant_title)
         var location: TextView = view.findViewById(R.id.tv_restaurant_location)
         val price: TextView = view.findViewById(R.id.tv_restaurant_price)
-        //Todo: add profile pic
+        //Todo: add rate badge
 //        var portrait: SelectableRoundedImageView = view.findViewById(R.id.iv_normal_card_portrait)
         val heart: ImageButton = view.findViewById(R.id.ib_restaurant_collect)
     }

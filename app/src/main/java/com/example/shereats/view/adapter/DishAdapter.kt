@@ -1,6 +1,7 @@
 package com.example.shereats.view.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.model.entity.Dish
+import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.firebase.StorageUtil
+import com.example.shereats.view.activity.DetailDishActivity
 import com.example.shereats.view.custom.RoundCornerImageView
 import kotlin.random.Random
 
@@ -49,9 +52,15 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
         val dataSlice = data[position]
         // We don't have rate data in our database, so fake some data here
         var starCount = dataSlice.item_taste
-//        var starCount = (dataSlice.item_service + dataSlice.item_environment + dataSlice.item_taste)/3
+        //var starCount = (dataSlice.item_service + dataSlice.item_environment + dataSlice.item_taste)/3
         holder.title.text = dataSlice.item_name
         holder.price.text = TextUtil.getItemPrice(dataSlice.item_price)
+        holder.layout.setOnClickListener {
+            // Pass dish data to the detailed page
+            val intent = Intent(mContext, DetailDishActivity::class.java)
+            intent.putExtra(ConstantUtil.ENTITY_DISH, dataSlice)
+            mContext.startActivity(intent)
+        }
         if (dataSlice.item_discount < 1f){
             setVisibility(holder, View.VISIBLE)
             holder.price.setTextColor(Color.GRAY)

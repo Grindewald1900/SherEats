@@ -39,5 +39,4 @@ interface EndPointInterface {
     @POST(ConstantUtil.SERVLET_BADGE)
     fun getBadges(@Query("id") id: String): Call<List<Badge>>
 
-
 }

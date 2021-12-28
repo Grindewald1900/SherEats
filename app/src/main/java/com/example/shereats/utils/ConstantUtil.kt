@@ -42,6 +42,7 @@ object ConstantUtil {
     const val SERVLET_EVENT: String = "Servlet.EventServlet.do"
     const val SERVLET_BADGE: String = "Servlet.BadgeServlet.do"
 
+    const val ENTITY_DISH = "DISH"
 
     const val SERVER_RESULT = "result"
     const val SERVER_SUCCESS = "success"

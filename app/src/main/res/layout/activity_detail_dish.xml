@@ -16,8 +16,8 @@
             />
         <ImageButton
             android:id="@+id/btn_activity_dish_collect"
-            android:layout_width="@dimen/widget_size_middle"
-            android:layout_height="@dimen/widget_size_middle"
+            android:layout_width="@dimen/widget_size_little"
+            android:layout_height="@dimen/widget_size_little"
             android:background="@drawable/ic_baseline_favorite_border_48"
             android:layout_marginEnd="@dimen/dimen_20"
             app:layout_constraintTop_toTopOf="@id/btn_activity_dish_back"
@@ -27,8 +27,8 @@
 
         <ImageButton
             android:id="@+id/btn_activity_dish_share"
-            android:layout_width="@dimen/widget_size_middle"
-            android:layout_height="@dimen/widget_size_middle"
+            android:layout_width="@dimen/widget_size_little"
+            android:layout_height="@dimen/widget_size_little"
             android:background="@drawable/ic_baseline_share_24"
             android:layout_marginEnd="@dimen/dimen_20"
             app:layout_constraintTop_toTopOf="@id/btn_activity_dish_back"
@@ -64,8 +64,11 @@
             android:layout_height="@dimen/dimen_200"
             android:layout_marginStart="@dimen/dimen_20"
             android:layout_marginEnd="@dimen/dimen_20"
-            android:src="@drawable/img_no_image"
             android:layout_marginTop="@dimen/dimen_20"
+            android:src="@drawable/img_no_image"
+            android:background="@drawable/shape_rect_corner"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/dimen_2"
             app:layout_constraintTop_toBottomOf="@+id/btn_activity_dish_back"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -126,8 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_30"
             android:text="@string/hint_description"
-            android:textColor="@color/gray_2"
-            android:textSize="@dimen/text_size_sub_title"
+            android:textColor="@color/black"
             android:gravity="center_vertical"
             android:layout_marginStart="@dimen/dimen_10"
             app:layout_constraintTop_toTopOf="@+id/iv_activity_dish_description"
@@ -165,16 +167,24 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_activity_dish_type"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
-<!--            <fragment-->
-<!--                android:id="@+id/fragment_activity_dish_map"-->
-<!--                xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--                xmlns:tools="http://schemas.android.com/tools"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:name="com.google.android.gms.maps.SupportMapFragment"-->
-<!--                android:layout_margin="@dimen/dimen_2"-->
-<!--                tools:context=".view.DishActivity" />-->
+            <fragment
+                android:id="@+id/fragment_activity_dish_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_margin="@dimen/dimen_2"
+                tools:context=".view.DishActivity" />
         </RelativeLayout>
+
+        <com.example.shereats.view.custom.RoundCornerButton
+            android:layout_width="@dimen/button_width_little"
+            android:layout_height="@dimen/button_length_middle"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:text="@string/add_to_cart"
+            app:layout_constraintTop_toBottomOf="@+id/rl_activity_dish"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
 
 <!--        <com.royrodriguez.transitionbutton.TransitionButton-->
 <!--            android:id="@+id/btn_activity_dish_add"-->

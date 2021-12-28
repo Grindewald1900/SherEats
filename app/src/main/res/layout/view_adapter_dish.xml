@@ -33,7 +33,6 @@
         app:layout_constraintRight_toRightOf="@+id/view_dish_background"
         />
 
-
     <ImageView
         android:id="@+id/iv_dish_location"
         android:layout_width="wrap_content"
