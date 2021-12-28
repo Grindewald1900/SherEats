@@ -14,11 +14,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             />
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_activity_dish_collect"
             android:layout_width="@dimen/widget_size_little"
             android:layout_height="@dimen/widget_size_little"
-            android:background="@drawable/ic_baseline_favorite_border_48"
+            android:src="@drawable/ic_baseline_favorite_border_48"
             android:layout_marginEnd="@dimen/dimen_20"
             app:layout_constraintTop_toTopOf="@id/btn_activity_dish_back"
             app:layout_constraintBottom_toBottomOf="@+id/btn_activity_dish_back"

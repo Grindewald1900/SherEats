@@ -40,6 +40,9 @@ class DishViewModel : BaseViewModel() {
                         ConstantUtil.SORT_BY_PROMO -> {
                         }
                     }
+                    response.body()!!.forEach {
+                        ConstantUtil.MAP_FAVORITE_DISH[it.item_id] = false
+                    }
                 }
             }
 

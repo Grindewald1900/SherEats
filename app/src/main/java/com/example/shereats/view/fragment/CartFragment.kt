@@ -37,9 +37,9 @@ class CartFragment : Fragment() {
         viewModel.setOrders()
         binding.rvFragmentCart.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentCart.itemAnimator = DefaultItemAnimator()
-        viewModel.getOrders().observe(viewLifecycleOwner, {
+        viewModel.getOrders().observe(viewLifecycleOwner) {
             binding.rvFragmentCart.adapter = CartAdapter(it)
-        })
+        }
 
     }
 

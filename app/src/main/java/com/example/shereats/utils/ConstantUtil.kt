@@ -43,6 +43,7 @@ object ConstantUtil {
     const val SERVLET_BADGE: String = "Servlet.BadgeServlet.do"
 
     const val ENTITY_DISH = "DISH"
+    const val ATTRIBUTE_POSITION = "POSITION"
 
     const val SERVER_RESULT = "result"
     const val SERVER_SUCCESS = "success"
@@ -112,5 +113,8 @@ object ConstantUtil {
         4 to Color.parseColor("#7926A9"),
         5 to Color.parseColor("#d9534f"),)
 
-    var LIST_IS_FAVORITE: MutableList<Boolean> = mutableListOf()
+    var MAP_FAVORITE_DISH: HashMap<Int, Boolean> = hashMapOf()
+
+    var LIST_IS_FAVORITE_REST: MutableList<Boolean> = mutableListOf()
+    var LIST_IS_FAVORITE_DISH: MutableList<Boolean> = mutableListOf()
 }

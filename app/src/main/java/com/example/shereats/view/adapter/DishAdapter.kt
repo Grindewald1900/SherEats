@@ -59,6 +59,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
             // Pass dish data to the detailed page
             val intent = Intent(mContext, DetailDishActivity::class.java)
             intent.putExtra(ConstantUtil.ENTITY_DISH, dataSlice)
+            intent.putExtra(ConstantUtil.ATTRIBUTE_POSITION, position)
             mContext.startActivity(intent)
         }
         if (dataSlice.item_discount < 1f){

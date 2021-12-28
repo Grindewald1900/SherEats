@@ -1,19 +1,26 @@
 package com.example.shereats.view.custom
 
+import android.animation.Animator
 import android.content.Context
+import android.content.Intent
 import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewPropertyAnimator
+import androidx.core.content.ContextCompat.startActivity
 import com.example.shereats.R
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
+import com.example.shereats.utils.ToastUtil
+import com.example.shereats.view.activity.SearchActivity
 import kotlin.math.abs
 
 /**
  * A draggable floating action button
  */
-class RoundFab : androidx.appcompat.widget.AppCompatImageView {
+class RoundFab : androidx.appcompat.widget.AppCompatImageView{
     companion object {
         const val MODE_SQUARE = 0
         const val MODE_CIRCLE = 1
@@ -130,7 +137,7 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
                 )
                 this.layout(position[0], position[1], position[2], position[3])
                 if(abs(downX - event.rawX) < 10 && abs(downY - event.rawY) < 10){
-                    performClick()
+                    doClick()
                 }
 
             }
@@ -191,4 +198,21 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView {
         }
 
     }
+
+    private fun doClick(){
+        val animator = this.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
+        animator.setListener(object: Animator.AnimatorListener{
+            override fun onAnimationEnd(p0: Animator?) {
+                mContext.startActivity(Intent(mContext, SearchActivity::class.java))
+                ToastUtil.showShortMessage("Click", mContext)
+                animator.setListener(null)
+                animator.alpha(1f).scaleX(1f).scaleY(1f).setDuration(100).start()
+            }
+            override fun onAnimationStart(p0: Animator?) {}
+            override fun onAnimationCancel(p0: Animator?) {}
+            override fun onAnimationRepeat(p0: Animator?) {}
+
+        }).start()
+    }
+
 }

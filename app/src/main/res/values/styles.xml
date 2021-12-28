@@ -20,6 +20,10 @@
 
     <declare-styleable name="RoundCornerImageView">
         <attr name="mCornerRadius" format="float" />
+        <attr name="isLeftTop" format="boolean"/>
+        <attr name="isRightTop" format="boolean"/>
+        <attr name="isLeftBottom" format="boolean"/>
+        <attr name="isRightBottom" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="RoundImageView">
