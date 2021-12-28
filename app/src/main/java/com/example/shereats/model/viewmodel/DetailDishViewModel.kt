@@ -1,8 +1,16 @@
 package com.example.shereats.model.viewmodel
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.shereats.model.entity.Restaurant
+import com.example.shereats.utils.firebase.StorageUtil
+import com.example.shereats.view.custom.RoundImageView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,5 +38,29 @@ class DetailDishViewModel: BaseViewModel() {
                 t.stackTrace
             }
         })
+    }
+
+    /**
+     * Get image for the user profile picture(if login)
+     */
+    fun setProfileImage(name: String, view: RoundImageView, context: Context){
+        val childPath = "user/$name.jpg"
+        val pathReference = StorageUtil.reference.child(childPath)
+        pathReference.downloadUrl.addOnSuccessListener {
+            Glide.with(context)
+                .asBitmap()
+                .load(it.toString())
+                .into(object: CustomTarget<Bitmap>(){
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
+                        view.setImage(resource)
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                    }
+                })
+        }
     }
 }

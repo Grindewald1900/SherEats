@@ -1,5 +1,6 @@
 package com.example.shereats.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -12,6 +13,7 @@ import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.entity.Restaurant
 import com.example.shereats.model.viewmodel.DetailDishViewModel
 import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.firebase.StorageUtil
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
@@ -44,8 +46,14 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback {
             mRestaurant= it[0]
             showPoint()
             initView()
+            setUserInfo()
             setRestaurantImage(mRestaurant.restaurant_id, binding.ivActivityDishImage)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setUserInfo()
     }
 
     private fun initView(){
@@ -54,6 +62,13 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.tvActivityDishLocation.text = mRestaurant.restaurant_address
         binding.btnActivityDishBack.setOnClickListener {
             onBackPressed()
+        }
+        binding.ivActivityDishPortrait.setOnClickListener {
+            if(LoginStatusUtil.isLogin()){
+                startActivity(Intent(this, UserInfoActivity::class.java))
+            }else{
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
         }
     }
 
@@ -72,6 +87,15 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun setUserInfo(){
+        if(LoginStatusUtil.isLogin()){
+            val user = LoginStatusUtil.getUser()
+            viewModel.setProfileImage(user.user_name, binding.ivActivityDishPortrait, this)
+            binding.tvActivityDishInitiator.text = user.user_name
+        }else{
+            binding.tvActivityDishInitiator.text = getString(R.string.visitor)
+        }
+    }
     private fun setRestaurantImage(id: Int, view: ImageView){
         val childPath = "restaurant/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)

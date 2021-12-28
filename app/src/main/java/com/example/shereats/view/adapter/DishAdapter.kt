@@ -135,7 +135,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
         pathReference.downloadUrl.addOnSuccessListener {
             Glide.with(mContext)
                 .load(it.toString())
-                .placeholder(R.drawable.loading_spinner_1s_200px)
+                .placeholder(R.drawable.img_no_image)
                 .into(view)
         }.addOnFailureListener {
             it.stackTrace

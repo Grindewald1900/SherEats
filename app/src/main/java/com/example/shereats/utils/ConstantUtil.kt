@@ -111,4 +111,6 @@ object ConstantUtil {
         3 to Color.parseColor("#5bc0de"),
         4 to Color.parseColor("#7926A9"),
         5 to Color.parseColor("#d9534f"),)
+
+    var LIST_IS_FAVORITE: MutableList<Boolean> = mutableListOf()
 }

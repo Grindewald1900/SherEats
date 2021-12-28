@@ -40,7 +40,7 @@
             android:layout_width="@dimen/widget_size_middle"
             android:layout_height="@dimen/widget_size_middle"
             android:layout_marginStart="@dimen/dimen_20"
-            android:background="@drawable/img_user_unknown"
+            app:image_border_src="@drawable/img_user_unknown"
             app:layout_constraintTop_toTopOf="@+id/btn_activity_dish_back"
             app:layout_constraintBottom_toBottomOf="@+id/btn_activity_dish_back"
             app:layout_constraintLeft_toRightOf="@+id/btn_activity_dish_back"
