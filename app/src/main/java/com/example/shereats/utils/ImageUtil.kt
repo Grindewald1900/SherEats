@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.database.Cursor
 import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.provider.MediaStore
@@ -34,6 +35,18 @@ class ImageUtil {
                 canvas.concat(imageMatrix)
             }
             drawable.draw(canvas)
+            return bitmap
+        }
+
+        fun drawable2Bitmap(drawable: Drawable): Bitmap{
+            if (drawable is BitmapDrawable){
+                return  drawable.bitmap
+            }
+            val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            drawable.setBounds(0,0,canvas.width, canvas.height)
+            drawable.draw(canvas)
+
             return bitmap
         }
 

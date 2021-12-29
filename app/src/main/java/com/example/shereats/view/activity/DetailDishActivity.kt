@@ -17,11 +17,12 @@ import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.StorageUtil
+import com.example.shereats.view.custom.FavoriteButton
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback {
+class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, FavoriteButton.RefreshData{
     private lateinit var binding: ActivityDetailDishBinding
     private lateinit var viewModel: DetailDishViewModel
     private lateinit var mMapFragment: SupportMapFragment
@@ -129,48 +130,12 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback {
         if (!ConstantUtil.MAP_FAVORITE_DISH.containsKey(mDish.item_id)){
             ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id] = false
         }
-        if (ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id]!!){
-            binding.btnActivityDishCollect.setImageResource(R.drawable.ic_baseline_favorite_48)
-        }else{
-            binding.btnActivityDishCollect.setImageResource(R.drawable.ic_baseline_favorite_border_48)
-        }
-        binding.btnActivityDishCollect.setOnClickListener {
-            if (ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id]!!){
-                ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id] = false
+        binding.btnActivityDishCollect.setHolder(this)
+        binding.btnActivityDishCollect.setImage(ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id]!!)
+    }
 
-                val animation = binding.btnActivityDishCollect.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
-                animation.setListener(object: Animator.AnimatorListener{
-                    override fun onAnimationStart(p0: Animator?) {
-                    }
-                    override fun onAnimationEnd(p0: Animator?) {
-                        // Remove the listener, or this method could be called multi times
-                        animation.setListener(null)
-                        binding.btnActivityDishCollect.setImageResource(R.drawable.ic_baseline_favorite_border_48)
-                        binding.btnActivityDishCollect.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(300).start()
-                    }
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                }).start()
-            }else{
-                ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id] = true
-                val animation = binding.btnActivityDishCollect.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
-                animation.setListener(object: Animator.AnimatorListener{
-                    override fun onAnimationStart(p0: Animator?) {
-                    }
-                    override fun onAnimationEnd(p0: Animator?) {
-                        animation.setListener(null)
-                        binding.btnActivityDishCollect.setImageResource(R.drawable.ic_baseline_favorite_48)
-                        binding.btnActivityDishCollect.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(300).start()
-                    }
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                }).start()
-            }
-        }
+    override fun refreshData(isFav: Boolean) {
+        ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id] = isFav
     }
 
 }

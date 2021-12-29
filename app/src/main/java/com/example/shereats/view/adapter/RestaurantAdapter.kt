@@ -14,6 +14,7 @@ import com.example.shereats.model.entity.Restaurant
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.StorageUtil
+import com.example.shereats.view.custom.FavoriteButton
 
 
 /**
@@ -24,15 +25,20 @@ import com.example.shereats.utils.firebase.StorageUtil
 class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<RestaurantAdapter.RestaurantHolder>() {
     private lateinit var mContext: Context
 
-    class RestaurantHolder(view: View): RecyclerView.ViewHolder(view){
+    class RestaurantHolder(view: View): RecyclerView.ViewHolder(view), FavoriteButton.RefreshData{
         var layout: View = view.findViewById(R.id.view_restaurant_background)
         var image: ImageView = view.findViewById(R.id.iv_restaurant_image)
         var title: TextView = view.findViewById(R.id.tv_restaurant_title)
         var location: TextView = view.findViewById(R.id.tv_restaurant_location)
         val price: TextView = view.findViewById(R.id.tv_restaurant_price)
+        var isFavorite: Boolean = false
         //Todo: add rate badge
 //        var portrait: SelectableRoundedImageView = view.findViewById(R.id.iv_normal_card_portrait)
-        val heart: ImageView = view.findViewById(R.id.ib_restaurant_collect)
+        val heart: FavoriteButton = view.findViewById(R.id.ib_restaurant_collect)
+
+        override fun refreshData(isFav: Boolean) {
+            isFavorite = isFav
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantHolder {
@@ -46,51 +52,12 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
         holder.title.text = dataSlice.restaurant_name
         holder.location.text = dataSlice.restaurant_address
         holder.price.text = dataSlice.restaurant_average.toString()
-        if (ConstantUtil.LIST_IS_FAVORITE_REST[position]){
-            holder.heart.setImageResource(R.drawable.ic_baseline_favorite_48)
-        }else{
-            holder.heart.setImageResource(R.drawable.ic_baseline_favorite_border_48)
-        }
-        holder.heart.setOnClickListener {
-            if (ConstantUtil.LIST_IS_FAVORITE_REST[position]){
-                ConstantUtil.LIST_IS_FAVORITE_REST[position] = false
-                val animation = holder.heart.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
-                animation.setListener(object: Animator.AnimatorListener{
-                    override fun onAnimationStart(p0: Animator?) {
-                    }
-                    override fun onAnimationEnd(p0: Animator?) {
-                        // Remove the listener, or this method could be called multi times
-                        animation.setListener(null)
-                        holder.heart.setImageResource(R.drawable.ic_baseline_favorite_border_48)
-                        ToastUtil.showShortMessage("Anime 1", mContext)
-                        holder.heart.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(300).start()
-                    }
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                }).start()
-            }else{
-                ConstantUtil.LIST_IS_FAVORITE_REST[position] = true
-                val animation = holder.heart.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
-                animation.setListener(object: Animator.AnimatorListener{
-                    override fun onAnimationStart(p0: Animator?) {
-                    }
-                    override fun onAnimationEnd(p0: Animator?) {
-                        animation.setListener(null)
-                        holder.heart.setImageResource(R.drawable.ic_baseline_favorite_48)
-                        ToastUtil.showShortMessage("Anime 2", mContext)
-                        holder.heart.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(300).start()
-                    }
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                }).start()
-            }
-        }
+        holder.heart.setHolder(holder)
+        holder.heart.setImage(ConstantUtil.LIST_IS_FAVORITE_REST[position])
+        ConstantUtil.LIST_IS_FAVORITE_REST[position] = holder.isFavorite
         setRestaurantImage(dataSlice.restaurant_id, holder.image)
     }
+
 
     override fun getItemCount(): Int {
         return data.size

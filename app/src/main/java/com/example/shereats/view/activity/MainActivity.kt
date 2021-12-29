@@ -4,8 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTransition()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         initView()
     }
@@ -72,9 +75,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.fabMain.setOnClickListener {
-//        }
+    }
 
+    private fun setTransition(){
+        val xTransition = TransitionInflater.from(this).inflateTransition(R.transition.transition_from_button)
+        with(window){
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            enterTransition = android.transition.Fade()
+            exitTransition = xTransition
+
+        }
     }
 
     override fun onStart() {
@@ -98,4 +108,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_main).navigateUp(appBarConfiguration)
     }
+
 }

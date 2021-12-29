@@ -1,6 +1,7 @@
 package com.example.shereats.view.custom
 
 import android.animation.Animator
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.*
@@ -14,6 +15,7 @@ import com.example.shereats.R
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
 import com.example.shereats.utils.ToastUtil
+import com.example.shereats.view.activity.MainActivity
 import com.example.shereats.view.activity.SearchActivity
 import kotlin.math.abs
 
@@ -203,7 +205,7 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView{
         val animator = this.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
         animator.setListener(object: Animator.AnimatorListener{
             override fun onAnimationEnd(p0: Animator?) {
-                mContext.startActivity(Intent(mContext, SearchActivity::class.java))
+                mContext.startActivity(Intent(mContext, SearchActivity::class.java), ActivityOptions.makeSceneTransitionAnimation(mContext as MainActivity).toBundle())
                 ToastUtil.showShortMessage("Click", mContext)
                 animator.setListener(null)
                 animator.alpha(1f).scaleX(1f).scaleY(1f).setDuration(100).start()

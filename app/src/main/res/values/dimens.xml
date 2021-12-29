@@ -51,6 +51,8 @@
     <dimen name="button_length_large">80dp</dimen>
     <dimen name="widget_size_little">24dp</dimen>
     <dimen name="widget_size_middle">36dp</dimen>
+    <dimen name="widget_size_large">48dp</dimen>
+
 
 
     <!--Text font size -->

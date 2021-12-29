@@ -38,8 +38,17 @@
         <attr name="background_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="FavoriteButton">
+        <attr name="isFav" format="boolean"/>
+    </declare-styleable>
+
     <declare-styleable name="SearchFilterLayout">
         <attr name="search_filter_text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="TransitionButton">
+        <attr name="defaultColor" format="string" />
+        <attr name="loaderColor" format="string" />
     </declare-styleable>
 
     <declare-styleable name="RoundFab">
