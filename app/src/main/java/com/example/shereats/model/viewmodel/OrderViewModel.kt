@@ -14,9 +14,5 @@ class OrderViewModel : ViewModel() {
 
     fun setOrders(){
         val list: MutableList<Order> = mutableListOf()
-        for (i in 1 .. 10){
-            list.add(Order(i, "Yee", i, "2021-11-19", 19f, "911 000 0001", "aaa", 3, 5, 4))
-        }
-        orders.postValue(list)
     }
 }

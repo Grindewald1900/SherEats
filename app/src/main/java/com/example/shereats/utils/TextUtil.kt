@@ -25,5 +25,6 @@ class TextUtil {
             return (100 - promo*100).toInt().toString() + "% \nOff"
         }
 
+
     }
 }

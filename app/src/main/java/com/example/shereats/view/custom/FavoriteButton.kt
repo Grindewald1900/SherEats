@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shereats.R
+import com.example.shereats.model.interfaces.RefreshData
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
 import com.example.shereats.utils.ToastUtil
@@ -95,8 +96,6 @@ class FavoriteButton(private val mContext: Context, private val attrs: Attribute
         }
     }
 
-    interface RefreshData{
-        fun refreshData(isFav: Boolean)
-    }
+
 
 }

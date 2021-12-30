@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shereats.model.entity.Dish
+import com.example.shereats.model.entity.SingletonUtil
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.EntityUtil
 import com.example.shereats.utils.network.EndPointInterface
@@ -41,7 +42,7 @@ class DishViewModel : BaseViewModel() {
                         }
                     }
                     response.body()!!.forEach {
-                        ConstantUtil.MAP_FAVORITE_DISH[it.item_id] = false
+                        SingletonUtil.MAP_FAVORITE_DISH[it.item_id] = false
                     }
                 }
             }

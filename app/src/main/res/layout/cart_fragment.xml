@@ -168,7 +168,7 @@
             />
 
 
-        <Button
+        <com.example.shereats.view.custom.TransitionButton
             android:id="@+id/btn_fragment_cart_checkout"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"
@@ -178,9 +178,11 @@
             android:layout_marginBottom="@dimen/dimen_10"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
-<!--            app:defaultColor="#7926A9"-->
-<!--            app:loaderColor="#ffffff"-->
+            app:layout_constraintRight_toRightOf="parent"
+            app:defaultColor="@color/colorPrimary"
+            app:loaderColor="@color/white"
+            />
+
 
 
 

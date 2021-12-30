@@ -1,6 +1,5 @@
 package com.example.shereats.view.activity
 
-import android.animation.Animator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,23 +11,35 @@ import com.example.shereats.R
 import com.example.shereats.databinding.ActivityDetailDishBinding
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.entity.Restaurant
+import com.example.shereats.model.entity.SingletonUtil
+import com.example.shereats.model.entity.User
+import com.example.shereats.model.interfaces.RefreshData
 import com.example.shereats.model.viewmodel.DetailDishViewModel
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
-import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.custom.FavoriteButton
+import com.example.shereats.view.custom.TransitionButton
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.sql.Time
+import java.sql.Timestamp
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
-class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, FavoriteButton.RefreshData{
+class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
     private lateinit var binding: ActivityDetailDishBinding
     private lateinit var viewModel: DetailDishViewModel
     private lateinit var mMapFragment: SupportMapFragment
     private lateinit var mGoogleMap: GoogleMap
+    private lateinit var mTransitionBtn: TransitionButton
     private lateinit var mDish: Dish
     private lateinit var mRestaurant: Restaurant
+    private var isClickedTransitionBtn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +47,7 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, FavoriteButt
             mDish = intent.getSerializableExtra(ConstantUtil.ENTITY_DISH) as Dish
         }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_dish)
-        viewModel = ViewModelProvider(this).get(DetailDishViewModel::class.java)
-        mMapFragment = supportFragmentManager.findFragmentById(R.id.fragment_activity_dish_map) as SupportMapFragment
-        mMapFragment.getMapAsync(this)
+        initViewBeforeMap()
     }
 
 
@@ -57,11 +66,25 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, FavoriteButt
     override fun onResume() {
         super.onResume()
         setUserInfo()
+        // Reset Animation only from OnBackPressed of new activity
+        if(isClickedTransitionBtn){
+            mTransitionBtn.resetAnimation(null, false)
+        }
+    }
+
+    /**
+     * Some view should be initialized before the map is ready
+     */
+    private fun initViewBeforeMap(){
+        viewModel = ViewModelProvider(this).get(DetailDishViewModel::class.java)
+        viewModel.setActivityState(ConstantUtil.ACTIVITY_STATE_CREATE)
+        mMapFragment = supportFragmentManager.findFragmentById(R.id.fragment_activity_dish_map) as SupportMapFragment
+        mMapFragment.getMapAsync(this)
     }
 
     private fun initView(){
         binding.tvActivityDishDescription.text = mRestaurant.restaurant_genre
-        binding.tvActivityDishPrice.text = "${mRestaurant.restaurant_average.toString()} $"
+        binding.tvActivityDishPrice.text = "${mRestaurant.restaurant_average.toString()}\$"
         binding.tvActivityDishLocation.text = mRestaurant.restaurant_address
         binding.btnActivityDishBack.setOnClickListener {
             onBackPressed()
@@ -74,6 +97,34 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, FavoriteButt
             }
         }
         setHeartListener()
+        initTransitionButton()
+    }
+
+    private fun initTransitionButton(){
+        mTransitionBtn = binding.btnActivityDishAddCart
+        mTransitionBtn.setOnClickListener {
+            // Start animation when clicked
+            mTransitionBtn.startAnimation()
+            GlobalScope.launch {
+                delay(1000)
+                val intent: Intent
+
+                if (LoginStatusUtil.isLogin()){
+                    SingletonUtil.addToCart(LoginStatusUtil.getUser(), mDish, 1, true)
+                    intent = Intent(baseContext, ResultActivity::class.java)
+                    intent.putExtra(ConstantUtil.STRING_RESULT_ACTIVITY, ConstantUtil.RESULT_CORRECT)
+                }else{
+                    intent = Intent(baseContext, LoginActivity::class.java)
+                }
+                mTransitionBtn.stopAnimation(TransitionButton.StopAnimationStyle.EXPAND, object: TransitionButton.OnAnimationStopEndListener{
+                    override fun onAnimationStopEnd() {
+                        isClickedTransitionBtn = true
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                    }
+                })
+            }
+        }
     }
 
     /**
@@ -127,15 +178,15 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, FavoriteButt
      * Initialize src and set is_favorite button click listener
      */
     private fun setHeartListener(){
-        if (!ConstantUtil.MAP_FAVORITE_DISH.containsKey(mDish.item_id)){
-            ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id] = false
+        if (!SingletonUtil.MAP_FAVORITE_DISH.containsKey(mDish.item_id)){
+            SingletonUtil.MAP_FAVORITE_DISH[mDish.item_id] = false
         }
         binding.btnActivityDishCollect.setHolder(this)
-        binding.btnActivityDishCollect.setImage(ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id]!!)
+        binding.btnActivityDishCollect.setImage(SingletonUtil.MAP_FAVORITE_DISH[mDish.item_id]!!)
     }
 
     override fun refreshData(isFav: Boolean) {
-        ConstantUtil.MAP_FAVORITE_DISH[mDish.item_id] = isFav
+        SingletonUtil.MAP_FAVORITE_DISH[mDish.item_id] = isFav
     }
 
 }

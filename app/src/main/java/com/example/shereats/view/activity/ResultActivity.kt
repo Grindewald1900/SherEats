@@ -4,12 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityResultBinding
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.view.activity.MainActivity
 
-class ResultActivity : AppCompatActivity() {
+class ResultActivity : FragmentActivity() {
     private lateinit var binding: ActivityResultBinding
     private var state = ConstantUtil.RESULT_DEFAULT
 
@@ -19,11 +20,6 @@ class ResultActivity : AppCompatActivity() {
         initView()
     }
 
-    override fun onResume() {
-        super.onResume()
-//        Thread.sleep(ConstantUtil.RESULT_ACTIVITY_TIME)
-//        startActivity(Intent(this, MainActivity::class.java))
-    }
 
     private fun initView(){
         state = intent.getIntExtra(ConstantUtil.STRING_RESULT_ACTIVITY, ConstantUtil.RESULT_DEFAULT)

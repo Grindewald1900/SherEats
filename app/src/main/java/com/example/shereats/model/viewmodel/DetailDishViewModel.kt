@@ -16,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class DetailDishViewModel: BaseViewModel() {
+    private var activityState: MutableLiveData<Int> = MutableLiveData()
     private var restaurants: MutableLiveData<List<Restaurant>> = MutableLiveData()
     private lateinit var call: Call<List<Restaurant>>
 
@@ -38,6 +39,14 @@ class DetailDishViewModel: BaseViewModel() {
                 t.stackTrace
             }
         })
+    }
+
+    fun getActivityState(): LiveData<Int>{
+        return activityState
+    }
+
+    fun setActivityState(state: Int){
+        activityState.postValue(state)
     }
 
     /**

@@ -168,14 +168,16 @@
             app:background_color="@color/colorPrimary"
             />
 
-        <com.example.shereats.view.custom.RoundCornerButton
+        <com.example.shereats.view.custom.TransitionButton
             android:id="@+id/btn_register_register"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"
             android:text="@string/register"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:layout_marginTop="@dimen/dimen_30"
             android:layout_marginBottom="@dimen/dimen_10"
+            app:defaultColor="@color/colorPrimary"
+            app:loaderColor="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/et_register_code"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

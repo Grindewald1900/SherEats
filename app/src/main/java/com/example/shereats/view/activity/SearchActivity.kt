@@ -56,12 +56,12 @@ class SearchActivity : FragmentActivity() {
     private fun initView(){
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         viewModel.setDishes(20)
-        viewModel.getDishes().observe(this, {
+        viewModel.getDishes().observe(this) {
             binding.rvActivityEventSearch.adapter = SearchAdapter(it)
             binding.rvActivityEventSearch.layoutManager = LinearLayoutManager(this)
             binding.rvActivityEventSearch.itemAnimator = DefaultItemAnimator()
             setViewPager(it)
-        })
+        }
         setSearchType()
         binding.btnActivityEventSearchBack.setOnClickListener {
             onBackPressed()
@@ -70,9 +70,9 @@ class SearchActivity : FragmentActivity() {
         binding.tvActivityEventSearchSearch.setOnClickListener {
             onSearchClicked()
         }
-        viewModel.getSearchResult().observe(this,{
+        viewModel.getSearchResult().observe(this) {
             binding.rvActivityEventSearch.adapter = SearchAdapter(it)
-        })
+        }
     }
 
     private fun onSearchClicked(){

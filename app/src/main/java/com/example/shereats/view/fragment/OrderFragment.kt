@@ -37,9 +37,9 @@ class OrderFragment : Fragment() {
         viewModel.setOrders()
         binding.rvFragmentOrder.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentOrder.itemAnimator = DefaultItemAnimator()
-        viewModel.getOrders().observe(viewLifecycleOwner, {
+        viewModel.getOrders().observe(viewLifecycleOwner) {
             binding.rvFragmentOrder.adapter = OrderAdapter(it)
-        })
+        }
     }
 
 }

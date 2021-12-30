@@ -16,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shereats.R
 import com.example.shereats.databinding.HomeFragmentBinding
 import com.example.shereats.model.viewmodel.HomeViewModel
+import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.view.adapter.RestaurantAdapter
 
 class HomeFragment : Fragment() {
@@ -34,21 +35,49 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Log.e(R.string.MainPage.toString(), "onActivityCreated")
 
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModel.setRestaurant(1,1)
+        viewModel.setIsNetworkSuccess(ConstantUtil.BACKGROUND_STATE_NORMAL)
+        viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
+            binding.rvFragmentHome.adapter = RestaurantAdapter(it)
+        })
+        viewModel.getIsNetworkSuccess().observe(viewLifecycleOwner) { state ->
+            binding.swipeFragmentHome.isRefreshing = false
+            setBackGround(state)
+        }
+
         binding.rvFragmentHome.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentHome.itemAnimator = DefaultItemAnimator()
         binding.swipeFragmentHome.setColorSchemeColors(resources.getColor(R.color.colorPrimary),resources.getColor(R.color.google), resources.getColor(R.color.facebook))
         binding.swipeFragmentHome.setOnRefreshListener {
-            viewModel.setRestaurant(1, 1, binding.swipeFragmentHome)
+            viewModel.setRestaurant(1, 1)
         }
+    }
 
-        viewModel.setRestaurant(1,1, binding.swipeFragmentHome)
-        viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
-            binding.rvFragmentHome.adapter = RestaurantAdapter(it)
-        })
+    /**
+     * Set background under the recyclerView
+     */
+    private fun setBackGround(state: Int){
+        when(state){
+            ConstantUtil.BACKGROUND_STATE_NORMAL -> {
+                setBackgroundVisibility(View.GONE)
+            }
+            ConstantUtil.BACKGROUND_STATE_NETWORK_ERROR -> {
+                setBackgroundVisibility(View.VISIBLE)
+                binding.ivFragmentHomePlaceholder.setImageResource(R.drawable.ic_baseline_network_check_24)
+                binding.tvFragmentHomePlaceholder.setText(R.string.hint_net_error)
+            }
+            else -> {
+                setBackgroundVisibility(View.GONE)
+            }
+        }
+    }
 
+    private fun setBackgroundVisibility(visibility: Int){
+        binding.llFragmentHomePlaceholder.visibility = visibility
+        binding.ivFragmentHomePlaceholder.visibility = visibility
+        binding.tvFragmentHomePlaceholder.visibility = visibility
     }
 
     override fun onAttach(context: Context) {

@@ -174,31 +174,34 @@
                 android:layout_margin="@dimen/dimen_2"
                 tools:context=".view.DishActivity" />
         </RelativeLayout>
-
-        <com.example.shereats.view.custom.RoundCornerButton
-            android:layout_width="@dimen/button_width_little"
+        <com.example.shereats.view.custom.TransitionButton
+            android:id="@+id/btn_activity_dish_add_cart"
+            android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"
             android:layout_marginTop="@dimen/dimen_30"
             android:text="@string/add_to_cart"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/rl_activity_dish"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:defaultColor="@color/colorPrimary"
+            app:loaderColor="@color/white"
             />
 
-<!--        <com.royrodriguez.transitionbutton.TransitionButton-->
-<!--            android:id="@+id/btn_activity_dish_add"-->
-<!--            android:layout_width="@dimen/button_width_middle"-->
-<!--            android:layout_height="@dimen/button_length_middle"-->
-<!--            android:text="@string/add_to_cart"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:layout_marginTop="@dimen/dimen_30"-->
-<!--            android:layout_marginBottom="@dimen/dimen_10"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/rl_activity_dish"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:defaultColor="#7926A9"-->
-<!--            app:loaderColor="#ffffff"-->
-<!--            />-->
+        <!--        <com.royrodriguez.transitionbutton.TransitionButton-->
+        <!--            android:id="@+id/btn_activity_dish_add"-->
+        <!--            android:layout_width="@dimen/button_width_middle"-->
+        <!--            android:layout_height="@dimen/button_length_middle"-->
+        <!--            android:text="@string/add_to_cart"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:layout_marginTop="@dimen/dimen_30"-->
+        <!--            android:layout_marginBottom="@dimen/dimen_10"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/rl_activity_dish"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:defaultColor="#7926A9"-->
+        <!--            app:loaderColor="#ffffff"-->
+        <!--            />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

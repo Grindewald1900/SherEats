@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shereats.R
 import com.example.shereats.databinding.CartFragmentBinding
 import com.example.shereats.model.viewmodel.CartViewModel
+import com.example.shereats.utils.TextUtil
 import com.example.shereats.view.adapter.CartAdapter
 
 class CartFragment : Fragment() {
@@ -34,13 +35,22 @@ class CartFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-        viewModel.setOrders()
+        viewModel.setOrderItems()
+        viewModel.setTotalPrice()
+        viewModel.getOrderItems().observe(viewLifecycleOwner) {
+            binding.rvFragmentCart.adapter = CartAdapter(it, viewModel)
+        }
+        viewModel.getTotalPrice().observe(viewLifecycleOwner){
+            setPrice(it)
+        }
         binding.rvFragmentCart.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentCart.itemAnimator = DefaultItemAnimator()
-        viewModel.getOrders().observe(viewLifecycleOwner) {
-            binding.rvFragmentCart.adapter = CartAdapter(it)
-        }
 
     }
 
+    private fun setPrice(originPrice: Float){
+        binding.tvShoppingCartPrice.text = TextUtil.getItemPrice(originPrice)
+        binding.tvShoppingCartGst.text = TextUtil.getItemPrice(originPrice * 0.15f)
+        binding.tvShoppingCartTotalPrice.text = TextUtil.getItemPrice(originPrice * 1.15f)
+    }
 }

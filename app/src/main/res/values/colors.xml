@@ -11,11 +11,17 @@
     <color name="colorPrimaryDark">#592089</color>
     <color name="colorAccent">#BAB6B6</color>
 
-<!--    <color name="colorPrimary">#1E2D4C</color>-->
-<!--    <color name="colorPrimaryDark">#8BAD8A</color>-->
+
 
 <!--    General Settings-->
     <color name="color_stroke">#000000</color>
+    <!--    <color name="colorPrimary">#1E2D4C</color>-->
+    <!--    <color name="colorPrimaryDark">#8BAD8A</color>-->
+
+<!--    Custom View-->
+    <color name="color_error">#e74c3c</color>
+    <color name="color_loader">#ffffff</color>
+
     <color name="green_1">#00e6ac</color>
     <color name="pink_1">#ff6666</color>
     <color name="blue_1">#3399ff</color>

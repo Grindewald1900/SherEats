@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.model.entity.Restaurant
+import com.example.shereats.model.entity.SingletonUtil
+import com.example.shereats.model.interfaces.RefreshData
 import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.custom.FavoriteButton
@@ -25,7 +28,7 @@ import com.example.shereats.view.custom.FavoriteButton
 class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<RestaurantAdapter.RestaurantHolder>() {
     private lateinit var mContext: Context
 
-    class RestaurantHolder(view: View): RecyclerView.ViewHolder(view), FavoriteButton.RefreshData{
+    class RestaurantHolder(view: View): RecyclerView.ViewHolder(view), RefreshData{
         var layout: View = view.findViewById(R.id.view_restaurant_background)
         var image: ImageView = view.findViewById(R.id.iv_restaurant_image)
         var title: TextView = view.findViewById(R.id.tv_restaurant_title)
@@ -48,13 +51,13 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
 
     override fun onBindViewHolder(holder: RestaurantHolder, position: Int) {
         val dataSlice = data[position]
-        ConstantUtil.LIST_IS_FAVORITE_REST.add(position, dataSlice.restaurant_isfav == "T")
+        SingletonUtil.LIST_IS_FAVORITE_REST.add(position, dataSlice.restaurant_isfav == "T")
         holder.title.text = dataSlice.restaurant_name
         holder.location.text = dataSlice.restaurant_address
-        holder.price.text = dataSlice.restaurant_average.toString()
+        holder.price.text = TextUtil.getItemPrice(dataSlice.restaurant_average)
         holder.heart.setHolder(holder)
-        holder.heart.setImage(ConstantUtil.LIST_IS_FAVORITE_REST[position])
-        ConstantUtil.LIST_IS_FAVORITE_REST[position] = holder.isFavorite
+        holder.heart.setImage(SingletonUtil.LIST_IS_FAVORITE_REST[position])
+        SingletonUtil.LIST_IS_FAVORITE_REST[position] = holder.isFavorite
         setRestaurantImage(dataSlice.restaurant_id, holder.image)
     }
 

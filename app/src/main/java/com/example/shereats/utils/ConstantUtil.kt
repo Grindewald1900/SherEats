@@ -1,6 +1,7 @@
 package com.example.shereats.utils
 
 import android.graphics.Color
+import com.example.shereats.model.entity.OrderItem
 
 
 /**
@@ -98,6 +99,18 @@ object ConstantUtil {
     const val FILTER_STATE_UP = 801
     const val FILTER_STATE_DOWN = 802
 
+    // Background state
+    const val BACKGROUND_STATE_NORMAL = 900
+    const val BACKGROUND_STATE_NETWORK_ERROR = 901
+
+    // Activity state
+    const val ACTIVITY_STATE_CREATE = 1000
+    const val ACTIVITY_STATE_START = 1001
+    const val ACTIVITY_STATE_RESUME = 1002
+    const val ACTIVITY_STATE_PAUSE = 1003
+    const val ACTIVITY_STATE_STOP= 1004
+
+
     // Constant amount
     const val MAX_RECOMMEND_ITEM: Int = 20
     const val MAX_UPLOAD_IMAGE: Int = 5
@@ -113,8 +126,5 @@ object ConstantUtil {
         4 to Color.parseColor("#7926A9"),
         5 to Color.parseColor("#d9534f"),)
 
-    var MAP_FAVORITE_DISH: HashMap<Int, Boolean> = hashMapOf()
 
-    var LIST_IS_FAVORITE_REST: MutableList<Boolean> = mutableListOf()
-    var LIST_IS_FAVORITE_DISH: MutableList<Boolean> = mutableListOf()
 }

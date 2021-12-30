@@ -5,19 +5,33 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.entity.OrderItem
+import com.example.shereats.model.entity.SingletonUtil
+import com.example.shereats.utils.LoginStatusUtil
 
 class CartViewModel : ViewModel() {
-    private var orders: MutableLiveData<List<OrderItem>> = MutableLiveData()
+    private var orderItems: MutableLiveData<List<OrderItem>> = MutableLiveData()
+    private var totalPrice: MutableLiveData<Float> = MutableLiveData()
 
-    fun getOrders(): LiveData<List<OrderItem>>{
-        return orders
+    fun getOrderItems(): LiveData<List<OrderItem>>{
+        return orderItems
     }
 
-    fun setOrders(){
+    fun setOrderItems(){
         val list: MutableList<OrderItem> = mutableListOf()
-        for (i in 1 .. 10){
-            list.add(OrderItem(Dish(i, "McDonald", i, "Burger", "Fast",15f, " ", 4f, 0.1f, 5f, 4f), i))
+        val orderHashMap = SingletonUtil.CURRENT_ORDER
+
+        orderHashMap.forEach {(_, value) ->
+            list.add(value)
         }
-        orders.postValue(list)
+        orderItems.postValue(list)
+    }
+
+    fun getTotalPrice(): LiveData<Float>{
+        return totalPrice
+    }
+
+    fun setTotalPrice(){
+        val price = SingletonUtil.getPrice()
+        totalPrice.postValue(price)
     }
 }
