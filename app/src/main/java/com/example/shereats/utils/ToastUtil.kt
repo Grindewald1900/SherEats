@@ -24,5 +24,10 @@ class ToastUtil {
         fun showShortMessage(message: String, context: Context){
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
+
+        fun showShortMessage(messageId: Int, context: Context){
+            val message = context.getString(messageId)
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
     }
 }

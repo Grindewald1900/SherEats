@@ -1,12 +1,13 @@
 package com.example.shereats.model.entity
 
+import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
 import org.json.JSONArray
+import kotlin.coroutines.Continuation
 import kotlin.random.Random
 
 object SingletonUtil {
     var MAP_FAVORITE_DISH: HashMap<Int, Boolean> = hashMapOf()
-
     var LIST_IS_FAVORITE_REST: MutableList<Boolean> = mutableListOf()
     var LIST_IS_FAVORITE_DISH: MutableList<Boolean> = mutableListOf()
     // <Int, OrderItem>: Int indicate the item id
@@ -24,8 +25,7 @@ object SingletonUtil {
                 CURRENT_ORDER[dish.item_id]!!.item_amount + 1
             }else{ 1 }
         }else{ count }
-
-        val time = (System.currentTimeMillis()/1000).toString()
+        val time = ConstantUtil.CURRENT_TIME
         val orderId = user.user_id + time
         val id = orderId + dish.item_id
         val price = dish.item_price
@@ -78,6 +78,7 @@ object SingletonUtil {
 
     fun clearCurrentCart(){
         CURRENT_ORDER.clear()
+        ConstantUtil.resetCurrentTime()
     }
 
     fun isCurrentCartEmpty(): Boolean{

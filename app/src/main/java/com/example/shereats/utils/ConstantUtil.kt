@@ -37,7 +37,7 @@ object ConstantUtil {
 
     const val SERVLET_REGISTER: String = "Servlet.RegisterServlet.do"
     const val SERVLET_LOGIN: String = "Servlet.LoginServlet.do"
-    const val SERVLET_ADD_ORDER: String = "Servlet.OrderServlet.do"
+    const val SERVLET_ORDER: String = "Servlet.OrderServlet.do"
     const val SERVLET_DISH: String = "Servlet.DishServlet.do"
     const val SERVLET_RESTAURANT: String = "Servlet.RestaurantServlet.do"
     const val SERVLET_EVENT: String = "Servlet.EventServlet.do"
@@ -131,5 +131,10 @@ object ConstantUtil {
         4 to Color.parseColor("#7926A9"),
         5 to Color.parseColor("#d9534f"),)
 
+    var CURRENT_TIME: String = (System.currentTimeMillis()/1000).toString()
+
+    fun resetCurrentTime(){
+        CURRENT_TIME = (System.currentTimeMillis()/1000).toString()
+    }
 
 }

@@ -10,9 +10,9 @@ package com.example.shereats.model.entity
  * @param items:
 */
 data class Order(
-    val id: String,
-    val price: Float,
-    val time: String,
-    val user_name: String,
-    val items: List<OrderItem>
+    var id: String,
+    var price: Float,
+    var time: String,
+    var user_name: String,
+    var items: MutableList<OrderItem>
 )

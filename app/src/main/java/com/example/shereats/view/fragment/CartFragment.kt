@@ -85,6 +85,7 @@ class CartFragment : Fragment() {
                 context?.let { it1 -> ToastUtil.showShortMessage(it1.getString(R.string.checkout_no_order), requireContext()) }
                 return@setOnClickListener
             }
+
             mTransitionBtn.startAnimation()
             GlobalScope.launch {
                 delay(ConstantUtil.ANIMATION_DELAY)

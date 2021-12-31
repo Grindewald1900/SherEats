@@ -28,5 +28,13 @@ class LoginStatusUtil {
                 User("000","Click to login","", Date(), 'F', "000", "", "")
             }
         }
+
+        fun getUserId(): String{
+            return getUser().user_id
+        }
+
+        fun getUserName(): String{
+            return getUser().user_name
+        }
     }
 }

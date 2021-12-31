@@ -38,7 +38,12 @@ interface EndPointInterface {
     @POST(ConstantUtil.SERVLET_BADGE)
     fun getBadges(@Query("id") id: String): Call<List<Badge>>
 
-    @POST(ConstantUtil.SERVLET_ADD_ORDER)
+    @POST(ConstantUtil.SERVLET_ORDER)
     fun addOrder(@Body orderItem: List<OrderItem>, @Query("daoType") daoType: Int): Call<IntResult>
 
+    @POST(ConstantUtil.SERVLET_ORDER)
+    fun getOrderByUserId(@Query("user_id") id: String, @Query("daoType") daoType: Int): Call<List<OrderItem>>
+
+    @POST(ConstantUtil.SERVLET_ORDER)
+    fun getOrderByOrderId(@Query("order_id") id: String, @Query("daoType") daoType: Int): Call<List<OrderItem>>
 }
