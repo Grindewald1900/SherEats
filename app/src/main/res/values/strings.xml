@@ -127,6 +127,7 @@
     <string name="check_out">Checkout</string>
     <string name="add_to_cart">Add To Cart</string>
     <string name="checkout_successful">Your order has been placed!</string>
+    <string name="checkout_no_order">Oops, there \'s no item in the cart</string>
     <string name="checkout_fail">Fail to place your order, please try again!</string>
     <string name="total_price">Order Total: </string>
     <string name="dollar"> $</string>

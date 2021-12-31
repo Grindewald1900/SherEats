@@ -19,6 +19,7 @@ import retrofit2.Response
 class LoginViewModel: BaseViewModel() {
     private lateinit var call: Call<List<User>>
     private var user: MutableLiveData<List<User>> = MutableLiveData()
+    private var state: MutableLiveData<Int> = MutableLiveData()
 
     fun getUser(): LiveData<List<User>>{
         return user
@@ -40,6 +41,13 @@ class LoginViewModel: BaseViewModel() {
             }
 
         })
+    }
 
+    fun getState(): LiveData<Int>{
+        return state
+    }
+
+    fun setState(state: Int){
+        this.state.postValue(state)
     }
 }

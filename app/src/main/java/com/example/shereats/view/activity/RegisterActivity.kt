@@ -56,12 +56,17 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.register(userData[0], userData[1], userData[2], userData[3])
 
         }
-        viewModel.getIsSuccess().observe(this, {
+        viewModel.getIsSuccess().observe(this) {
             if (it == null) return@observe
-            when(it.result){
+            when (it.result) {
                 ConstantUtil.REGISTER_SUCCESS -> {
                     LoginStatusUtil.setUser(userData[0], userData[1], userData[2], userData[3])
-                    startActivity(Intent(this, ResultActivity::class.java).putExtra(ConstantUtil.STRING_RESULT_ACTIVITY, ConstantUtil.RESULT_CORRECT))
+                    startActivity(
+                        Intent(
+                            this,
+                            ResultActivity::class.java
+                        ).putExtra(ConstantUtil.STRING_RESULT_ACTIVITY, ConstantUtil.RESULT_CORRECT)
+                    )
                     ToastUtil.showLongMessage(getString(R.string.register_success), this)
                 }
                 ConstantUtil.REGISTER_DEFAULT -> {
@@ -78,7 +83,7 @@ class RegisterActivity : AppCompatActivity() {
                     ToastUtil.showLongMessage(getString(R.string.register_fail), this)
                 }
             }
-        })
+        }
 
     }
 }

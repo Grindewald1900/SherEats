@@ -51,16 +51,16 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
         }
 
         viewModel.setBadges()
-        viewModel.getBadges().observe(this, {
+        viewModel.getBadges().observe(this) {
             binding.rvActivityUserInfo.adapter = BadgeAdapter(it)
-        })
+        }
         viewModel.setProfileImage(mUser.user_name, binding.btnActivityUserInfoPortrait, this)
-        viewModel.getProfileImage().observe(this, {
+        viewModel.getProfileImage().observe(this) {
             Glide.with(this)
                 .load(it)
                 .placeholder(R.drawable.loading_spinner_1s_200px)
                 .into(binding.btnActivityUserInfoPortrait)
-        })
+        }
     }
 
     private fun hideActionBar(){

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
@@ -89,12 +90,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        setLoginStatus()
+    }
+
+    private fun setLoginStatus(){
         if(LoginStatusUtil.isLogin()){
             val user = LoginStatusUtil.getUser()
+            val headerBk = headerView.findViewById<ImageView>(R.id.iv_main_header_bk)
             val userImage: RoundImageView = headerView.findViewById(R.id.iv_main_header_portrait)
             headerView.findViewById<TextView>(R.id.tv_main_header_name).text = user.user_name
             headerView.findViewById<TextView>(R.id.tv_main_header_email).text = user.user_mail
             viewModel.setProfileImage(user.user_name, userImage, this)
+            Glide.with(this)
+                .load(R.drawable.gif_header_background)
+                .placeholder(R.color.colorPrimary)
+                .into(headerBk)
         }
     }
 

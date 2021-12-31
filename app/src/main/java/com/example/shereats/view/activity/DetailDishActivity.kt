@@ -106,7 +106,7 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
             // Start animation when clicked
             mTransitionBtn.startAnimation()
             GlobalScope.launch {
-                delay(1000)
+                delay(ConstantUtil.ANIMATION_DELAY)
                 val intent: Intent
 
                 if (LoginStatusUtil.isLogin()){

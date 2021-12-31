@@ -3,10 +3,9 @@ package com.example.shereats.utils.network
 import com.example.shereats.model.entity.*
 import com.example.shereats.utils.ConstantUtil
 import okhttp3.ResponseBody
+import org.json.JSONArray
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 /**
@@ -38,5 +37,8 @@ interface EndPointInterface {
 
     @POST(ConstantUtil.SERVLET_BADGE)
     fun getBadges(@Query("id") id: String): Call<List<Badge>>
+
+    @POST(ConstantUtil.SERVLET_ADD_ORDER)
+    fun addOrder(@Body orderItem: List<OrderItem>, @Query("daoType") daoType: Int): Call<IntResult>
 
 }

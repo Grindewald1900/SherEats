@@ -2,23 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_main_header"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
-    android:background="@color/colorPrimary"
+    android:layout_height="@dimen/dimen_200"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/iv_main_header_bk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@color/colorPrimary"
+        />
 
     <com.example.shereats.view.custom.RoundImageView
         android:id="@+id/iv_main_header_portrait"
         android:layout_width="@dimen/dimen_60"
         android:layout_height="@dimen/dimen_60"
         android:layout_marginStart="@dimen/dimen_10"
-        android:layout_marginBottom="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_30"
         android:contentDescription="@string/nav_header_desc"
         app:image_border_src="@drawable/img_user_unknown"
         app:border_width="@dimen/dimen_2"

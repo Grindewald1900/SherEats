@@ -71,6 +71,8 @@ object ConstantUtil {
     const val REGISTER_DUPLICATE_NAME: Int = 203
 
 
+
+
     // Handler
     const val HANDLER_LOGIN: Int = 301
     const val HANDLER_REGISTER: Int = 302
@@ -108,7 +110,9 @@ object ConstantUtil {
     const val ACTIVITY_STATE_START = 1001
     const val ACTIVITY_STATE_RESUME = 1002
     const val ACTIVITY_STATE_PAUSE = 1003
-    const val ACTIVITY_STATE_STOP= 1004
+    const val ACTIVITY_STATE_STOP = 1004
+    const val ACTIVITY_STATE_COROUTINE = 1010
+    const val ACTIVITY_STATE_UI_THREAD = 1011
 
 
     // Constant amount
@@ -118,6 +122,7 @@ object ConstantUtil {
     const val MIN_TRANSFORM_SCALE = 0.8f
     const val MIN_TRANSFORM_ALPHA = 0.5f
     const val RESULT_ACTIVITY_TIME: Long = 3000
+    const val ANIMATION_DELAY: Long = 1000
 
     val MAP_BADGE_COLOR: Map<Int, Int> = mapOf(
         1 to Color.parseColor("#6aa84f"),

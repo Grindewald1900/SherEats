@@ -1,6 +1,7 @@
 package com.example.shereats.model.entity
 
 import com.example.shereats.utils.LoginStatusUtil
+import org.json.JSONArray
 import kotlin.random.Random
 
 object SingletonUtil {
@@ -63,6 +64,28 @@ object SingletonUtil {
             price += itemPrice
         }
         return price
+    }
+
+    fun getCurrentCart(): List<OrderItem>{
+        val list: MutableList<OrderItem> = mutableListOf()
+        val orderHashMap = SingletonUtil.CURRENT_ORDER
+
+        orderHashMap.forEach {(_, value) ->
+            list.add(value)
+        }
+        return list
+    }
+
+    fun clearCurrentCart(){
+        CURRENT_ORDER.clear()
+    }
+
+    fun isCurrentCartEmpty(): Boolean{
+        return CURRENT_ORDER.isEmpty()
+    }
+
+    fun getCurrentCartJson(): JSONArray{
+        return JSONArray(getCurrentCart())
     }
 
     private fun isContainItem(id: Int): Boolean{
