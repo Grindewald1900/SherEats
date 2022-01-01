@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shereats.R
 import com.example.shereats.model.entity.Order
+import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.ToastUtil
+import com.example.shereats.view.activity.DetailOrderActivity
 import com.example.shereats.view.custom.RoundCornerButton
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.runtime.Permission
@@ -30,6 +33,7 @@ class OrderAdapter(var data: List<Order>): RecyclerView.Adapter<OrderAdapter.Ord
         val content: TextView = view.findViewById(R.id.tv_view_order_content)
         val info: TextView = view.findViewById(R.id.tv_view_order_info)
         val contact: RoundCornerButton = view.findViewById(R.id.btn_view_order_contact)
+        val view: ConstraintLayout = view.findViewById(R.id.view_order)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
@@ -55,6 +59,11 @@ class OrderAdapter(var data: List<Order>): RecyclerView.Adapter<OrderAdapter.Ord
                     ToastUtil.showShortMessage(R.string.hint_no_perm, mContext)
                 }
                 .start()
+        }
+        holder.view.setOnClickListener {
+            val intent = Intent(mContext, DetailOrderActivity::class.java)
+            intent.putExtra(ConstantUtil.ENTITY_ORDER, dataSlice)
+            mContext.startActivity(intent)
         }
     }
 

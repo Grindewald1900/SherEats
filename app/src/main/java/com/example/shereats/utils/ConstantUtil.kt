@@ -44,6 +44,7 @@ object ConstantUtil {
     const val SERVLET_BADGE: String = "Servlet.BadgeServlet.do"
 
     const val ENTITY_DISH = "DISH"
+    const val ENTITY_ORDER = "ORDER"
     const val ATTRIBUTE_POSITION = "POSITION"
 
     const val SERVER_RESULT = "result"

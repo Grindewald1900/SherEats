@@ -23,6 +23,10 @@ class TextUtil {
             return String.format("%.2f", price) + "$"
         }
 
+        fun getItemPriceEach(price: Float): String{
+            return String.format("%.2f", price) + "$ each"
+        }
+
         /**
          * return a promotion tag
          * 20% off

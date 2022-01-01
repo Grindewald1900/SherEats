@@ -2,6 +2,7 @@ package com.example.shereats.model.entity
 
 import android.content.ClipData
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 /**
@@ -44,4 +45,4 @@ data class OrderItem(
     val item_name: String,
     @SerializedName("restaurant_name")
     val restaurant_name: String
-)
+): Serializable

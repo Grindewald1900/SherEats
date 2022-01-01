@@ -59,7 +59,7 @@ class CartFragment : Fragment() {
         viewModel.setOrderItems()
         viewModel.setTotalPrice()
         viewModel.getOrderItems().observe(viewLifecycleOwner) {
-            binding.rvFragmentCart.adapter = CartAdapter(it, viewModel)
+            binding.rvFragmentCart.adapter = CartAdapter(it, viewModel, true)
         }
         viewModel.getTotalPrice().observe(viewLifecycleOwner){
             setPrice(it)

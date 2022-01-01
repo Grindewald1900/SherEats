@@ -1,5 +1,7 @@
 package com.example.shereats.model.entity
 
+import java.io.Serializable
+
 
 /**
  * Created by Yee on 2021-10-27.
@@ -15,4 +17,4 @@ data class Order(
     var time: String,
     var user_name: String,
     var items: MutableList<OrderItem>
-)
+): Serializable
