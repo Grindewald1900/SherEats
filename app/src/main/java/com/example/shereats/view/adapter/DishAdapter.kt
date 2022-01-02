@@ -14,7 +14,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shereats.R
-import com.example.shereats.model.entity.Dish
+import com.example.shereats.model.entity.FirebaseDish
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.firebase.StorageUtil
@@ -28,7 +28,7 @@ import kotlin.random.Random
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  */
-class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
+class DishAdapter(var data: List<FirebaseDish>): RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
     private lateinit var mContext: Context
 
     class DishViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -51,10 +51,10 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dataSlice = data[position]
         // We don't have rate data in our database, so fake some data here
-        var starCount = dataSlice.item_taste
+        var starCount = dataSlice.itemTaste
         //var starCount = (dataSlice.item_service + dataSlice.item_environment + dataSlice.item_taste)/3
-        holder.title.text = dataSlice.item_name
-        holder.price.text = TextUtil.getItemPrice(dataSlice.item_price)
+        holder.title.text = dataSlice.itemName
+        holder.price.text = TextUtil.getItemPrice(dataSlice.itemPrice!!)
         holder.layout.setOnClickListener {
             // Pass dish data to the detailed page
             val intent = Intent(mContext, DetailDishActivity::class.java)
@@ -62,12 +62,12 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
             intent.putExtra(ConstantUtil.ATTRIBUTE_POSITION, position)
             mContext.startActivity(intent)
         }
-        if (dataSlice.item_discount < 1f){
+        if (dataSlice.itemDiscount!! < 1f){
             setVisibility(holder, View.VISIBLE)
             holder.price.setTextColor(Color.GRAY)
             holder.price.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
-            holder.newPrice.text = TextUtil.getItemPrice(dataSlice.item_price * dataSlice.item_discount)
-            holder.promotion.text = TextUtil.getPromotion(dataSlice.item_discount)
+            holder.newPrice.text = TextUtil.getItemPrice(dataSlice.itemPrice.toDouble() * dataSlice.itemDiscount)
+            holder.promotion.text = TextUtil.getPromotion(dataSlice.itemDiscount)
         }else{
             setVisibility(holder, View.INVISIBLE)
             holder.price.setTextColor(mContext.getColor(R.color.colorPrimary))
@@ -76,6 +76,9 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
 
         holder.rate.removeAllViews()
         for (i in 1..5){
+            if (starCount == null){
+                return
+            }
             if (starCount >= 0.75) {
                 holder.rate.addView(addStar(3))
             }
@@ -87,7 +90,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
             }
             starCount -= 1
         }
-        getDishImage(dataSlice.item_id, holder.image)
+        getDishImage(dataSlice.itemId!!, holder.image)
     }
 
     override fun getItemCount(): Int {
@@ -130,7 +133,7 @@ class DishAdapter(var data: List<Dish>): RecyclerView.Adapter<DishAdapter.DishVi
     /**
      * Get image for the dish
      */
-    private fun getDishImage(id: Int, view: ImageView){
+    private fun getDishImage(id: Long, view: ImageView){
         val childPath = "item/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {

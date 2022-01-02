@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shereats.R
-import com.example.shereats.model.entity.Restaurant
+import com.example.shereats.model.entity.FirebaseRestaurant
 import com.example.shereats.model.entity.SingletonUtil
 import com.example.shereats.model.interfaces.RefreshData
 import com.example.shereats.utils.ConstantUtil
@@ -25,7 +25,7 @@ import com.example.shereats.view.custom.FavoriteButton
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  */
-class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<RestaurantAdapter.RestaurantHolder>() {
+class RestaurantAdapter(var data: List<FirebaseRestaurant>): RecyclerView.Adapter<RestaurantAdapter.RestaurantHolder>() {
     private lateinit var mContext: Context
 
     class RestaurantHolder(view: View): RecyclerView.ViewHolder(view), RefreshData{
@@ -51,14 +51,14 @@ class RestaurantAdapter(var data: List<Restaurant>): RecyclerView.Adapter<Restau
 
     override fun onBindViewHolder(holder: RestaurantHolder, position: Int) {
         val dataSlice = data[position]
-        SingletonUtil.LIST_IS_FAVORITE_REST.add(position, dataSlice.restaurant_isfav == "T")
-        holder.title.text = dataSlice.restaurant_name
-        holder.location.text = dataSlice.restaurant_address
-        holder.price.text = TextUtil.getItemPrice(dataSlice.restaurant_average)
+        SingletonUtil.LIST_IS_FAVORITE_REST.add(position, dataSlice.restaurantIsfav == "T")
+        holder.title.text = dataSlice.restaurantName
+        holder.location.text = dataSlice.restaurantAddress
+        holder.price.text = TextUtil.getItemPrice(dataSlice.restaurantAverage!!)
         holder.heart.setHolder(holder)
         holder.heart.setImage(SingletonUtil.LIST_IS_FAVORITE_REST[position])
         SingletonUtil.LIST_IS_FAVORITE_REST[position] = holder.isFavorite
-        setRestaurantImage(dataSlice.restaurant_id, holder.image)
+        setRestaurantImage(dataSlice.restaurantId!!.toInt(), holder.image)
     }
 
 

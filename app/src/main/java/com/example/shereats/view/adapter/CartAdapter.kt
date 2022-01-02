@@ -1,6 +1,7 @@
 package com.example.shereats.view.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shereats.R
-import com.example.shereats.model.entity.OrderItem
+import com.example.shereats.model.entity.FirebaseOrderItem
 import com.example.shereats.model.interfaces.RefreshCart
 import com.example.shereats.model.viewmodel.CartViewModel
+import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.utils.EntityUtil
 import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.firebase.StorageUtil
+import com.example.shereats.view.activity.DetailDishActivity
 import com.example.shereats.view.custom.CounterLayout
 import com.example.shereats.view.fragment.CartFragment
 
@@ -24,7 +28,7 @@ import com.example.shereats.view.fragment.CartFragment
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  */
-class CartAdapter(var data: List<OrderItem>, var viewModel: CartViewModel?, var isShowCounter: Boolean): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+class CartAdapter(var data: List<FirebaseOrderItem>, var viewModel: CartViewModel?, var isShowCounter: Boolean): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
     private lateinit var mContext: Context
     class CartViewHolder(view: View, var viewModel: CartViewModel?): RecyclerView.ViewHolder(view), RefreshCart {
         val image: ImageView = view.findViewById(R.id.iv_shopping_cart_icon)
@@ -54,16 +58,21 @@ class CartAdapter(var data: List<OrderItem>, var viewModel: CartViewModel?, var 
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val dataSlice = data[position]
-        holder.title.text = dataSlice.item_name
-        holder.description.text = dataSlice.restaurant_name
-        holder.price.text = TextUtil.getItemPriceEach(dataSlice.order_price)
+        holder.title.text = dataSlice.itemName
+        holder.description.text = dataSlice.restaurantName
+        holder.price.text = TextUtil.getItemPriceEach(dataSlice.orderPrice!!)
         if(isShowCounter){
             holder.counter.setHolder(holder)
             holder.counter.setOrderItem(dataSlice)
         }else{
             holder.counter.visibility = View.GONE
         }
-        getDishImage(dataSlice.item_id, holder.image)
+        holder.image.setOnClickListener {
+            val intent = Intent(mContext, DetailDishActivity::class.java)
+            intent.putExtra(ConstantUtil.ENTITY_DISH, EntityUtil.getDishFromOrderItem(dataSlice))
+            mContext.startActivity(intent)
+        }
+        getDishImage(dataSlice.itemId!!, holder.image)
     }
 
     override fun getItemCount(): Int {
@@ -73,7 +82,7 @@ class CartAdapter(var data: List<OrderItem>, var viewModel: CartViewModel?, var 
     /**
      * Get image for the order
      */
-    private fun getDishImage(id: Int, view: ImageView){
+    private fun getDishImage(id: Long, view: ImageView){
         val childPath = "item/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {

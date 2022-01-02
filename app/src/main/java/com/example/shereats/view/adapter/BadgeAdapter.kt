@@ -14,7 +14,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.ViewTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.shereats.R
-import com.example.shereats.model.entity.Badge
+import com.example.shereats.model.entity.FirebaseBadge
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
 import com.example.shereats.utils.firebase.StorageUtil
@@ -26,7 +26,7 @@ import com.example.shereats.view.custom.RoundImageView
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  */
-class BadgeAdapter(var data: List<Badge>): RecyclerView.Adapter<BadgeAdapter.BadgeViewHolder>() {
+class BadgeAdapter(var data: List<FirebaseBadge>): RecyclerView.Adapter<BadgeAdapter.BadgeViewHolder>() {
     private lateinit var mContext: Context
     class BadgeViewHolder(view: View): RecyclerView.ViewHolder(view){
         val image: RoundImageView = view.findViewById(R.id.iv_adapter_badge_logo)
@@ -42,10 +42,10 @@ class BadgeAdapter(var data: List<Badge>): RecyclerView.Adapter<BadgeAdapter.Bad
 
     override fun onBindViewHolder(holder: BadgeViewHolder, position: Int) {
         val dataSlice = data[position]
-        holder.tvContent.text = dataSlice.badge_content
-        holder.tvContent.setTextColor(ImageUtil.getBadgeColor(dataSlice.badge_rarity))
-        holder.tvDate.text = dataSlice.badge_date
-        getBadgeImage(dataSlice.badge_type, holder.image)
+        holder.tvContent.text = dataSlice.badgeContent
+        holder.tvContent.setTextColor(ImageUtil.getBadgeColor(dataSlice.badgeRarity!!))
+        holder.tvDate.text = dataSlice.badgeDate
+        getBadgeImage(dataSlice.badgeType!!, holder.image)
     }
 
     override fun getItemCount(): Int {
@@ -56,7 +56,7 @@ class BadgeAdapter(var data: List<Badge>): RecyclerView.Adapter<BadgeAdapter.Bad
     /**
      * Get image for the Badge
      */
-    private fun getBadgeImage(type: Int, view: RoundImageView){
+    private fun getBadgeImage(type: Long, view: RoundImageView){
         val childPath = "badge/$type.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {

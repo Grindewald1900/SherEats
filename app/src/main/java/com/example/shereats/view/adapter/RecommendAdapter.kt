@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.shereats.R
-import com.example.shereats.model.entity.Dish
+import com.example.shereats.model.entity.FirebaseDish
 
 
 /**
@@ -15,7 +15,7 @@ import com.example.shereats.model.entity.Dish
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  */
-class RecommendAdapter(val dish: List<Dish>): RecyclerView.Adapter<RecommendAdapter.RecommendViewHolder>() {
+class RecommendAdapter(val dish: List<FirebaseDish>): RecyclerView.Adapter<RecommendAdapter.RecommendViewHolder>() {
     class RecommendViewHolder(view: View): RecyclerView.ViewHolder(view){
         var title: TextView = view.findViewById(R.id.tv_viewpager_title)
     }
@@ -26,7 +26,7 @@ class RecommendAdapter(val dish: List<Dish>): RecyclerView.Adapter<RecommendAdap
     }
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
-        holder.title.text = dish[position].item_name
+        holder.title.text = dish[position].itemName
     }
 
     override fun getItemCount(): Int {

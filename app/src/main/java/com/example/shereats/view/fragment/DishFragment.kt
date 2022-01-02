@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shereats.R
 import com.example.shereats.databinding.DishFragmentBinding
-import com.example.shereats.model.entity.Dish
+import com.example.shereats.model.entity.FirebaseDish
 import com.example.shereats.model.viewmodel.DishViewModel
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.EntityUtil
@@ -40,7 +40,7 @@ class DishFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DishViewModel::class.java)
-        viewModel.setDishes(binding.swipeFragmentDish)
+        viewModel.setAllFirebaseDish()
         topLayout = binding.llFragmentDishTop
         sfFilterOne = binding.sfFragmentDishOne
         sfFilterTwo = binding.sfFragmentDishTwo
@@ -48,11 +48,11 @@ class DishFragment : Fragment() {
         binding.rvFragmentDish.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentDish.itemAnimator = DefaultItemAnimator()
 
-        viewModel.getDishes().observe(viewLifecycleOwner) {
+        viewModel.getFirebaseDish().observe(viewLifecycleOwner) {
             binding.rvFragmentDish.adapter = DishAdapter(it)
         }
         binding.swipeFragmentDish.setOnRefreshListener {
-            viewModel.setDishes(binding.swipeFragmentDish)
+            viewModel.setAllFirebaseDish()
         }
 
         setScrollListener()
@@ -69,7 +69,7 @@ class DishFragment : Fragment() {
                 sfFilterTwo.setStateNone()
             }
             setFilterState(sfFilterOne)
-            val currentData = viewModel.getDishes().value as List<Dish>
+            val currentData = viewModel.getFirebaseDish().value as List<FirebaseDish>
             when(sfFilterOne.getState()){
                 ConstantUtil.FILTER_STATE_UP -> {
                     binding.switchFragmentDish.isChecked = false
@@ -86,7 +86,7 @@ class DishFragment : Fragment() {
                 sfFilterOne.setStateNone()
             }
             setFilterState(sfFilterTwo)
-            val currentData = viewModel.getDishes().value as List<Dish>
+            val currentData = viewModel.getFirebaseDish().value as List<FirebaseDish>
             when(sfFilterTwo.getState()){
                 ConstantUtil.FILTER_STATE_UP -> {
                     binding.switchFragmentDish.isChecked = false
@@ -107,7 +107,7 @@ class DishFragment : Fragment() {
     private fun setOnCheckedListener(){
         binding.switchFragmentDish.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked){
-                val currentData = viewModel.getDishes().value as List<Dish>
+                val currentData = viewModel.getFirebaseDish().value as List<FirebaseDish>
                 viewModel.resetDishes(EntityUtil.sortDishByPromo(currentData.toMutableList()))
                 sfFilterOne.setStateNone()
                 sfFilterTwo.setStateNone()

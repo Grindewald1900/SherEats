@@ -101,7 +101,7 @@ class CartFragment : Fragment() {
                     override fun onAnimationStopEnd() {
                         isClickedTransitionBtn = true
 
-                        viewModel.uploadOrderItems()
+//                        viewModel.uploadOrderItems()
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                     }
@@ -110,10 +110,10 @@ class CartFragment : Fragment() {
         }
     }
 
-    private fun setPrice(originPrice: Float){
-        binding.tvShoppingCartPrice.text = TextUtil.getItemPrice(originPrice)
-        binding.tvShoppingCartGst.text = TextUtil.getItemPrice(originPrice * 0.15f)
-        binding.tvShoppingCartTotalPrice.text = TextUtil.getItemPrice(originPrice * 1.15f)
+    private fun setPrice(originPrice: Double){
+        binding.tvShoppingCartPrice.text = TextUtil.getItemPrice(originPrice.toDouble())
+        binding.tvShoppingCartGst.text = TextUtil.getItemPrice(originPrice.toDouble() * 0.15f)
+        binding.tvShoppingCartTotalPrice.text = TextUtil.getItemPrice(originPrice.toDouble() * 1.15f)
         if(originPrice <= 0f){
             binding.ivFragmentCartPlaceholder.visibility = View.VISIBLE
             binding.tvFragmentCartPlaceholder.visibility = View.VISIBLE

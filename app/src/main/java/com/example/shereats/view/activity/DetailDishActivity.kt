@@ -9,14 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityDetailDishBinding
-import com.example.shereats.model.entity.Dish
-import com.example.shereats.model.entity.Restaurant
-import com.example.shereats.model.entity.SingletonUtil
-import com.example.shereats.model.entity.User
+import com.example.shereats.model.entity.*
 import com.example.shereats.model.interfaces.RefreshData
 import com.example.shereats.model.viewmodel.DetailDishViewModel
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
+import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.custom.FavoriteButton
 import com.example.shereats.view.custom.TransitionButton
@@ -37,14 +35,14 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
     private lateinit var mMapFragment: SupportMapFragment
     private lateinit var mGoogleMap: GoogleMap
     private lateinit var mTransitionBtn: TransitionButton
-    private lateinit var mDish: Dish
-    private lateinit var mRestaurant: Restaurant
+    private lateinit var mDish: FirebaseDish
+    private lateinit var mRestaurant: FirebaseRestaurant
     private var isClickedTransitionBtn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (null != intent.extras){
-            mDish = intent.getSerializableExtra(ConstantUtil.ENTITY_DISH) as Dish
+            mDish = intent.getSerializableExtra(ConstantUtil.ENTITY_DISH) as FirebaseDish
         }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_dish)
         initViewBeforeMap()
@@ -53,13 +51,13 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
 
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
-        viewModel.setRestaurant(mDish.restaurant_id)
+        viewModel.setFirebaseRestaurant(mDish.restaurantId!!)
         viewModel.getRestaurant().observe(this) {
             mRestaurant= it[0]
             showPoint()
             initView()
             setUserInfo()
-            setDishImage(mDish.item_id, binding.ivActivityDishImage)
+            setDishImage(mDish.restaurantId!!.toInt(), binding.ivActivityDishImage)
         }
     }
 
@@ -77,15 +75,14 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
      */
     private fun initViewBeforeMap(){
         viewModel = ViewModelProvider(this).get(DetailDishViewModel::class.java)
-        viewModel.setActivityState(ConstantUtil.ACTIVITY_STATE_CREATE)
         mMapFragment = supportFragmentManager.findFragmentById(R.id.fragment_activity_dish_map) as SupportMapFragment
         mMapFragment.getMapAsync(this)
     }
 
     private fun initView(){
-        binding.tvActivityDishDescription.text = mRestaurant.restaurant_genre
-        binding.tvActivityDishPrice.text = "${mRestaurant.restaurant_average.toString()}\$"
-        binding.tvActivityDishLocation.text = mRestaurant.restaurant_address
+        binding.tvActivityDishDescription.text = mRestaurant.restaurantGenre
+        binding.tvActivityDishPrice.text = TextUtil.getItemPriceEach(mRestaurant.restaurantAverage!!)
+        binding.tvActivityDishLocation.text = mRestaurant.restaurantAddress
         binding.btnActivityDishBack.setOnClickListener {
             onBackPressed()
         }
@@ -131,13 +128,13 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
      * Show a mark on the google map fragment
      */
     private fun showPoint(){
-        val point = LatLng(mRestaurant.restaurant_lat.toDouble(), mRestaurant.restaurant_long.toDouble())
+        val point = LatLng(mRestaurant.restaurantLat!!.toDouble(), mRestaurant.restaurantLong!!.toDouble())
         mGoogleMap.apply {
             addMarker(
                 MarkerOptions()
                     .position(point)
-                    .title(mRestaurant.restaurant_name)
-                    .snippet("${mRestaurant.restaurant_genre}: ${mRestaurant.restaurant_average}$")
+                    .title(mRestaurant.restaurantName)
+                    .snippet("${mRestaurant.restaurantGenre}: ${mRestaurant.restaurantAverage}$")
             )
             moveCamera(CameraUpdateFactory.newLatLng(point))
             setMinZoomPreference(10f)
@@ -151,8 +148,8 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
     private fun setUserInfo(){
         if(LoginStatusUtil.isLogin()){
             val user = LoginStatusUtil.getUser()
-            viewModel.setProfileImage(user.user_name, binding.ivActivityDishPortrait, this)
-            binding.tvActivityDishInitiator.text = user.user_name
+            viewModel.setProfileImage(user.userName!!, binding.ivActivityDishPortrait, this)
+            binding.tvActivityDishInitiator.text = user.userName
         }else{
             binding.tvActivityDishInitiator.text = getString(R.string.visitor)
         }
@@ -178,15 +175,15 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
      * Initialize src and set is_favorite button click listener
      */
     private fun setHeartListener(){
-        if (!SingletonUtil.MAP_FAVORITE_DISH.containsKey(mDish.item_id)){
-            SingletonUtil.MAP_FAVORITE_DISH[mDish.item_id] = false
+        if (!SingletonUtil.MAP_FAVORITE_DISH.containsKey(mDish.itemId)){
+            SingletonUtil.MAP_FAVORITE_DISH[mDish.itemId!!] = false
         }
         binding.btnActivityDishCollect.setHolder(this)
-        binding.btnActivityDishCollect.setImage(SingletonUtil.MAP_FAVORITE_DISH[mDish.item_id]!!)
+        binding.btnActivityDishCollect.setImage(SingletonUtil.MAP_FAVORITE_DISH[mDish.itemId]!!)
     }
 
     override fun refreshData(isFav: Boolean) {
-        SingletonUtil.MAP_FAVORITE_DISH[mDish.item_id] = isFav
+        SingletonUtil.MAP_FAVORITE_DISH[mDish.itemId!!] = isFav
     }
 
 }

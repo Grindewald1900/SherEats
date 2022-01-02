@@ -27,11 +27,11 @@ class DetailOrderActivity : AppCompatActivity() {
         }
         binding.rvActivityOrder.layoutManager = LinearLayoutManager(this)
         binding.rvActivityOrder.adapter = CartAdapter(mOrder.items, null, false)
-        setPrice(mOrder.price)
+        setPrice(mOrder.price.toDouble())
 
     }
 
-    private fun setPrice(originPrice: Float) {
+    private fun setPrice(originPrice: Double) {
         binding.tvShoppingOrderPrice.text = TextUtil.getItemPrice(originPrice)
         binding.tvShoppingOrderGst.text = TextUtil.getItemPrice(originPrice * 0.15f)
         binding.tvShoppingOrderTotalPrice.text = TextUtil.getItemPrice(originPrice * 1.15f)

@@ -36,24 +36,27 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
         viewModel.getState().observe(this){
-            if (it == ConstantUtil.ACTIVITY_STATE_UI_THREAD){
-                if (!startLogin()){
-                    // We only deal with fail here, cause there's still a few steps before totally succeed
+            when(it){
+                ConstantUtil.ACTIVITY_STATE_UI_THREAD -> {
+                    if (!startLogin()){
+                        // We only deal with fail here, cause there's still a few steps before totally succeed
+                        stopAnimeByIsSuccess(false)
+                    }
+                } // If valid user, go back to main page, else go to register page
+                ConstantUtil.ACTIVITY_STATE_LOGIN_SUCCESS -> {
+                    stopAnimeByIsSuccess(true)
+                    ToastUtil.showShortMessage(getString(R.string.hint_login_success), this)
+                    finish()
+                }
+                ConstantUtil.ACTIVITY_STATE_LOGIN_FAIL -> {
                     stopAnimeByIsSuccess(false)
+                    ToastUtil.showShortMessage(getString(R.string.hint_invalid_user), this)
                 }
             }
+
         }
         viewModel.getUser().observe(this) {
-            // If valid user, go back to main page, else go to register page
-            if (it.isNotEmpty()) {
-                LoginStatusUtil.mUser = it[0]
-                stopAnimeByIsSuccess(true)
-                ToastUtil.showShortMessage(getString(R.string.hint_login_success), this)
-                finish()
-            } else {
-                stopAnimeByIsSuccess(false)
-                ToastUtil.showShortMessage(getString(R.string.hint_invalid_user), this)
-            }
+
         }
         initTransitionButton()
     }
@@ -92,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
             ToastUtil.showShortMessage(getString(R.string.hint_no_password), this)
             return false
         }
-        viewModel.setUser(binding.etLoginName.text.toString(), binding.etLoginPwd.text.toString())
+        viewModel.setFirebaseUser(binding.etLoginName.text.toString(), binding.etLoginPwd.text.toString())
         return true
     }
 }

@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.shereats.R
-import com.example.shereats.model.entity.OrderItem
+import com.example.shereats.model.entity.FirebaseOrderItem
 import com.example.shereats.model.entity.SingletonUtil
 import com.example.shereats.model.interfaces.RefreshCart
 
@@ -22,11 +22,11 @@ import com.example.shereats.model.interfaces.RefreshCart
  */
 class CounterLayout(private val mContext: Context, private val attrs: AttributeSet): ConstraintLayout(mContext, attrs){
     private lateinit var mHolder: RefreshCart
-    private lateinit var mOrderItem: OrderItem
+    private lateinit var mOrderItem: FirebaseOrderItem
     private var ivPlus: ImageView
     private var ivMinus: ImageView
     private var tvCount: TextView
-    private var mCount = 0
+    private var mCount: Long = 0
 
     init {
         val view: View = LayoutInflater.from(mContext).inflate(R.layout.layout_counter, this, true)
@@ -62,12 +62,12 @@ class CounterLayout(private val mContext: Context, private val attrs: AttributeS
     /**
      * If set null as parameter, update the textview according to {@see mCount}
      */
-    private fun updateCount(count: Int?){
+    private fun updateCount(count: Long?){
         if(count != null){
             mCount = count
         }
         tvCount.text = mCount.toString()
-        mOrderItem.item_amount = mCount
+        mOrderItem.itemAmount = mCount
         SingletonUtil.updateCart(mOrderItem)
         if (mCount <= 0){
             mHolder.refreshData()
@@ -79,9 +79,9 @@ class CounterLayout(private val mContext: Context, private val attrs: AttributeS
         mHolder = holder
     }
 
-    fun setOrderItem(orderItem: OrderItem){
+    fun setOrderItem(orderItem: FirebaseOrderItem){
         mOrderItem = orderItem
-        mCount = mOrderItem.item_amount
+        mCount = mOrderItem.itemAmount!!
         tvCount.text = mCount.toString()
     }
 }
