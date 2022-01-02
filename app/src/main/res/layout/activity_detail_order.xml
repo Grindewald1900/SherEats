@@ -148,7 +148,7 @@
             android:textColor="@color/black"
             android:layout_marginStart="@dimen/dimen_20"
             android:layout_marginBottom="@dimen/dimen_20"
-            app:layout_constraintBottom_toTopOf="@+id/btn_activity_order_checkout"
+            app:layout_constraintBottom_toTopOf="@+id/btn_activity_order_confirm"
             app:layout_constraintLeft_toLeftOf="parent"
             />
 
@@ -167,7 +167,7 @@
 
 
         <com.example.shereats.view.custom.TransitionButton
-            android:id="@+id/btn_activity_order_checkout"
+            android:id="@+id/btn_activity_order_confirm"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"
             android:text="@string/confirm"

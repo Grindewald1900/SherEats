@@ -99,16 +99,16 @@ class EntityUtil {
 
             // If every order_id is in searchedId list, break the whole loop
             while (!isComplete){
-                val order = Order("", 0f, "", "", mutableListOf())
+                val order = Order("", 0.0, "", "", mutableListOf())
                 rawItems.forEach {
                     if (it.orderId == tempId){
-                        order.items.add(it)
-                        order.price += it.orderPrice!!.toFloat() * it.itemAmount!!
+//                        order.items!!.add(it)
+                        order.price = order.price?.plus(it.orderPrice!!.toFloat() * it.itemAmount!!)
                     }
                 }
-                order.id = order.items[0].orderId!!
-                order.time = order.items[0].uploadTime!!
-                order.user_name = LoginStatusUtil.getUser().userName!!
+                order.id = order.items?.get(0)?.orderId!!
+                order.time = order.items?.get(0)!!.uploadTime!!
+                order.userName = LoginStatusUtil.getUser().userName!!
                 orders.add(order)
                     // Loop for a order_id not in the searchedId list
                 for (i in rawItems.indices){
@@ -140,5 +140,49 @@ class EntityUtil {
                 4.0
             )
         }
+
+        fun searchDishByRestaurant(dishes: List<FirebaseDish>, keyword: String): List<FirebaseDish>{
+            val result: MutableList<FirebaseDish> = mutableListOf()
+            dishes.forEach {
+                if (it.restaurantName!!.contains(keyword)){
+                    result.add(it)
+                }
+            }
+            return result
+        }
+
+        fun searchDishByDish(dishes: List<FirebaseDish>, keyword: String): List<FirebaseDish>{
+            val result: MutableList<FirebaseDish> = mutableListOf()
+            dishes.forEach {
+                if (it.itemName!!.contains(keyword)){
+                    result.add(it)
+                }
+            }
+            return result
+        }
+        fun searchDishByCuisine(dishes: List<FirebaseDish>, keyword: String): List<FirebaseDish>{
+            val result: MutableList<FirebaseDish> = mutableListOf()
+            dishes.forEach {
+                if (it.itemGenre!!.contains(keyword)){
+                    result.add(it)
+                }
+            }
+            return result
+        }
+
+        fun getUniqueDish(dishes: List<FirebaseDish>): MutableList<FirebaseDish>{
+            val result: MutableList<FirebaseDish> = mutableListOf()
+            val searchedId: MutableList<Long> = mutableListOf()
+            dishes.forEach {
+                if (searchedId.contains(it.itemId)){
+                    return@forEach
+                }else{
+                    result.add(it)
+                    searchedId.add(it.itemId!!)
+                }
+            }
+            return result
+        }
+
     }
 }

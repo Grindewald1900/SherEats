@@ -48,7 +48,7 @@ class TextUtil {
         }
 
         fun getOrderInfo(order: Order): String {
-            val time = order.time.toLong() * 1000
+            val time = order.time!!.toLong() * 1000
             val calendar = getInstance()
             calendar.timeInMillis = time
             return "Released at ${calendar.time} "

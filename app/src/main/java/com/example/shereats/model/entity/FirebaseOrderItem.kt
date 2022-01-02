@@ -1,6 +1,7 @@
 package com.example.shereats.model.entity
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class FirebaseOrderItem(
     val id: String? = null,
@@ -17,4 +18,4 @@ data class FirebaseOrderItem(
     // Additional info, only used by cart views
     val itemName: String? = null,
     val restaurantName: String? = null
-)
+): Serializable

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityDetailDishBinding
@@ -102,7 +103,7 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
         mTransitionBtn.setOnClickListener {
             // Start animation when clicked
             mTransitionBtn.startAnimation()
-            GlobalScope.launch {
+            lifecycleScope.launch {
                 delay(ConstantUtil.ANIMATION_DELAY)
                 val intent: Intent
 

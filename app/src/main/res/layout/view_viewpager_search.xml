@@ -26,6 +26,7 @@
         android:textStyle="bold"
         android:textSize="@dimen/text_size_title"
         android:textColor="@color/gray_3"
+        android:maxLength="15"
         android:gravity="left"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

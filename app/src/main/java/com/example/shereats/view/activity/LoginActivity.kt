@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityLoginBinding
 import com.example.shereats.model.entity.SingletonUtil
@@ -65,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
         mTransitionBtn = binding.btnLoginLogin
         mTransitionBtn.setOnClickListener {
             mTransitionBtn.startAnimation()
-            GlobalScope.launch {
+            lifecycleScope.launch {
                 viewModel.setState(ConstantUtil.ACTIVITY_STATE_COROUTINE)
                 delay(ConstantUtil.ANIMATION_DELAY)
                 viewModel.setState(ConstantUtil.ACTIVITY_STATE_UI_THREAD)

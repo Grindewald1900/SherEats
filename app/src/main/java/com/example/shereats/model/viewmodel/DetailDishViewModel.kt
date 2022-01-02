@@ -55,7 +55,7 @@ class DetailDishViewModel: BaseViewModel() {
             if(null != restaurant){
                 firebaseRestaurant.postValue(restaurant)
             }
-            }
+        }
             .addOnFailureListener {
                 it.stackTrace
             }

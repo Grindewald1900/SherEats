@@ -19,8 +19,10 @@ class ZoomOutPageTransformer: ViewPager2.PageTransformer {
                 position <= 2 -> {
                     // From right or left side, the view keep the scale of MIN_TRANSFORM_SCALE, unless it's near the center(position 0)
                     val scaleFactor = max(ConstantUtil.MIN_TRANSFORM_SCALE, 1 - abs(position))
+                    val alphaFactor = max(ConstantUtil.MIN_TRANSFORM_ALPHA, 1 - abs(position))
                     scaleX = scaleFactor
                     scaleY = scaleFactor
+                    alpha = alphaFactor
                 }
                 else -> {}
             }

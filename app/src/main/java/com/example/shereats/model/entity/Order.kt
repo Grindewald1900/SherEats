@@ -12,9 +12,9 @@ import java.io.Serializable
  * @param items:
 */
 data class Order(
-    var id: String,
-    var price: Float,
-    var time: String,
-    var user_name: String,
-    var items: MutableList<FirebaseOrderItem>
+    var id: String? = null,
+    var price: Double? = null,
+    var time: String? = null,
+    var userName: String? = null,
+    var items: List<FirebaseOrderItem>? = null
 ): Serializable

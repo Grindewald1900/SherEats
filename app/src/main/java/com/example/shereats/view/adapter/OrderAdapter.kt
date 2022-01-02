@@ -44,8 +44,8 @@ class OrderAdapter(var data: List<Order>): RecyclerView.Adapter<OrderAdapter.Ord
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val dataSlice = data[position]
         holder.title.text = dataSlice.id
-        holder.price.text = TextUtil.getItemPrice(dataSlice.price.toDouble())
-        holder.content.text = TextUtil.getOrderContent(dataSlice.items)
+        holder.price.text = TextUtil.getItemPrice(dataSlice.price!!)
+        holder.content.text = TextUtil.getOrderContent(dataSlice.items!!)
         holder.info.text = TextUtil.getOrderInfo(dataSlice)
         holder.contact.setOnClickListener {
             AndPermission.with(mContext)

@@ -37,7 +37,7 @@ class LoginViewModel: BaseViewModel() {
 //
 //        call.enqueue(object: Callback<List<User>>{
 //            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-//                user.postValue(response.body())
+//                user.postValue(response.bod())
 //            }
 //
 //            override fun onFailure(call: Call<List<User>>, t: Throwable) {

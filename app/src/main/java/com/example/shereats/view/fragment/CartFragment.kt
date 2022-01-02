@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shereats.R
@@ -64,8 +65,8 @@ class CartFragment : Fragment() {
         viewModel.getTotalPrice().observe(viewLifecycleOwner){
             setPrice(it)
         }
-        viewModel.getIsUploadSuccess().observe(viewLifecycleOwner){
-            if (it.result == ConstantUtil.STATE_SUCCESS){
+        viewModel.getIsUploadSuccess().observe(viewLifecycleOwner){success ->
+            if (success){
                 SingletonUtil.clearCurrentCart()
                 viewModel.setOrderItems()
                 viewModel.setTotalPrice()
@@ -87,7 +88,7 @@ class CartFragment : Fragment() {
             }
 
             mTransitionBtn.startAnimation()
-            GlobalScope.launch {
+            lifecycleScope.launch {
                 delay(ConstantUtil.ANIMATION_DELAY)
                 val intent: Intent
 
@@ -101,7 +102,7 @@ class CartFragment : Fragment() {
                     override fun onAnimationStopEnd() {
                         isClickedTransitionBtn = true
 
-//                        viewModel.uploadOrderItems()
+                        viewModel.uploadOrderItems()
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                     }

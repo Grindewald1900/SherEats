@@ -31,6 +31,7 @@ class SearchActivity : FragmentActivity() {
     private lateinit var viewModel: SearchViewModel
     private lateinit var mPager: ViewPager2
     private lateinit var pagerAdapter: FragmentStateAdapter
+    private var isViewPagerInit = false
     // We have 4(actually 3) types of search condition: restaurant name, dish name, cuisine type
     private var searchType: MutableList<Boolean> = mutableListOf()
 
@@ -55,13 +56,16 @@ class SearchActivity : FragmentActivity() {
 
     private fun initView(){
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-//        viewModel.setDishes(20)
-//        viewModel.getDishes().observe(this) {
-//            binding.rvActivityEventSearch.adapter = SearchAdapter(it)
-//            binding.rvActivityEventSearch.layoutManager = LinearLayoutManager(this)
-//            binding.rvActivityEventSearch.itemAnimator = DefaultItemAnimator()
-//            setViewPager(it)
-//        }
+        viewModel.setAllDishes()
+        viewModel.getDishes().observe(this) {
+            binding.rvActivityEventSearch.adapter = SearchAdapter(it)
+            binding.rvActivityEventSearch.layoutManager = LinearLayoutManager(this)
+            binding.rvActivityEventSearch.itemAnimator = DefaultItemAnimator()
+            if(!isViewPagerInit){
+                setViewPager(it)
+                isViewPagerInit = true
+            }
+        }
         setSearchType()
         binding.btnActivityEventSearchBack.setOnClickListener {
             onBackPressed()
@@ -78,7 +82,11 @@ class SearchActivity : FragmentActivity() {
     private fun onSearchClicked(){
         val keyword = binding.etActivityEventSearch.text.toString()
         val isTypeAll = !searchType[0] && !searchType[1] && !searchType[2] && !searchType[3]
-//        viewModel.setSearchResult(0, keyword, searchType[0], searchType[1], searchType[2], searchType[3], isTypeAll)
+        if(isTypeAll){
+            viewModel.setSearchResult(keyword, true, true, true, true)
+        }else{
+            viewModel.setSearchResult(keyword, searchType[0], searchType[1], searchType[2], searchType[3])
+        }
     }
 
     private fun setViewPager(dishes: List<FirebaseDish>){
