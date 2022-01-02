@@ -1,5 +1,6 @@
 package com.example.shereats.utils.firebase
 
+import com.example.shereats.model.entity.FirebaseBadge
 import com.example.shereats.model.entity.FirebaseDish
 import com.example.shereats.model.entity.FirebaseRestaurant
 import com.example.shereats.model.entity.FirebaseUser
@@ -49,8 +50,9 @@ class RealtimeUtil {
             dishReference.child(itemId.toString()).setValue(dish)
         }
 
-        fun addBadge(){
-
+        fun addBadge(userId: String,badgeId: Long, badgeType: Long, badgeSequence: Long, badgeContent: String, badgeDate: String, badgeRarity: Long){
+            val badge = FirebaseBadge(userId, badgeId, badgeType, badgeSequence, badgeContent, badgeDate, badgeRarity)
+            badgeReference.child(userId).child(badgeSequence.toString()).setValue(badge)
         }
 
         fun addOrderItem(){

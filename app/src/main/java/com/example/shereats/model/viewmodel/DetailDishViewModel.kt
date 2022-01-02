@@ -18,14 +18,10 @@ import retrofit2.Response
 
 class DetailDishViewModel: BaseViewModel() {
     private var activityState: MutableLiveData<Int> = MutableLiveData()
-    private var restaurants: MutableLiveData<List<FirebaseRestaurant>> = MutableLiveData()
     private val firebaseRestaurant: MutableLiveData<FirebaseRestaurant> = MutableLiveData()
 
     private lateinit var call: Call<List<FirebaseRestaurant>>
 
-    fun getRestaurant(): LiveData<List<FirebaseRestaurant>>{
-        return restaurants
-    }
 
 //    fun setRestaurant(id: Int){
 //        call = request.getRestaurants(id, 2)
@@ -48,13 +44,16 @@ class DetailDishViewModel: BaseViewModel() {
 //        return firebaseRestaurant
 //    }
 
-    fun setFirebaseRestaurant(id: String) {
-        val firebaseRestaurants: MutableList<FirebaseRestaurant> = mutableListOf()
 
+    fun getFirebaseRestaurant(): LiveData<FirebaseRestaurant>{
+        return firebaseRestaurant
+    }
+
+    fun setFirebaseRestaurant(id: String) {
         RealtimeUtil.restaurantReference.child(id).get().addOnSuccessListener { it ->
             val restaurant = it.getValue(FirebaseRestaurant::class.java)
             if(null != restaurant){
-                firebaseRestaurant.postValue(restaurant!!)
+                firebaseRestaurant.postValue(restaurant)
             }
             }
             .addOnFailureListener {

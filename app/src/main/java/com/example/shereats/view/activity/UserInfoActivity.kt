@@ -50,10 +50,10 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
             mDialog.show(supportFragmentManager, ConstantUtil.TAG_DIALOG_UPLOAD_IMAGE)
         }
 
-//        viewModel.setBadges()
-//        viewModel.getBadges().observe(this) {
-//            binding.rvActivityUserInfo.adapter = BadgeAdapter(it)
-//        }
+        viewModel.setFirebaseBadge()
+        viewModel.getFirebaseBadge().observe(this) {
+            binding.rvActivityUserInfo.adapter = BadgeAdapter(it)
+        }
         viewModel.setProfileImage(mUser.userName!!, binding.btnActivityUserInfoPortrait, this)
         viewModel.getProfileImage().observe(this) {
             Glide.with(this)

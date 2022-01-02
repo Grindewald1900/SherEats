@@ -52,12 +52,12 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
         viewModel.setFirebaseRestaurant(mDish.restaurantId!!)
-        viewModel.getRestaurant().observe(this) {
-            mRestaurant= it[0]
+        viewModel.getFirebaseRestaurant().observe(this) {
+            mRestaurant = it
             showPoint()
             initView()
             setUserInfo()
-            setDishImage(mDish.restaurantId!!.toInt(), binding.ivActivityDishImage)
+            setDishImage(mDish.itemId!!, binding.ivActivityDishImage)
         }
     }
 
@@ -158,7 +158,7 @@ class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
     /**
      * Retrieve image for top image
      */
-    private fun setDishImage(id: Int, view: ImageView){
+    private fun setDishImage(id: Long, view: ImageView){
         val childPath = "item/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {

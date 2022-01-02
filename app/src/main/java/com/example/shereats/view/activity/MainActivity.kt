@@ -123,7 +123,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun test(){
-//        FireBasePopulateData.populateDish()
+//        FireBasePopulateData.populateBadge()
+        FireBasePopulateData.populateDish()
 //        FireBasePopulateData.populateUser()
 //        FireBasePopulateData.populateRestaurant()
 //        val a = RealtimeUtil.getUser("000123456")

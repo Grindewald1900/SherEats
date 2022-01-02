@@ -10,7 +10,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.shereats.model.entity.FirebaseBadge
+import com.example.shereats.model.entity.FirebaseRestaurant
 import com.example.shereats.utils.LoginStatusUtil
+import com.example.shereats.utils.firebase.RealtimeUtil
 import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.custom.RoundCornerImageView
 import com.example.shereats.view.custom.RoundImageView
@@ -77,6 +79,24 @@ class UserInfoViewModel: BaseViewModel() {
                     }
                 })
             imageUrl.postValue(it)
+        }
+    }
+
+    fun getFirebaseBadge(): LiveData<List<FirebaseBadge>> {
+        return badges
+    }
+    fun setFirebaseBadge() {
+        val firebaseBadge: MutableList<FirebaseBadge> = mutableListOf()
+        val id = LoginStatusUtil.getUserId()
+        RealtimeUtil.badgeReference.child(id).get().addOnSuccessListener { it ->
+            if(it.childrenCount > 0){
+                it.children.forEach {
+                    firebaseBadge.add(it.getValue(FirebaseBadge::class.java)!!)
+                }
+                badges.postValue(firebaseBadge)
+            }
+        }.addOnFailureListener {
+            it.stackTrace
         }
     }
 
