@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityUserInfoBinding
-import com.example.shereats.model.entity.FirebaseUser
+import com.example.shereats.model.entity.User
 import com.example.shereats.model.viewmodel.UserInfoViewModel
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
@@ -23,7 +23,7 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
     private lateinit var binding: ActivityUserInfoBinding
     private lateinit var viewModel: UserInfoViewModel
     private lateinit var mDialog: DialogUploadImageFragment
-    private lateinit var mUser: FirebaseUser
+    private lateinit var mUser: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +41,8 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
         mDialog = DialogUploadImageFragment()
 //        setDialogListener(user.user_name)
 
-        binding.tvActivityUserInfoName.text = mUser.userName
-        binding.tvActivityUserId.text = mUser.userMail
+        binding.tvActivityUserInfoName.text = mUser.user_name
+        binding.tvActivityUserId.text = mUser.user_mail
         binding.rvActivityUserInfo.layoutManager = LinearLayoutManager(this)
         binding.rvActivityUserInfo.itemAnimator = DefaultItemAnimator()
         binding.btnActivityUserInfoBack.setOnClickListener { onBackPressed() }
@@ -50,11 +50,11 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
             mDialog.show(supportFragmentManager, ConstantUtil.TAG_DIALOG_UPLOAD_IMAGE)
         }
 
-        viewModel.setFirebaseBadge()
-        viewModel.getFirebaseBadge().observe(this) {
+        viewModel.setBadges()
+        viewModel.getBadges().observe(this) {
             binding.rvActivityUserInfo.adapter = BadgeAdapter(it)
         }
-        viewModel.setProfileImage(mUser.userName!!, binding.btnActivityUserInfoPortrait, this)
+        viewModel.setProfileImage(mUser.user_name, binding.btnActivityUserInfoPortrait, this)
         viewModel.getProfileImage().observe(this) {
             Glide.with(this)
                 .load(it)
@@ -69,7 +69,7 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
 
 
     override fun refreshImage() {
-        viewModel.setProfileImage(mUser.userName!!, binding.btnActivityUserInfoPortrait, this)
+        viewModel.setProfileImage(mUser.user_name, binding.btnActivityUserInfoPortrait, this)
     }
 
 

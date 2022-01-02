@@ -24,8 +24,6 @@ import com.example.shereats.databinding.ActivityMainBinding
 import com.example.shereats.model.viewmodel.MainViewModel
 import com.example.shereats.utils.ImageUtil
 import com.example.shereats.utils.LoginStatusUtil
-import com.example.shereats.utils.firebase.FireBasePopulateData
-import com.example.shereats.utils.firebase.RealtimeUtil
 import com.example.shereats.view.custom.RoundImageView
 
 
@@ -43,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         setTransition()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         initView()
-        test()
     }
 
     private fun initView() {
@@ -101,9 +98,9 @@ class MainActivity : AppCompatActivity() {
             val user = LoginStatusUtil.getUser()
             val headerBk = headerView.findViewById<ImageView>(R.id.iv_main_header_bk)
             val userImage: RoundImageView = headerView.findViewById(R.id.iv_main_header_portrait)
-            headerView.findViewById<TextView>(R.id.tv_main_header_name).text = user.userName
-            headerView.findViewById<TextView>(R.id.tv_main_header_email).text = user.userMail
-            viewModel.setProfileImage(user.userName!!, userImage, this)
+            headerView.findViewById<TextView>(R.id.tv_main_header_name).text = user.user_name
+            headerView.findViewById<TextView>(R.id.tv_main_header_email).text = user.user_mail
+            viewModel.setProfileImage(user.user_name, userImage, this)
             Glide.with(this)
                 .load(R.drawable.gif_header_background)
                 .placeholder(R.color.colorPrimary)
@@ -120,14 +117,6 @@ class MainActivity : AppCompatActivity() {
     // Open drawer when drawer icon clicked and back btn presse
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_main).navigateUp(appBarConfiguration)
-    }
-
-    fun test(){
-//        FireBasePopulateData.populateBadge()
-        FireBasePopulateData.populateDish()
-//        FireBasePopulateData.populateUser()
-//        FireBasePopulateData.populateRestaurant()
-//        val a = RealtimeUtil.getUser("000123456")
     }
 
 }
