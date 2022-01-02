@@ -1,6 +1,7 @@
 package com.example.shereats.model.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.shereats.model.entity.Dish
 import com.example.shereats.utils.network.EndPointInterface
 import com.example.shereats.utils.network.ServiceBuilder
 import retrofit2.Call

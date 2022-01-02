@@ -1,7 +1,7 @@
 package com.example.shereats.utils
 
-import com.example.shereats.model.entity.FirebaseOrderItem
 import com.example.shereats.model.entity.Order
+import com.example.shereats.model.entity.OrderItem
 import java.time.Month
 import java.util.*
 import java.util.Calendar.*
@@ -19,11 +19,11 @@ class TextUtil {
          * return a item price with .2f and $ symbol
          * 20.59$
          */
-        fun getItemPrice(price: Double): String{
+        fun getItemPrice(price: Float): String{
             return String.format("%.2f", price) + "$"
         }
 
-        fun getItemPriceEach(price: Double): String{
+        fun getItemPriceEach(price: Float): String{
             return String.format("%.2f", price) + "$ each"
         }
 
@@ -31,7 +31,7 @@ class TextUtil {
          * return a promotion tag
          * 20% off
          */
-        fun getPromotion(promo: Double): String{
+        fun getPromotion(promo: Float): String{
             return (100 - promo*100).toInt().toString() + "% \nOff"
         }
 
@@ -39,10 +39,10 @@ class TextUtil {
          * return the content of order like
          * burger * 2, coffee * 3
          */
-        fun getOrderContent(items: List<FirebaseOrderItem>): String{
+        fun getOrderContent(items: List<OrderItem>): String{
             var content: String = ""
             items.forEach {
-                content += "${it.itemName} * ${it.itemAmount}, "
+                content += "${it.item_name} * ${it.item_amount}, "
             }
             return content.removeRange(content.length - 1, content.length)
         }

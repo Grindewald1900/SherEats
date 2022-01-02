@@ -1,6 +1,6 @@
 package com.example.shereats.utils
 
-import com.example.shereats.model.entity.FirebaseUser
+import com.example.shereats.model.entity.User
 import java.util.*
 
 
@@ -11,30 +11,30 @@ import java.util.*
  */
 class LoginStatusUtil {
     companion object{
-        var mUser: FirebaseUser? = null
+        var mUser: User? = null
 
         fun isLogin(): Boolean{
             return mUser != null
         }
 
         fun setUser(id: String, name: String, pwd: String, email: String){
-            mUser = FirebaseUser(id, name, pwd, "F", "+18190002920", email)
+            mUser = User(id, name, pwd, Date(), 'F', "000", email,"")
         }
 
-        fun getUser(): FirebaseUser{
+        fun getUser(): User{
             return if (null != mUser){
                 mUser!!
             }else{
-                FirebaseUser("000","Click to login","", "F", "000", "")
+                User("000","Click to login","", Date(), 'F', "000", "", "")
             }
         }
 
         fun getUserId(): String{
-            return getUser().userId!!
+            return getUser().user_id
         }
 
         fun getUserName(): String{
-            return getUser().userId!!
+            return getUser().user_name
         }
     }
 }

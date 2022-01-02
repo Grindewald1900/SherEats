@@ -35,10 +35,11 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        viewModel.setAllFirebaseRestaurant()
+        viewModel.setRestaurant(1,1)
         viewModel.setIsNetworkSuccess(ConstantUtil.BACKGROUND_STATE_NORMAL)
-        viewModel.getFirebaseRestaurant().observe(viewLifecycleOwner, Observer {
+        viewModel.getRestaurant().observe(viewLifecycleOwner, Observer {
             binding.rvFragmentHome.adapter = RestaurantAdapter(it)
         })
         viewModel.getIsNetworkSuccess().observe(viewLifecycleOwner) { state ->
@@ -50,7 +51,7 @@ class HomeFragment : Fragment() {
         binding.rvFragmentHome.itemAnimator = DefaultItemAnimator()
         binding.swipeFragmentHome.setColorSchemeColors(resources.getColor(R.color.colorPrimary),resources.getColor(R.color.google), resources.getColor(R.color.facebook))
         binding.swipeFragmentHome.setOnRefreshListener {
-            viewModel.setAllFirebaseRestaurant()
+            viewModel.setRestaurant(1, 1)
         }
     }
 

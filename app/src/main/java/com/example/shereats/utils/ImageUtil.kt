@@ -154,7 +154,7 @@ class ImageUtil {
         /**
          * Return the badge color according to its rarity
          */
-        fun getBadgeColor(rarity: Long): Int{
+        fun getBadgeColor(rarity: Int): Int{
             return ConstantUtil.MAP_BADGE_COLOR[rarity] ?: Color.parseColor("#000000")
         }
 

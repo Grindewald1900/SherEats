@@ -28,8 +28,6 @@
         android:scaleType="centerCrop"
         android:layout_margin="@dimen/dimen_2"
         app:mCornerRadius="16"
-        app:isRightBottom="false"
-        app:isLeftBottom="false"
         app:layout_constraintTop_toTopOf="@+id/view_dish_background"
         app:layout_constraintLeft_toLeftOf="@+id/view_dish_background"
         app:layout_constraintRight_toRightOf="@+id/view_dish_background"

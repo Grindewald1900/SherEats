@@ -9,8 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.example.shereats.model.entity.FirebaseBadge
-import com.example.shereats.model.entity.FirebaseRestaurant
+import com.example.shereats.model.entity.Badge
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.firebase.RealtimeUtil
 import com.example.shereats.utils.firebase.StorageUtil
@@ -28,30 +27,31 @@ import retrofit2.Response
  */
 class UserInfoViewModel: BaseViewModel() {
     private var imageUrl: MutableLiveData<Uri> = MutableLiveData()
-    private var badges: MutableLiveData<List<FirebaseBadge>> = MutableLiveData()
+    private var badges: MutableLiveData<List<Badge>> = MutableLiveData()
+    private lateinit var call: Call<List<Badge>>
 
-//    fun getBadges(): LiveData<List<Badge>>{
-//        return badges
-//    }
-//
-//    fun setBadges() {
-//        if(!LoginStatusUtil.isLogin()) return
-//        val userId = LoginStatusUtil.getUser().user_id
-//        call = request.getBadges(userId)
-//
-//        call.enqueue(object: Callback<List<Badge>>{
-//            override fun onResponse(call: Call<List<Badge>>, response: Response<List<Badge>>) {
-//                if (response.isSuccessful){
-//                    badges.postValue(response.body())
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Badge>>, t: Throwable) {
-//                t.stackTrace
-//            }
-//
-//        })
-//    }
+    fun getBadges(): LiveData<List<Badge>>{
+        return badges
+    }
+
+    fun setBadges() {
+        if(!LoginStatusUtil.isLogin()) return
+        val userId = LoginStatusUtil.getUser().user_id
+        call = request.getBadges(userId)
+
+        call.enqueue(object: Callback<List<Badge>>{
+            override fun onResponse(call: Call<List<Badge>>, response: Response<List<Badge>>) {
+                if (response.isSuccessful){
+                    badges.postValue(response.body())
+                }
+            }
+
+            override fun onFailure(call: Call<List<Badge>>, t: Throwable) {
+                t.stackTrace
+            }
+
+        })
+    }
 
     fun getProfileImage(): LiveData<Uri>{
         return imageUrl

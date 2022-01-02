@@ -16,5 +16,5 @@ data class Order(
     var price: Float,
     var time: String,
     var user_name: String,
-    var items: MutableList<FirebaseOrderItem>
+    var items: MutableList<OrderItem>
 ): Serializable

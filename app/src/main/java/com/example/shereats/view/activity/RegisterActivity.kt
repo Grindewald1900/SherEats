@@ -53,12 +53,12 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             userData = mutableListOf(uniqueId, binding.etRegisterName.text.toString(), binding.etRegisterPwd1.text.toString(), binding.etRegisterEmail.text.toString())
-            viewModel.addFirebaseUser(userData[0], userData[1], userData[2], userData[3])
+            viewModel.register(userData[0], userData[1], userData[2], userData[3])
 
         }
-
-        viewModel.getState().observe(this){
-            when(it){
+        viewModel.getIsSuccess().observe(this) {
+            if (it == null) return@observe
+            when (it.result) {
                 ConstantUtil.REGISTER_SUCCESS -> {
                     LoginStatusUtil.setUser(userData[0], userData[1], userData[2], userData[3])
                     startActivity(
@@ -67,6 +67,7 @@ class RegisterActivity : AppCompatActivity() {
                             ResultActivity::class.java
                         ).putExtra(ConstantUtil.STRING_RESULT_ACTIVITY, ConstantUtil.RESULT_CORRECT)
                     )
+                    ToastUtil.showLongMessage(getString(R.string.register_success), this)
                 }
                 ConstantUtil.REGISTER_DEFAULT -> {
                     ToastUtil.showLongMessage(getString(R.string.register_fail), this)

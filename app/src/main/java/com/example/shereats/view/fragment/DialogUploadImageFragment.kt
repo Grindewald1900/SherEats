@@ -103,7 +103,7 @@ class DialogUploadImageFragment: DialogFragment(){
             context?.let { ToastUtil.showShortMessage(getString(R.string.hint_no_jpg), it) }
             return
         }
-        val name = LoginStatusUtil.getUserName()
+        val name = LoginStatusUtil.getUser().user_name
         val childPath = "user/$name.jpg"
         val imageReference = StorageUtil.reference.child(childPath)
         val upLoadTask = imageReference.putFile(imageUri!!)

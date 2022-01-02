@@ -17,7 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivitySearchBinding
-import com.example.shereats.model.entity.FirebaseDish
+import com.example.shereats.model.entity.Dish
 import com.example.shereats.model.viewmodel.SearchViewModel
 import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.StorageUtil
@@ -55,13 +55,13 @@ class SearchActivity : FragmentActivity() {
 
     private fun initView(){
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-//        viewModel.setDishes(20)
-//        viewModel.getDishes().observe(this) {
-//            binding.rvActivityEventSearch.adapter = SearchAdapter(it)
-//            binding.rvActivityEventSearch.layoutManager = LinearLayoutManager(this)
-//            binding.rvActivityEventSearch.itemAnimator = DefaultItemAnimator()
-//            setViewPager(it)
-//        }
+        viewModel.setDishes(20)
+        viewModel.getDishes().observe(this) {
+            binding.rvActivityEventSearch.adapter = SearchAdapter(it)
+            binding.rvActivityEventSearch.layoutManager = LinearLayoutManager(this)
+            binding.rvActivityEventSearch.itemAnimator = DefaultItemAnimator()
+            setViewPager(it)
+        }
         setSearchType()
         binding.btnActivityEventSearchBack.setOnClickListener {
             onBackPressed()
@@ -78,10 +78,10 @@ class SearchActivity : FragmentActivity() {
     private fun onSearchClicked(){
         val keyword = binding.etActivityEventSearch.text.toString()
         val isTypeAll = !searchType[0] && !searchType[1] && !searchType[2] && !searchType[3]
-//        viewModel.setSearchResult(0, keyword, searchType[0], searchType[1], searchType[2], searchType[3], isTypeAll)
+        viewModel.setSearchResult(0, keyword, searchType[0], searchType[1], searchType[2], searchType[3], isTypeAll)
     }
 
-    private fun setViewPager(dishes: List<FirebaseDish>){
+    private fun setViewPager(dishes: List<Dish>){
         // Pager adapter for the recommendation on the top of screen
         pagerAdapter = object: FragmentStateAdapter(this){
             override fun getItemCount(): Int {

@@ -36,13 +36,13 @@ class OrderFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
-//        viewModel.setOrders(LoginStatusUtil.getUserId())
+        viewModel.setOrders(LoginStatusUtil.getUserId())
         binding.rvFragmentOrder.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentOrder.itemAnimator = DefaultItemAnimator()
-//        viewModel.getOrders().observe(viewLifecycleOwner) {
-//            binding.rvFragmentOrder.adapter = OrderAdapter(it)
-//            setPlaceHolder(it.size)
-//        }
+        viewModel.getOrders().observe(viewLifecycleOwner) {
+            binding.rvFragmentOrder.adapter = OrderAdapter(it)
+            setPlaceHolder(it.size)
+        }
         initPlaceHolder()
     }
 

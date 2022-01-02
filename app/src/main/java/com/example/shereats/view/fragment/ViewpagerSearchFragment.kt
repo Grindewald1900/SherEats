@@ -1,6 +1,5 @@
 package com.example.shereats.view.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.shereats.R
-import com.example.shereats.model.entity.FirebaseDish
-import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.model.entity.Dish
 import com.example.shereats.utils.firebase.StorageUtil
-import com.example.shereats.view.activity.DetailDishActivity
 import com.example.shereats.view.custom.RoundCornerImageView
 
 
@@ -22,7 +19,7 @@ import com.example.shereats.view.custom.RoundCornerImageView
  * Github: Grindewald1900
  * Email: grindewald1504@gmail.com
  */
-class ViewpagerSearchFragment(var dish: FirebaseDish): Fragment() {
+class ViewpagerSearchFragment(var dish: Dish): Fragment() {
     private lateinit var tvTitle: TextView
     private lateinit var ivImage: RoundCornerImageView
 
@@ -34,13 +31,8 @@ class ViewpagerSearchFragment(var dish: FirebaseDish): Fragment() {
         val view = inflater.inflate(R.layout.view_viewpager_search, container, false)
         tvTitle = view.findViewById(R.id.tv_viewpager_title)
         ivImage = view.findViewById(R.id.iv_viewpager_search)
-        tvTitle.text = dish.itemName
-        setDishImage(dish.itemId!!, ivImage)
-        view.setOnClickListener {
-            val intent = Intent(context, DetailDishActivity::class.java)
-            intent.putExtra(ConstantUtil.ENTITY_DISH, dish)
-            context?.startActivity(intent)
-        }
+        tvTitle.text = dish.item_name
+        setDishImage(dish.item_id, ivImage)
         return view
     }
 
@@ -51,7 +43,7 @@ class ViewpagerSearchFragment(var dish: FirebaseDish): Fragment() {
     /**
      * Get image for the view pager image
      */
-    private fun setDishImage(id: Long, view: ImageView){
+    private fun setDishImage(id: Int, view: ImageView){
         val childPath = "item/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)
         pathReference.downloadUrl.addOnSuccessListener {

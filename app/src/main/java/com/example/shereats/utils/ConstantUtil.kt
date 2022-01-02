@@ -1,6 +1,7 @@
 package com.example.shereats.utils
 
 import android.graphics.Color
+import com.example.shereats.model.entity.OrderItem
 
 
 /**
@@ -113,9 +114,6 @@ object ConstantUtil {
     const val ACTIVITY_STATE_STOP = 1004
     const val ACTIVITY_STATE_COROUTINE = 1010
     const val ACTIVITY_STATE_UI_THREAD = 1011
-    const val ACTIVITY_STATE_LOGIN_SUCCESS = 1020
-    const val ACTIVITY_STATE_LOGIN_FAIL = 1021
-
 
 
     // Constant amount
@@ -127,12 +125,12 @@ object ConstantUtil {
     const val RESULT_ACTIVITY_TIME: Long = 3000
     const val ANIMATION_DELAY: Long = 1000
 
-    val MAP_BADGE_COLOR: Map<Long, Int> = mapOf(
-        1.toLong() to Color.parseColor("#6aa84f"),
-        2.toLong() to Color.parseColor("#a0604a"),
-        3.toLong() to Color.parseColor("#5bc0de"),
-        4.toLong() to Color.parseColor("#7926A9"),
-        5.toLong() to Color.parseColor("#d9534f"),)
+    val MAP_BADGE_COLOR: Map<Int, Int> = mapOf(
+        1 to Color.parseColor("#6aa84f"),
+        2 to Color.parseColor("#a0604a"),
+        3 to Color.parseColor("#5bc0de"),
+        4 to Color.parseColor("#7926A9"),
+        5 to Color.parseColor("#d9534f"),)
 
     var CURRENT_TIME: String = (System.currentTimeMillis()/1000).toString()
 

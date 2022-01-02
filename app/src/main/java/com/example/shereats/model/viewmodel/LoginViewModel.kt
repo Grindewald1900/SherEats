@@ -2,10 +2,8 @@ package com.example.shereats.model.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.shereats.model.entity.FirebaseUser
-import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.model.entity.User
 import com.example.shereats.utils.LoginStatusUtil
-import com.example.shereats.utils.firebase.RealtimeUtil
 import com.example.shereats.utils.network.EndPointInterface
 import com.example.shereats.utils.network.ServiceBuilder
 import retrofit2.Call
@@ -19,56 +17,31 @@ import retrofit2.Response
  * Email: grindewald1504@gmail.com
  */
 class LoginViewModel: BaseViewModel() {
-    private lateinit var call: Call<List<FirebaseUser>>
-    private var user: MutableLiveData<List<FirebaseUser>> = MutableLiveData()
+    private lateinit var call: Call<List<User>>
+    private var user: MutableLiveData<List<User>> = MutableLiveData()
     private var state: MutableLiveData<Int> = MutableLiveData()
-    // Firebase version
-    private var firebaseUser: MutableLiveData<FirebaseUser> = MutableLiveData()
 
-    fun getUser(): LiveData<FirebaseUser>{
-        return firebaseUser
+    fun getUser(): LiveData<List<User>>{
+        return user
     }
 
     /**
      * Retrieve data from server
      */
-//    fun setUser(name: String, password: String){
-//        call = request.getUser(name, password)
-//
-//        call.enqueue(object: Callback<List<User>>{
-//            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-//                user.postValue(response.body())
-//            }
-//
-//            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-//                t.stackTrace
-//            }
-//
-//        })
-//    }
+    fun setUser(name: String, password: String){
+        call = request.getUser(name, password)
 
-
-    fun setFirebaseUser(name: String, password: String){
-        var user: FirebaseUser?
-        RealtimeUtil.userReference.child(name).get().addOnSuccessListener {
-            if(null != it.getValue(FirebaseUser::class.java)){
-                user = it.getValue(FirebaseUser::class.java)
-                if(null != user){
-                    if (user!!.userPassword == password){
-                        firebaseUser.postValue(user)
-                        LoginStatusUtil.setUser(user!!.userId!!, user!!.userName!!, user!!.userPassword!!, user!!.userMail!!)
-                        setState(ConstantUtil.ACTIVITY_STATE_LOGIN_SUCCESS)
-                    }else{
-                        setState(ConstantUtil.ACTIVITY_STATE_LOGIN_FAIL)
-                    }
-                }
+        call.enqueue(object: Callback<List<User>>{
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                user.postValue(response.body())
             }
-        }.addOnFailureListener {
-            it.stackTrace
-        }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                t.stackTrace
+            }
+
+        })
     }
-
-
 
     fun getState(): LiveData<Int>{
         return state
