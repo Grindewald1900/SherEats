@@ -20,6 +20,7 @@
     <dimen name="dimen_30">30dp</dimen>
     <dimen name="dimen_35">35dp</dimen>
     <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_45">45dp</dimen>
     <dimen name="dimen_50">50dp</dimen>
     <dimen name="dimen_60">60dp</dimen>
     <dimen name="dimen_80">80dp</dimen>
@@ -65,6 +66,7 @@
     <dimen name="text_size_large_title">24sp</dimen>
     <dimen name="text_size_main_title">20sp</dimen>
     <dimen name="text_size_title">16sp</dimen>
+    <dimen name="text_size_smaller_title">14sp</dimen>
     <dimen name="text_size_sub_title">12sp</dimen>
     <dimen name="text_size_small">10sp</dimen>
 

@@ -134,10 +134,13 @@
 
     <!--Dish Page-->
     <string name="dish_detail_price">${mRestaurant.restaurant_average.toString()}$</string>
+
     <!-- Order page -->
     <string name="order_detail">Order Detail</string>
     <string name="order_no_order">No order history</string>
 
+    <!--Friend Page-->
+    <string name="friend_add">Add</string>
 
     <!-- Tags -->
     <string name="tag_main">tag_main</string>

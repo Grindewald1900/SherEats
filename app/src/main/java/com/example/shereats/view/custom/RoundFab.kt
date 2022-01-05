@@ -8,15 +8,12 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View
-import android.view.ViewPropertyAnimator
-import androidx.core.content.ContextCompat.startActivity
 import com.example.shereats.R
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
-import com.example.shereats.utils.ToastUtil
 import com.example.shereats.view.activity.MainActivity
 import com.example.shereats.view.activity.SearchActivity
+import com.example.shereats.view.activity.SearchFriendActivity
 import kotlin.math.abs
 
 /**
@@ -47,6 +44,8 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView{
     // The position when event down
     private var downX = 0f
     private var downY = 0f
+
+    private var destination: Int = ConstantUtil.ACTIVITY_SEARCH_DISH
 
 
     constructor(context: Context) : super(context) {
@@ -201,12 +200,26 @@ class RoundFab : androidx.appcompat.widget.AppCompatImageView{
 
     }
 
+    fun setDestination(dest: Int){
+        destination = dest
+    }
+
     private fun doClick(){
         val animator = this.animate().alpha(0f).scaleX(0f).scaleY(0f).setDuration(300)
         animator.setListener(object: Animator.AnimatorListener{
             override fun onAnimationEnd(p0: Animator?) {
-                mContext.startActivity(Intent(mContext, SearchActivity::class.java), ActivityOptions.makeSceneTransitionAnimation(mContext as MainActivity).toBundle())
-                ToastUtil.showShortMessage("Click", mContext)
+                val intent: Intent = when(destination){
+                    ConstantUtil.ACTIVITY_SEARCH_DISH -> {
+                        Intent(mContext, SearchActivity::class.java)
+                    }
+                    ConstantUtil.ACTIVITY_SEARCH_FRIEND -> {
+                        Intent(mContext, SearchFriendActivity::class.java)
+                    }
+                    else -> {
+                        Intent(mContext, SearchActivity::class.java)
+                    }
+                }
+                mContext.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(mContext as MainActivity).toBundle())
                 animator.setListener(null)
                 animator.alpha(1f).scaleX(1f).scaleY(1f).setDuration(100).start()
             }

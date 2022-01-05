@@ -12,6 +12,7 @@ object SingletonUtil {
     var LIST_IS_FAVORITE_DISH: MutableList<Boolean> = mutableListOf()
     // <Int, OrderItem>: Int indicate the item id
     var CURRENT_ORDER: HashMap<Long, FirebaseOrderItem> = hashMapOf()
+    var FRIEND_LIST: MutableList<String> = mutableListOf()
 
 
     /**
@@ -92,5 +93,16 @@ object SingletonUtil {
 
     private fun isContainItem(id: Long): Boolean{
         return CURRENT_ORDER.containsKey(id)
+    }
+
+    fun getFriendList(): List<String>{
+        return FRIEND_LIST
+    }
+
+    fun setFriendList(friends: List<FirebaseUser>){
+        FRIEND_LIST.clear()
+        friends.forEach {
+            FRIEND_LIST.add(it.userName!!)
+        }
     }
 }

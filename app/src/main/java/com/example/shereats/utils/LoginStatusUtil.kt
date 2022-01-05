@@ -34,7 +34,7 @@ class LoginStatusUtil {
         }
 
         fun getUserName(): String{
-            return getUser().userId!!
+            return getUser().userName!!
         }
     }
 }

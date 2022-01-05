@@ -24,6 +24,7 @@ class RegisterActivity : AppCompatActivity() {
         initView()
     }
 
+
     private fun initView(){
         val uniqueId = UUID.randomUUID().toString()
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)

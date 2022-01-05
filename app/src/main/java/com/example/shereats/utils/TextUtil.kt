@@ -54,5 +54,22 @@ class TextUtil {
             return "Released at ${calendar.time} "
         }
 
+        fun getMaxLengthString(length: Int, string: String): String{
+            val result: String = if(string.length < length){
+                string
+            }else{
+                string.removeRange(length, string.length).plus("...")
+            }
+            return result
+        }
+
+        fun isLetterOrNumeric(string: String): Boolean{
+            return string.matches("^[a-zA-Z0-9]*$".toRegex())
+        }
+
+        fun isNumber(string: String): Boolean{
+            return string.matches("^[0-9]*$".toRegex())
+        }
+
     }
 }

@@ -19,8 +19,6 @@ import retrofit2.Response
  * Email: grindewald1504@gmail.com
  */
 class LoginViewModel: BaseViewModel() {
-    private lateinit var call: Call<List<FirebaseUser>>
-    private var user: MutableLiveData<List<FirebaseUser>> = MutableLiveData()
     private var state: MutableLiveData<Int> = MutableLiveData()
     // Firebase version
     private var firebaseUser: MutableLiveData<FirebaseUser> = MutableLiveData()
@@ -32,22 +30,6 @@ class LoginViewModel: BaseViewModel() {
     /**
      * Retrieve data from server
      */
-//    fun setUser(name: String, password: String){
-//        call = request.getUser(name, password)
-//
-//        call.enqueue(object: Callback<List<User>>{
-//            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-//                user.postValue(response.bod())
-//            }
-//
-//            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-//                t.stackTrace
-//            }
-//
-//        })
-//    }
-
-
     fun setFirebaseUser(name: String, password: String){
         var user: FirebaseUser?
         RealtimeUtil.userReference.child(name).get().addOnSuccessListener {

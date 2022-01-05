@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.TransitionInflater
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
@@ -22,6 +23,7 @@ import com.bumptech.glide.Glide
 import com.example.shereats.R
 import com.example.shereats.databinding.ActivityMainBinding
 import com.example.shereats.model.viewmodel.MainViewModel
+import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.ImageUtil
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.firebase.FireBasePopulateData
@@ -52,6 +54,16 @@ class MainActivity : AppCompatActivity() {
         // Remove the default toolbar title
         supportActionBar?.setDisplayShowTitleEnabled(false)
         navController = findNavController(R.id.nav_host_main)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when(destination.id){
+                R.id.friendFragment -> {
+                    binding.fabMain.setDestination(ConstantUtil.ACTIVITY_SEARCH_FRIEND)
+                }
+                else -> {
+                    binding.fabMain.setDestination(ConstantUtil.ACTIVITY_SEARCH_DISH)
+                }
+            }
+        }
         // Bottom nav controller, which also handle the click event of bottom nav
         binding.bottomNavMain.setupWithNavController(navController)
         // Drawer controller
@@ -113,8 +125,15 @@ class MainActivity : AppCompatActivity() {
 
     // Bottom nav
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val a = item.itemId
+        val b = item
+        val c = item.groupId
         return item.onNavDestinationSelected(navController) ||
                 super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return true
     }
 
     // Open drawer when drawer icon clicked and back btn presse
@@ -124,7 +143,7 @@ class MainActivity : AppCompatActivity() {
 
     fun test(){
 //        FireBasePopulateData.populateBadge()
-        FireBasePopulateData.populateDish()
+//        FireBasePopulateData.populateDish()
 //        FireBasePopulateData.populateUser()
 //        FireBasePopulateData.populateRestaurant()
 //        val a = RealtimeUtil.getUser("000123456")

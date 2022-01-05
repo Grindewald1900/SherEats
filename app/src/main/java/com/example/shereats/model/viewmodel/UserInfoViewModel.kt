@@ -30,29 +30,6 @@ class UserInfoViewModel: BaseViewModel() {
     private var imageUrl: MutableLiveData<Uri> = MutableLiveData()
     private var badges: MutableLiveData<List<FirebaseBadge>> = MutableLiveData()
 
-//    fun getBadges(): LiveData<List<Badge>>{
-//        return badges
-//    }
-//
-//    fun setBadges() {
-//        if(!LoginStatusUtil.isLogin()) return
-//        val userId = LoginStatusUtil.getUser().user_id
-//        call = request.getBadges(userId)
-//
-//        call.enqueue(object: Callback<List<Badge>>{
-//            override fun onResponse(call: Call<List<Badge>>, response: Response<List<Badge>>) {
-//                if (response.isSuccessful){
-//                    badges.postValue(response.body())
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Badge>>, t: Throwable) {
-//                t.stackTrace
-//            }
-//
-//        })
-//    }
-
     fun getProfileImage(): LiveData<Uri>{
         return imageUrl
     }

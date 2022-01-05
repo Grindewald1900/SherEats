@@ -116,6 +116,10 @@ object ConstantUtil {
     const val ACTIVITY_STATE_LOGIN_SUCCESS = 1020
     const val ACTIVITY_STATE_LOGIN_FAIL = 1021
 
+    const val ACTIVITY_SEARCH_DISH = 1091
+    const val ACTIVITY_SEARCH_FRIEND = 1092
+
+
 
 
     // Constant amount

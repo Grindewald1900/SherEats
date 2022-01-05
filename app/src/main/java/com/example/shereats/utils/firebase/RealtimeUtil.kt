@@ -16,6 +16,7 @@ class RealtimeUtil {
         val dishReference = database.getReference("dishes")
         val badgeReference = database.getReference("badges")
         val orderItemReference = database.getReference("orderItems")
+        val chatReference = database.getReference("chats")
 
 
         fun addUser(id: String, name: String, userPassword: String, userGender: String, userTel: String, userMail: String){
