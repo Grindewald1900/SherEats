@@ -23,6 +23,9 @@
         android:theme="@style/Theme.SherEats"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.SearchFriendActivity"
             android:exported="false" />
         <activity

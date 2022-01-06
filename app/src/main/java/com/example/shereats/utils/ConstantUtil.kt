@@ -44,11 +44,20 @@ object ConstantUtil {
 
     const val ENTITY_DISH = "DISH"
     const val ENTITY_ORDER = "ORDER"
+    const val ENTITY_USER = "USER"
+    const val ENTITY_CHAT = "CHAT"
+
     const val ATTRIBUTE_POSITION = "POSITION"
 
     const val SERVER_RESULT = "result"
     const val SERVER_SUCCESS = "success"
     const val SERVER_FAIL = "fail"
+
+    // Message Type
+    const val TYPE_TEXT = "TEXT"
+    const val TYPE_IMAGE = "IMAGE"
+    const val TYPE_VIDEO = "VIDEO"
+    const val TYPE_TIME = "TIME"
 
     // Tags
     const val TAG_DIALOG_UPLOAD_IMAGE = "TAG_DIALOG_UPLOAD_IMAGE"
@@ -59,6 +68,9 @@ object ConstantUtil {
     const val STATE_FAIL = 2
     const val STATE_CANCEL = 3
 
+    const val CHAT_LEFT = 11
+    const val CHAT_RIGHT = 12
+    const val CHAT_TIME = 13
     // onActivityResult
     const val SELECT_IMAGE: Int = 101
 
@@ -142,6 +154,10 @@ object ConstantUtil {
 
     fun resetCurrentTime(){
         CURRENT_TIME = (System.currentTimeMillis()/1000).toString()
+    }
+
+    fun getCurrentTime(): String{
+        return (System.currentTimeMillis()/1000).toString()
     }
 
 }

@@ -1,5 +1,7 @@
 package com.example.shereats.model.entity
 
+import java.io.Serializable
+
 data class FirebaseMessage(
     val senderName: String? = null,
     val receiverName: String? = null,
@@ -8,4 +10,4 @@ data class FirebaseMessage(
     val contentText: String? = null,
     val contentImage: String? = null,
     val contentVideo: String? = null
-)
+): Serializable

@@ -9,21 +9,24 @@ import com.example.shereats.model.entity.SingletonUtil
 import com.example.shereats.utils.firebase.RealtimeUtil
 
 class FriendViewModel : BaseViewModel() {
-    private var friends: MutableLiveData<List<FirebaseUser>> = MutableLiveData()
+    private var chats: MutableLiveData<List<FirebaseChat>> = MutableLiveData()
 
-    fun getFriends(): LiveData<List<FirebaseUser>>{
-        return friends
+    fun getChats(): LiveData<List<FirebaseChat>>{
+        return chats
     }
 
-    fun setFriends(name: String){
+    fun setChats(name: String){
         RealtimeUtil.chatReference.child(name).get().addOnSuccessListener { it ->
-            val users: MutableList<FirebaseUser> = mutableListOf()
+            val userChat: MutableList<FirebaseChat> = mutableListOf()
+            val friends: MutableList<FirebaseUser> = mutableListOf()
             if (it.childrenCount > 0){
                 it.children.forEach { chat  ->
-                    users.add(chat.getValue(FirebaseChat::class.java)?.friend!!)
+                    val tempChat = chat.getValue(FirebaseChat::class.java)
+                    userChat.add(tempChat!!)
+                    friends.add(tempChat.friend!!)
                 }
-                friends.postValue(users)
-                SingletonUtil.setFriendList(users)
+                chats.postValue(userChat)
+                SingletonUtil.setFriendList(friends)
             }
         }
     }

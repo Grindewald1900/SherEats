@@ -2,6 +2,7 @@ package com.example.shereats.utils
 
 import com.example.shereats.model.entity.FirebaseOrderItem
 import com.example.shereats.model.entity.Order
+import java.text.SimpleDateFormat
 import java.time.Month
 import java.util.*
 import java.util.Calendar.*
@@ -52,6 +53,14 @@ class TextUtil {
             val calendar = getInstance()
             calendar.timeInMillis = time
             return "Released at ${calendar.time} "
+        }
+
+        fun getDate(t: String): String{
+            val time = t.toLong() * 1000
+            val calendar = getInstance()
+            val format = SimpleDateFormat("hh:mm aaa MMMM.dd yyyy")
+            calendar.timeInMillis = time
+            return format.format(calendar.time)
         }
 
         fun getMaxLengthString(length: Int, string: String): String{

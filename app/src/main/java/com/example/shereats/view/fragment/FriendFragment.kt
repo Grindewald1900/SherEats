@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shereats.R
 import com.example.shereats.databinding.FragmentFriendBinding
+import com.example.shereats.model.entity.FirebaseChat
 import com.example.shereats.model.entity.FirebaseUser
 import com.example.shereats.model.viewmodel.FriendViewModel
 import com.example.shereats.utils.LoginStatusUtil
@@ -53,8 +54,8 @@ class FriendFragment : Fragment() {
     private fun initView(){
         viewModel = ViewModelProvider(this).get(FriendViewModel::class.java)
         if (LoginStatusUtil.isLogin()){
-            viewModel.setFriends(LoginStatusUtil.getUserName())
-            viewModel.getFriends().observe(viewLifecycleOwner){
+            viewModel.setChats(LoginStatusUtil.getUserName())
+            viewModel.getChats().observe(viewLifecycleOwner){
                 initRecyclerView(it)
             }
         }else{
@@ -64,14 +65,14 @@ class FriendFragment : Fragment() {
 
     private fun refreshFriendList(){
         if (LoginStatusUtil.isLogin()){
-            viewModel.setFriends(LoginStatusUtil.getUserName())
+//            viewModel.setChats(LoginStatusUtil.getUserName())
         }
     }
 
-    private fun initRecyclerView(friends: List<FirebaseUser>){
+    private fun initRecyclerView(chats: List<FirebaseChat>){
         binding.rvFragmentFriend.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentFriend.itemAnimator = DefaultItemAnimator()
-        binding.rvFragmentFriend.adapter = FriendAdapter(friends)
+        binding.rvFragmentFriend.adapter = FriendAdapter(chats)
     }
 
 }

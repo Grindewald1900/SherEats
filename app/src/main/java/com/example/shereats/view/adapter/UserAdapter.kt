@@ -66,8 +66,10 @@ class UserAdapter(val data: List<FirebaseUser>): RecyclerView.Adapter<UserAdapte
     private fun addFriend(friend: FirebaseUser){
         if(LoginStatusUtil.isLogin()){
             val name = LoginStatusUtil.getUserName()
-            val chat = FirebaseChat(friend,"",ConstantUtil.CURRENT_TIME, false)
-            RealtimeUtil.chatReference.child(name).child(friend.userName!!).setValue(chat)
+            val chatUser = FirebaseChat(friend,"",ConstantUtil.getCurrentTime(), false)
+            val chatFriend = FirebaseChat(LoginStatusUtil.getUser(),"",ConstantUtil.CURRENT_TIME, false)
+            RealtimeUtil.chatReference.child(friend.userName!!).child(name).setValue(chatFriend)
+            RealtimeUtil.chatReference.child(name).child(friend.userName).setValue(chatUser)
         }
     }
 }

@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_baseline_assignment_24_color2.xml" value="0.1785" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_baseline_favorite_48.xml" value="0.1585" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_baseline_favorite_border_48.xml" value="0.1695" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_baseline_network_check_24.xml" value="0.1785" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_angel_left_thin.xml" value="0.22" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_arrow_64.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_care_up_thin.xml" value="0.1385" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_delivery_10.xml" value="0.15" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_minus_4.xml" value="0.1785" />
@@ -14,8 +17,14 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_search.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_shopping_cart_23.xml" value="0.1785" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ripple_transition_button.xml" value="0.2605" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_cursor_black.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round.xml" value="0.1785" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round_corner_20.xml" value="0.22" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round_corner_no_border.xml" value="0.22" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round_corner_solid_primary.xml" value="0.22" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round_corner_solid_white.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round_dot.xml" value="0.1785" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_chat.xml" value="0.33" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_detail_dish.xml" value="0.2537037037037037" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_detail_order.xml" value="0.25" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_login.xml" value="0.26614583333333336" />
@@ -30,7 +39,12 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/layout_counter.xml" value="0.2677083333333333" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/order_fragment.xml" value="0.2875" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/shape_round_corner_solid_white.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_cart.xml" value="0.265625" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_chat.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_chat_left.xml" value="0.3109375" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_chat_middle.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_chat_right.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_dish.xml" value="0.3046875" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_friend.xml" value="0.25" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_order.xml" value="0.284375" />

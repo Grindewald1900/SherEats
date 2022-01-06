@@ -125,9 +125,6 @@ class MainActivity : AppCompatActivity() {
 
     // Bottom nav
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val a = item.itemId
-        val b = item
-        val c = item.groupId
         return item.onNavDestinationSelected(navController) ||
                 super.onOptionsItemSelected(item)
     }

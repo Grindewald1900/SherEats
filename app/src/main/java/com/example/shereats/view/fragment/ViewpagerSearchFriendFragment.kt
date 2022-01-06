@@ -55,8 +55,10 @@ class ViewpagerSearchFriendFragment(val user: FirebaseUser): Fragment() {
     private fun addFriend(friend: FirebaseUser){
         if(LoginStatusUtil.isLogin()){
             val name = LoginStatusUtil.getUserName()
-            val chat = FirebaseChat(friend,"", ConstantUtil.CURRENT_TIME, false)
-            RealtimeUtil.chatReference.child(name).child(friend.userName!!).setValue(chat)
+            val chatUser = FirebaseChat(friend,"",ConstantUtil.CURRENT_TIME, false)
+            val chatFriend = FirebaseChat(LoginStatusUtil.getUser(),"",ConstantUtil.getCurrentTime(), false)
+            RealtimeUtil.chatReference.child(friend.userName!!).child(name).setValue(chatFriend)
+            RealtimeUtil.chatReference.child(name).child(friend.userName).setValue(chatUser)
         }
     }
 }
