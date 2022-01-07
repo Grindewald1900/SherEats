@@ -58,6 +58,7 @@ object ConstantUtil {
     const val TYPE_IMAGE = "IMAGE"
     const val TYPE_VIDEO = "VIDEO"
     const val TYPE_TIME = "TIME"
+    const val TYPE_EMOJI = "EMOJI"
 
     // Tags
     const val TAG_DIALOG_UPLOAD_IMAGE = "TAG_DIALOG_UPLOAD_IMAGE"

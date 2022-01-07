@@ -55,6 +55,7 @@
     <dimen name="widget_size_large">48dp</dimen>
     <dimen name="widget_size_x_large">96dp</dimen>
     <dimen name="widget_size_xx_large">192dp</dimen>
+    <dimen name="widget_size_emoji">24dp</dimen>
     <dimen name="ripple_transition_mask">1000dp</dimen>
 
 

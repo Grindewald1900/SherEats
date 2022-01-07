@@ -37,6 +37,7 @@ class ChatActivity : FragmentActivity() {
     private lateinit var binding: ActivityChatBinding
     private lateinit var viewModel: ChatViewModel
     private var isInit = false
+    private var isShowEmoji = false
     private var msg: MutableList<FirebaseMessage> = mutableListOf()
     private var bitmapUser: Bitmap? = null
     private var bitmapFriend: Bitmap? = null
@@ -80,12 +81,20 @@ class ChatActivity : FragmentActivity() {
         binding.ivActivityChatBack.setOnClickListener {
             onBackPressed()
         }
-
+        binding.ivActivityChatEmoji.setOnClickListener {
+            isShowEmoji = !isShowEmoji
+            if(isShowEmoji){
+                binding.emojiActivityChat.visibility = View.VISIBLE
+            }else{
+                binding.emojiActivityChat.visibility = View.GONE
+            }
+        }
         viewModel.getChat().observe(this){
             setRecyclerView(it)
         }
         setEditText()
         setUserImage()
+        setEmojiListener()
     }
 
 
@@ -148,13 +157,20 @@ class ChatActivity : FragmentActivity() {
         }
     }
 
-    private fun setRecyclerView(chat: FirebaseChat){
+    private fun setEmojiListener(){
+        val grid = binding.emojiActivityChat
+        val size = grid.childCount
+        for (i in 0 until size){
+            val container = grid.getChildAt(i)
+            container.setOnClickListener {
+                viewModel.updateChat("emoji_$i", ConstantUtil.TYPE_EMOJI)
+            }
+        }
+    }
 
+    private fun setRecyclerView(chat: FirebaseChat){
         if (chat.messageList != null && chat.messageList.size > 0){
             binding.rvActivityChat.apply {
-                val mLinearLayoutManager = LinearLayoutManager(context)
-//                mLinearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-//                mLinearLayoutManager.reverseLayout = true
                 layoutManager = LinearLayoutManager(context)
                 adapter = ChatAdapter(chat.messageList, bitmapUser, bitmapFriend)
                 scrollToPosition(chat.messageList.size - 1)

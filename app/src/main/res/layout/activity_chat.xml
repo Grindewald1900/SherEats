@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingBottom="@dimen/dimen_10"
-            app:layout_constraintBottom_toTopOf="@+id/ll_activity_chat"
+            app:layout_constraintBottom_toTopOf="@+id/view_activity_chat_bottom"
             app:layout_constraintTop_toBottomOf="@+id/view_activity_chat_top"
             app:layout_constraintVertical_bias="1.0"
             tools:layout_editor_absoluteX="-74dp" />
@@ -57,15 +57,17 @@
             android:layout_height="1px"
             android:layout_marginTop="@dimen/dimen_10"
             android:background="@color/gray_1"
-            app:layout_constraintBottom_toTopOf="@+id/ll_activity_chat"
+            app:layout_constraintTop_toBottomOf="@+id/rv_activity_chat"
+            app:layout_constraintBottom_toTopOf="@+id/cl_activity_chat"
             />
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ll_activity_chat"
+            android:id="@+id/cl_activity_chat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray_5"
             android:padding="@dimen/dimen_8"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/view_activity_chat_bottom"
+            app:layout_constraintBottom_toTopOf="@+id/emoji_activity_chat">
             <EditText
                 android:id="@+id/et_activity_chat"
                 android:layout_width="0dp"
@@ -83,6 +85,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/iv_activity_chat_emoji"
+                />
+            <ImageView
+                android:id="@+id/iv_activity_chat_emoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:src="@drawable/ic_iconmonstr_smiley_thin"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/cl_activity_chat_send"
                 />
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -119,9 +131,150 @@
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <GridLayout
+            android:id="@+id/emoji_activity_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_5"
+            android:paddingBottom="@dimen/dimen_10"
+            android:background="@color/white"
+            android:useDefaultMargins="true"
+            android:columnCount="8"
+            android:rowCount="3"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_0"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_1"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_2"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_3"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_4"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_5"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_6"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_7"
+                />
+
+
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_8"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_9"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_10"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_11"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_12"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_13"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_14"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_15"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_16"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_17"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_18"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_19"
+                />
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_height="@dimen/widget_size_emoji"
+                android:layout_width="@dimen/widget_size_emoji"
+                android:src="@drawable/emoji_20"
+                />
+
+        </GridLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

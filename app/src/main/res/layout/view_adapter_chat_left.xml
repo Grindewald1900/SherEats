@@ -43,4 +43,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         />
+    <ImageView
+        android:id="@+id/emoji_adapter_chat_left"
+        android:layout_width="@dimen/dimen_30"
+        android:layout_height="@dimen/dimen_30"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginStart="@dimen/dimen_60"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/iv_adapter_chat_left"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_adapter_chat_left"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

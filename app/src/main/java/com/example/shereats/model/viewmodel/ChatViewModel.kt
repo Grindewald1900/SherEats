@@ -46,6 +46,9 @@ class ChatViewModel: BaseViewModel() {
                 ConstantUtil.TYPE_VIDEO ->{
                     FirebaseMessage(LoginStatusUtil.getUserName(), friend!!.userName, time, type, null, content, null)
                 }
+                ConstantUtil.TYPE_EMOJI ->{
+                    FirebaseMessage(LoginStatusUtil.getUserName(), friend!!.userName, time, type, null, content, null)
+                }
                 else -> {
                     FirebaseMessage(LoginStatusUtil.getUserName(), friend!!.userName, time, type, content, null, null)
                 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -17,18 +18,20 @@ import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.firebase.StorageUtil
 
-class ChatAdapter(val data: List<FirebaseMessage>, val bitmapUser: Bitmap?, val bitmapFriend: Bitmap?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatAdapter(val data: List<FirebaseMessage>, private val bitmapUser: Bitmap?, private val bitmapFriend: Bitmap?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var mContext: Context
     class ChatViewHolderLeft(view: View): RecyclerView.ViewHolder(view){
         val ivLeft: ImageView = view.findViewById(R.id.iv_adapter_chat_left)
         val textMessage: TextView = view.findViewById(R.id.tv_adapter_chat_left_message)
         val imageMessage: ImageView = view.findViewById(R.id.iv_adapter_chat_left_image)
+        val emojiMessage: ImageView = view.findViewById(R.id.emoji_adapter_chat_left)
     }
 
     class ChatViewHolderRight(view: View): RecyclerView.ViewHolder(view){
         val ivRight: ImageView = view.findViewById(R.id.iv_adapter_chat_right)
         val textMessage: TextView = view.findViewById(R.id.tv_adapter_chat_right_message)
         val imageMessage: ImageView = view.findViewById(R.id.iv_adapter_chat_right_image)
+        val emojiMessage: ImageView = view.findViewById(R.id.emoji_adapter_chat_right)
     }
 
     class ChatViewHolderMiddle(view: View): RecyclerView.ViewHolder(view){
@@ -63,12 +66,21 @@ class ChatAdapter(val data: List<FirebaseMessage>, val bitmapUser: Bitmap?, val 
                     ConstantUtil.TYPE_TEXT ->{
                         holder.textMessage.visibility = View.VISIBLE
                         holder.imageMessage.visibility = View.GONE
+                        holder.emojiMessage.visibility = View.GONE
                         holder.textMessage.text = dataSlice.contentText
                     }
                     ConstantUtil.TYPE_IMAGE ->{
                         holder.textMessage.visibility = View.GONE
                         holder.imageMessage.visibility = View.VISIBLE
+                        holder.emojiMessage.visibility = View.GONE
                         setContentImage(dataSlice.contentImage!!, holder.imageMessage)
+                    }
+                    ConstantUtil.TYPE_EMOJI -> {
+                        val resourceId = mContext.resources.getIdentifier(dataSlice.contentImage, "drawable", mContext.packageName)
+                        holder.textMessage.visibility = View.GONE
+                        holder.imageMessage.visibility = View.GONE
+                        holder.emojiMessage.visibility = View.VISIBLE
+                        setImage(resourceId, holder.emojiMessage)
                     }
                 }
                 if(null != bitmapFriend){
@@ -83,12 +95,21 @@ class ChatAdapter(val data: List<FirebaseMessage>, val bitmapUser: Bitmap?, val 
                     ConstantUtil.TYPE_TEXT ->{
                         holder.textMessage.visibility = View.VISIBLE
                         holder.imageMessage.visibility = View.GONE
+                        holder.emojiMessage.visibility = View.GONE
                         holder.textMessage.text = dataSlice.contentText
                     }
                     ConstantUtil.TYPE_IMAGE ->{
                         holder.textMessage.visibility = View.GONE
                         holder.imageMessage.visibility = View.VISIBLE
+                        holder.emojiMessage.visibility = View.GONE
                         setContentImage(dataSlice.contentImage!!, holder.imageMessage)
+                    }
+                    ConstantUtil.TYPE_EMOJI -> {
+                        val resourceId = mContext.resources.getIdentifier(dataSlice.contentImage, "drawable", mContext.packageName)
+                        holder.textMessage.visibility = View.GONE
+                        holder.imageMessage.visibility = View.GONE
+                        holder.emojiMessage.visibility = View.VISIBLE
+                        setImage(resourceId, holder.emojiMessage)
                     }
                 }
                 if(null != bitmapUser) {
@@ -139,6 +160,14 @@ class ChatAdapter(val data: List<FirebaseMessage>, val bitmapUser: Bitmap?, val 
             .asBitmap()
             .placeholder(R.drawable.img_user_unknown)
             .load(bitmap)
+            .into(view)
+    }
+
+    private fun setImage(resource: Int, view: ImageView){
+        Glide.with(mContext)
+            .asBitmap()
+            .placeholder(R.drawable.img_user_unknown)
+            .load(resource)
             .into(view)
     }
 }
