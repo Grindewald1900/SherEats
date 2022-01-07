@@ -1,15 +1,20 @@
 package com.example.shereats.model.viewmodel
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.shereats.R
 import com.example.shereats.model.entity.FirebaseChat
 import com.example.shereats.model.entity.FirebaseMessage
 import com.example.shereats.model.entity.FirebaseUser
 import com.example.shereats.model.entity.SingletonUtil
 import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.utils.ImageUtil
 import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.RealtimeUtil
+import com.example.shereats.utils.firebase.StorageUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -79,5 +84,25 @@ class ChatViewModel: BaseViewModel() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
+    }
+
+    /**
+     *Upload image(local file) to Firebase
+     */
+    fun upLoadImage(imageUri: Uri, context: Context){
+        val format = ImageUtil.getImageFormat(imageUri!!, context).split("/").last()
+        val time = ConstantUtil.getCurrentTime()
+        val name = LoginStatusUtil.getUserName().plus(friend!!.userName)
+        // image/GrindewaldYee/192002992
+        val childPath = "image/$name/$time"
+        val imageReference = StorageUtil.reference.child(childPath)
+        val upLoadTask = imageReference.putFile(imageUri!!)
+        upLoadTask.addOnFailureListener{
+            it.stackTrace
+        }.addOnSuccessListener {
+            imageReference.downloadUrl.addOnSuccessListener {
+                updateChat(it.toString(), ConstantUtil.TYPE_IMAGE)
+            }
+        }
     }
 }

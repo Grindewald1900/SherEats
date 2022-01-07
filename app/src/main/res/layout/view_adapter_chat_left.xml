@@ -32,4 +32,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         />
+    <com.example.shereats.view.custom.RoundCornerImageView
+        android:id="@+id/iv_adapter_chat_left_image"
+        android:layout_width="@dimen/dimen_200"
+        android:layout_height="@dimen/dimen_200"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginStart="@dimen/dimen_60"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
