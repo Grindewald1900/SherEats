@@ -60,6 +60,9 @@ object ConstantUtil {
     const val TYPE_TIME = "TIME"
     const val TYPE_EMOJI = "EMOJI"
 
+    // Shared
+    const val SHARED_THEME = "THEME"
+    const val CURRENT_THEME = "CURRENT_THEME"
     // Tags
     const val TAG_DIALOG_UPLOAD_IMAGE = "TAG_DIALOG_UPLOAD_IMAGE"
 

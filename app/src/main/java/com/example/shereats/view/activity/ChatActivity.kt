@@ -33,7 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ChatActivity : FragmentActivity() {
+class ChatActivity : BaseActivityNoBar() {
     private lateinit var binding: ActivityChatBinding
     private lateinit var viewModel: ChatViewModel
     private var isInit = false

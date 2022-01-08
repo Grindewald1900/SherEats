@@ -30,7 +30,7 @@ import java.sql.Timestamp
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 
-class DetailDishActivity : AppCompatActivity(), OnMapReadyCallback, RefreshData{
+class DetailDishActivity : BaseActivityBar(), OnMapReadyCallback, RefreshData{
     private lateinit var binding: ActivityDetailDishBinding
     private lateinit var viewModel: DetailDishViewModel
     private lateinit var mMapFragment: SupportMapFragment

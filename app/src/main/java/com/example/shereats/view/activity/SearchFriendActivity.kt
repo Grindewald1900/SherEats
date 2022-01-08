@@ -19,7 +19,7 @@ import com.example.shereats.view.adapter.UserAdapter
 import com.example.shereats.view.fragment.ViewpagerSearchFriendFragment
 import com.example.shereats.view.transformer.ZoomOutPageTransformer
 
-class SearchFriendActivity : FragmentActivity() {
+class SearchFriendActivity : BaseActivityNoBar() {
     private lateinit var binding: ActivitySearchFriendBinding
     private lateinit var viewModel: SearchFriendViewModel
     override fun onCreate(savedInstanceState: Bundle?) {

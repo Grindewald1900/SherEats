@@ -11,9 +11,15 @@
     <color name="colorPrimaryDark">#592089</color>
     <color name="colorAccent">#BAB6B6</color>
 
+<!--    <color name="colorPrimary1">#7926A9</color>-->
+<!--    <color name="colorPrimary2">#FF5844</color>-->
+<!--    <color name="colorPrimary3">#1E2D4C</color>-->
+<!--    <color name="colorPrimary4">#FFBA00</color>-->
+<!--    <color name="colorPrimary5">#425C5A</color>-->
 
 
-<!--    General Settings-->
+
+    <!--    General Settings-->
     <color name="color_stroke">#000000</color>
     <!--    <color name="colorPrimary">#1E2D4C</color>-->
     <!--    <color name="colorPrimaryDark">#8BAD8A</color>-->

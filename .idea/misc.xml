@@ -11,6 +11,8 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_angel_left_thin.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_arrow_64.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_care_up_thin.xml" value="0.1385" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_checkbox.xml" value="0.25" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_checkbox_select.xml" value="0.25" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_delivery_10.xml" value="0.15" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_minus_4.xml" value="0.1785" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_plus_4.xml" value="0.1785" />
@@ -33,6 +35,9 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_register.xml" value="0.24791666666666667" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_search.xml" value="0.31302083333333336" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_search_friend.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_setting.xml" value="0.284375" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_user_info.xml" value="0.284375" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_welcome.xml" value="0.30885416666666665" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/cart_fragment.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/dish_fragment.xml" value="0.3020833333333333" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/fragment_friend.xml" value="0.303125" />
@@ -54,6 +59,7 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_adapter_user.xml" value="0.28802083333333334" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_viewpager_search.xml" value="0.290625" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_viewpager_search_friend.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/view_viewpager_theme.xml" value="0.3692708333333333" />
       </map>
     </option>
   </component>

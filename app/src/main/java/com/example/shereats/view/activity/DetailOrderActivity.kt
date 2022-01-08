@@ -18,7 +18,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DetailOrderActivity : AppCompatActivity() {
+class DetailOrderActivity : BaseActivityBar() {
     private lateinit var binding: ActivityDetailOrderBinding
     private lateinit var mOrder: Order
 

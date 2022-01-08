@@ -1,5 +1,6 @@
 package com.example.shereats.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -19,7 +20,7 @@ import com.example.shereats.view.fragment.DialogUploadImageFragment
 /**
  * User Information page, when user profile picture is clicked
  */
-class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefreshImage{
+class UserInfoActivity : BaseActivityBar(), DialogUploadImageFragment.OnRefreshImage{
     private lateinit var binding: ActivityUserInfoBinding
     private lateinit var viewModel: UserInfoViewModel
     private lateinit var mDialog: DialogUploadImageFragment
@@ -48,6 +49,9 @@ class UserInfoActivity : AppCompatActivity(), DialogUploadImageFragment.OnRefres
         binding.btnActivityUserInfoBack.setOnClickListener { onBackPressed() }
         binding.btnActivityUserInfoPortrait.setOnClickListener {
             mDialog.show(supportFragmentManager, ConstantUtil.TAG_DIALOG_UPLOAD_IMAGE)
+        }
+        binding.btnActivityUserInfoSetting.setOnClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
         }
 
         viewModel.setFirebaseBadge()

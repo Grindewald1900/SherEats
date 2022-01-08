@@ -13,7 +13,7 @@ import com.example.shereats.utils.LoginStatusUtil
 import com.example.shereats.utils.ToastUtil
 import java.util.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivityBar() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var viewModel: RegisterViewModel
     private lateinit var userData: MutableList<String>

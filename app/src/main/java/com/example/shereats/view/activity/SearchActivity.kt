@@ -26,7 +26,7 @@ import com.example.shereats.view.adapter.SearchAdapter
 import com.example.shereats.view.fragment.ViewpagerSearchFragment
 import com.example.shereats.view.transformer.ZoomOutPageTransformer
 
-class SearchActivity : FragmentActivity() {
+class SearchActivity : BaseActivityNoBar() {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var viewModel: SearchViewModel
     private lateinit var mPager: ViewPager2

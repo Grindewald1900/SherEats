@@ -18,7 +18,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivityNoBar() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
     private lateinit var mTransitionBtn: TransitionButton
@@ -31,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView(){
-        supportActionBar?.setDisplayShowTitleEnabled(false)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.tvLoginRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))

@@ -39,6 +39,8 @@
     <dimen name="dimen_280">280dp</dimen>
     <dimen name="dimen_300">300dp</dimen>
     <dimen name="dimen_320">320dp</dimen>
+    <dimen name="dimen_340">340dp</dimen>
+
 
 
     <!--Button size -->
@@ -56,6 +58,7 @@
     <dimen name="widget_size_x_large">96dp</dimen>
     <dimen name="widget_size_xx_large">192dp</dimen>
     <dimen name="widget_size_emoji">24dp</dimen>
+    <dimen name="widget_size_badge">36dp</dimen>
     <dimen name="ripple_transition_mask">1000dp</dimen>
 
 

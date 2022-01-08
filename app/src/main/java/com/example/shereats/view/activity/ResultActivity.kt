@@ -10,7 +10,7 @@ import com.example.shereats.databinding.ActivityResultBinding
 import com.example.shereats.utils.ConstantUtil
 import com.example.shereats.view.activity.MainActivity
 
-class ResultActivity : FragmentActivity() {
+class ResultActivity : BaseActivityNoBar() {
     private lateinit var binding: ActivityResultBinding
     private var state = ConstantUtil.RESULT_DEFAULT
 
