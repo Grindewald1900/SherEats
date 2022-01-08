@@ -66,7 +66,7 @@ class FavoriteButton(private val mContext: Context, private val attrs: Attribute
                 override fun onAnimationStart(p0: Animator?) {
                 }
                 override fun onAnimationEnd(p0: Animator?) {
-                    ToastUtil.showShortMessage("Anime 1", mContext)
+                    ToastUtil.showShortMessage("Dislike", mContext)
                     // Remove the listener, or this method could be called multi times
                     animation.setListener(null)
                     setImage(!isFavorite)
@@ -83,7 +83,7 @@ class FavoriteButton(private val mContext: Context, private val attrs: Attribute
                 override fun onAnimationStart(p0: Animator?) {
                 }
                 override fun onAnimationEnd(p0: Animator?) {
-                    ToastUtil.showShortMessage("Anime 2", mContext)
+                    ToastUtil.showShortMessage("Like", mContext)
                     animation.setListener(null)
                     setImage(!isFavorite)
                     animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(300).start()

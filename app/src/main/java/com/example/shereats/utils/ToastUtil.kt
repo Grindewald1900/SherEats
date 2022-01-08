@@ -1,7 +1,13 @@
 package com.example.shereats.utils
 
+import android.app.Activity
 import android.content.Context
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
+import com.example.shereats.R
 
 
 /**
@@ -28,6 +34,15 @@ class ToastUtil {
         fun showShortMessage(messageId: Int, context: Context){
             val message = context.getString(messageId)
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
+
+        fun showLongMessage(message: String, activity: Activity){
+            val toast = Toast(activity)
+//            val viewGroup = activity.findViewById<LinearLayout>(R.id.toast_layout_root)
+//            toast.view = LayoutInflater.from(activity).inflate(R.layout.layout_toast, viewGroup, true)
+//            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+//            toast.duration = Toast.LENGTH_LONG
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
         }
     }
 }

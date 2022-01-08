@@ -49,6 +49,7 @@
             android:layout_height="@dimen/dimen_70"
             android:layout_marginTop="@dimen/dimen_20"
             android:layout_marginStart="@dimen/dimen_30"
+            android:scaleType="centerCrop"
             app:border_width="@dimen/dimen_2"
             app:image_border_color="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="@id/view_restaurant_background"

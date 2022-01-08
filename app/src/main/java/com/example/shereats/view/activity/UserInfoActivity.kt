@@ -34,6 +34,10 @@ class UserInfoActivity : BaseActivityBar(), DialogUploadImageFragment.OnRefreshI
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.setFirebaseBadge()
+    }
 
     private fun initView(){
         mUser = LoginStatusUtil.getUser()
@@ -66,6 +70,7 @@ class UserInfoActivity : BaseActivityBar(), DialogUploadImageFragment.OnRefreshI
                 .into(binding.btnActivityUserInfoPortrait)
         }
     }
+
 
     private fun hideActionBar(){
         supportActionBar?.hide()

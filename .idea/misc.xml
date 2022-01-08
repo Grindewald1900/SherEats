@@ -19,6 +19,7 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_search.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_shopping_cart_23.xml" value="0.1785" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_iconmonstr_smiley_thin.xml" value="0.217" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ic_promotion_circle_background_200.xml" value="0.25" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/ripple_transition_button.xml" value="0.2605" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_cursor_black.xml" value="0.22" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/drawable/shape_round.xml" value="0.1785" />
@@ -40,10 +41,13 @@
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/activity_welcome.xml" value="0.30885416666666665" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/cart_fragment.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/dish_fragment.xml" value="0.3020833333333333" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/fragment_dialog_check.xml" value="0.3729166666666667" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/fragment_dialog_upload_image.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/fragment_friend.xml" value="0.303125" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/home_fragment.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/layout_counter.xml" value="0.2677083333333333" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/layout_emoji.xml" value="0.3125" />
+        <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/layout_toast.xml" value="0.2625" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/order_fragment.xml" value="0.2875" />
         <entry key="..\:/Users/Yee/StudioProjects/SherEats/app/src/main/res/layout/shape_round_corner_solid_white.xml" value="0.30052083333333335" />

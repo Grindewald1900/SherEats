@@ -134,8 +134,8 @@
 
     <View
         android:id="@+id/view_dish_promotion"
-        android:layout_width="@dimen/dimen_100"
-        android:layout_height="@dimen/dimen_100"
+        android:layout_width="@dimen/dimen_80"
+        android:layout_height="@dimen/dimen_80"
         android:layout_marginEnd="@dimen/dimen_10"
         android:background="@drawable/ic_promotion_circle_background_200"
         app:layout_constraintTop_toBottomOf="@+id/iv_dish_image"

@@ -48,8 +48,12 @@ class DishFragment : Fragment() {
         binding.rvFragmentDish.layoutManager = LinearLayoutManager(context)
         binding.rvFragmentDish.itemAnimator = DefaultItemAnimator()
 
+        viewModel.setState(ConstantUtil.STATE_NULL)
         viewModel.getFirebaseDish().observe(viewLifecycleOwner) {
             binding.rvFragmentDish.adapter = DishAdapter(it)
+        }
+        viewModel.getState().observe(viewLifecycleOwner){
+            binding.swipeFragmentDish.isRefreshing = false
         }
         binding.swipeFragmentDish.setOnRefreshListener {
             viewModel.setAllFirebaseDish()

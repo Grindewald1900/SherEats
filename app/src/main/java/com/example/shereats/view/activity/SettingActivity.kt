@@ -5,15 +5,22 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.shereats.R
 import com.example.shereats.view.fragment.ViewpagerTheme
 import com.example.shereats.databinding.ActivitySettingBinding
+import com.example.shereats.model.interfaces.DialogCheckResult
+import com.example.shereats.model.viewmodel.SettingViewModel
+import com.example.shereats.utils.ConstantUtil
+import com.example.shereats.view.fragment.DialogCheckFragment
 import com.example.shereats.view.transformer.ZoomOutPageTransformer
 
-class SettingActivity : BaseActivityNoBar() {
+class SettingActivity : BaseActivityNoBar(), DialogCheckResult {
     private lateinit var binding: ActivitySettingBinding
+    private lateinit var viewModel: SettingViewModel
+    private var tempBadgeId: Long = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
@@ -21,7 +28,13 @@ class SettingActivity : BaseActivityNoBar() {
     }
 
     private fun initView(){
+        viewModel = ViewModelProvider(this).get(SettingViewModel::class.java)
+        viewModel.getBadgeSequence()
+        binding.btnActivitySettingBack.setOnClickListener {
+            onBackPressed()
+        }
         initViewpager()
+        setBadgeListener()
     }
 
     private fun initViewpager(){
@@ -42,5 +55,26 @@ class SettingActivity : BaseActivityNoBar() {
         mPager.setPageTransformer(ZoomOutPageTransformer())
         mPager.offscreenPageLimit = 3
 
+    }
+
+    private fun setBadgeListener(){
+        val grid = binding.badgeActivitySetting
+        val size = grid.childCount
+        for (i in 0 until size){
+            val container = grid.getChildAt(i)
+            container.setOnClickListener {
+                tempBadgeId = i.toLong() + 1
+                val mDialog = DialogCheckFragment(getString(R.string.hint_add_badge))
+                mDialog.show(supportFragmentManager, ConstantUtil.TAG_DIALOG_CHECK)
+            }
+        }
+    }
+
+    override fun onDialogCheckCallBack(isConfirm: Boolean) {
+        if (tempBadgeId >= 0){
+            if(isConfirm){
+                viewModel.uploadBadge(tempBadgeId)
+            }
+        }
     }
 }

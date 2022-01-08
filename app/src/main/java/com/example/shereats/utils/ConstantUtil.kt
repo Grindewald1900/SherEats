@@ -1,6 +1,8 @@
 package com.example.shereats.utils
 
 import android.graphics.Color
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /**
@@ -65,6 +67,8 @@ object ConstantUtil {
     const val CURRENT_THEME = "CURRENT_THEME"
     // Tags
     const val TAG_DIALOG_UPLOAD_IMAGE = "TAG_DIALOG_UPLOAD_IMAGE"
+    const val TAG_DIALOG_CHECK = "TAG_DIALOG_CHECK"
+
 
     // States
     const val STATE_NULL = -1
@@ -154,6 +158,10 @@ object ConstantUtil {
         4.toLong() to Color.parseColor("#7926A9"),
         5.toLong() to Color.parseColor("#d9534f"),)
 
+    val BADGE_CONTENT: List<String> = listOf("[Lv1] First top up", "[Lv1] Peace and love", "[Lv2] All correct", "[Lv1] Ecological volunteer", "[Lv1] 100% Guarantee", "[Lv3] Amazing", "[Lv1] Sunshine and beach"
+        , "[Lv1] Rock star", "[Lv4] Lifetime learning")
+    val BADGE_RARITY: List<Long> = listOf(1,1,2,1,1,3,1,1,4)
+
     var CURRENT_TIME: String = (System.currentTimeMillis()/1000).toString()
 
     fun resetCurrentTime(){
@@ -162,6 +170,12 @@ object ConstantUtil {
 
     fun getCurrentTime(): String{
         return (System.currentTimeMillis()/1000).toString()
+    }
+
+    fun getCurrentDate(): String{
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val currentDate = sdf.format(Date())
+        return currentDate.toString()
     }
 
 }

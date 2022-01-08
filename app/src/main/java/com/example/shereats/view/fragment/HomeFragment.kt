@@ -37,11 +37,11 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel.setAllFirebaseRestaurant()
-        viewModel.setIsNetworkSuccess(ConstantUtil.BACKGROUND_STATE_NORMAL)
+        viewModel.setState(ConstantUtil.STATE_NULL)
         viewModel.getFirebaseRestaurant().observe(viewLifecycleOwner, Observer {
             binding.rvFragmentHome.adapter = RestaurantAdapter(it)
         })
-        viewModel.getIsNetworkSuccess().observe(viewLifecycleOwner) { state ->
+        viewModel.getState().observe(viewLifecycleOwner) { state ->
             binding.swipeFragmentHome.isRefreshing = false
             setBackGround(state)
         }
@@ -59,10 +59,10 @@ class HomeFragment : Fragment() {
      */
     private fun setBackGround(state: Int){
         when(state){
-            ConstantUtil.BACKGROUND_STATE_NORMAL -> {
+            ConstantUtil.STATE_SUCCESS -> {
                 setBackgroundVisibility(View.GONE)
             }
-            ConstantUtil.BACKGROUND_STATE_NETWORK_ERROR -> {
+            ConstantUtil.STATE_FAIL -> {
                 setBackgroundVisibility(View.VISIBLE)
                 binding.ivFragmentHomePlaceholder.setImageResource(R.drawable.ic_baseline_network_check_24)
                 binding.tvFragmentHomePlaceholder.setText(R.string.hint_net_error)

@@ -146,6 +146,7 @@
     <string name="theme">Themes</string>
     <string name="badge">Badges</string>
     <string name="chatTheme">Chat</string>
+    <string name="hint_add_badge">Add this badge to your profile</string>
 
 
     <!-- Tags -->

@@ -2,6 +2,8 @@ package com.example.shereats.view.adapter
 
 import android.animation.Animator
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +20,8 @@ import com.example.shereats.utils.TextUtil
 import com.example.shereats.utils.ToastUtil
 import com.example.shereats.utils.firebase.StorageUtil
 import com.example.shereats.view.custom.FavoriteButton
+import com.example.shereats.view.custom.RoundImageView
+import kotlin.random.Random
 
 
 /**
@@ -34,6 +38,7 @@ class RestaurantAdapter(var data: List<FirebaseRestaurant>): RecyclerView.Adapte
         var title: TextView = view.findViewById(R.id.tv_restaurant_title)
         var location: TextView = view.findViewById(R.id.tv_restaurant_location)
         val price: TextView = view.findViewById(R.id.tv_restaurant_price)
+        val profileImage: RoundImageView = view.findViewById(R.id.iv_restaurant_portrait)
         var isFavorite: Boolean = false
         //Todo: add rate badge
 //        var portrait: SelectableRoundedImageView = view.findViewById(R.id.iv_normal_card_portrait)
@@ -57,6 +62,7 @@ class RestaurantAdapter(var data: List<FirebaseRestaurant>): RecyclerView.Adapte
         holder.price.text = TextUtil.getItemPrice(dataSlice.restaurantAverage!!)
         holder.heart.setHolder(holder)
         holder.heart.setImage(SingletonUtil.LIST_IS_FAVORITE_REST[position])
+        setBadge(holder.profileImage)
         SingletonUtil.LIST_IS_FAVORITE_REST[position] = holder.isFavorite
         setRestaurantImage(dataSlice.restaurantId!!.toInt(), holder.image)
     }
@@ -66,6 +72,18 @@ class RestaurantAdapter(var data: List<FirebaseRestaurant>): RecyclerView.Adapte
         return data.size
     }
 
+    private fun setBadge(view: RoundImageView){
+        var mResource: Int = R.drawable.badge_1
+        val ran = Random.nextInt(1, 6)
+        when(ran){
+            1 -> { mResource = R.drawable.badge_star }
+            2 -> { mResource = R.drawable.badge_new}
+            3 -> { mResource = R.drawable.badge_winner }
+            else -> { view.setImage(R.drawable.badge_1) }
+        }
+        val mBitmap = BitmapFactory.decodeResource(mContext.resources, mResource)
+        view.setImage(mBitmap)
+    }
     private fun setRestaurantImage(id: Int, view: ImageView){
         val childPath = "restaurant/$id.jpg"
         val pathReference = StorageUtil.reference.child(childPath)

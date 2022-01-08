@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_round_corner_no_border"
+        >
+
+        <TextView
+            android:id="@+id/tv_fragment_dialog_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:textSize="@dimen/text_size_title"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_dialog_check_confirm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+        <Button
+            android:id="@+id/btn_fragment_dialog_check_confirm"
+            android:layout_width="@dimen/button_width_little"
+            android:layout_height="@dimen/button_length_middle"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:layout_marginBottom="@dimen/dimen_30"
+            android:layout_marginStart="@dimen/dimen_30"
+            android:layout_marginEnd="@dimen/dimen_30"
+            android:text="@string/confirm"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_title"
+            android:background="@drawable/shape_round_corner_no_border"
+            app:backgroundTint="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fragment_dialog_check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_dialog_check_cancel"
+            />
+
+        <Button
+            android:id="@+id/btn_fragment_dialog_check_cancel"
+            android:layout_width="@dimen/button_width_little"
+            android:layout_height="@dimen/button_length_middle"
+            android:layout_marginEnd="@dimen/dimen_30"
+            android:text="@string/cancel"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_title"
+            android:background="@drawable/shape_round_corner_no_border"
+            app:backgroundTint="@color/white"
+            app:layout_constraintTop_toTopOf="@+id/btn_fragment_dialog_check_confirm"
+            app:layout_constraintLeft_toRightOf="@+id/btn_fragment_dialog_check_confirm"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

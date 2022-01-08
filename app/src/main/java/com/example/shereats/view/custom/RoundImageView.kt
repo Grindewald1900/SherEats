@@ -45,7 +45,7 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
          * If you set attribute {@see image_border_src}, the bitmap will be constructed with that resource
          * The source image by default,R.drawable.img_portrait
          */
-        mSrc = BitmapFactory.decodeResource(resources, attr.getResourceId(R.styleable.RoundImageView_image_border_src, R.drawable.img_portrait))
+        mSrc = BitmapFactory.decodeResource(resources, attr.getResourceId(R.styleable.RoundImageView_image_border_src, R.drawable.badge_2))
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -76,7 +76,12 @@ class RoundImageView(context: Context, attrs: AttributeSet?): androidx.appcompat
     }
 
     fun setImage(bitmap: Bitmap){
-        mBitmap = ImageUtil.getCircleImage(bitmap, mImageSize/2f, mImageSize/2, mImageSize/2, mImageSize)
+        mSrc = ImageUtil.getCircleImage(bitmap, mImageSize/2f, mImageSize/2, mImageSize/2, mImageSize)
+        mBitmap = ImageUtil.getCircleImage(mSrc, mImageSize/2f, mImageSize/2, mImageSize/2, mImageSize)
+        invalidate()
+    }
+
+    fun setImage(resourceId: Int){
         invalidate()
     }
 
