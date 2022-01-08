@@ -1,4 +1,4 @@
-package com.example.shereats.view.ui.slideshow
+package com.example.shereats.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,22 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.shereats.R
+import com.example.shereats.model.viewmodel.MHomeViewModel
 
+class UserInfoFragment : Fragment() {
 
-class SlideshowFragment : Fragment() {
-
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var homeViewModel: MHomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        homeViewModel =
+            ViewModelProvider(this).get(MHomeViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        val textView: TextView = root.findViewById(R.id.text_gallery)
+        homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

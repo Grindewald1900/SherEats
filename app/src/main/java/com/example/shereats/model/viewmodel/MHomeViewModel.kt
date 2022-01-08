@@ -1,13 +1,14 @@
-package com.example.shereats.view.ui.gallery
+package com.example.shereats.model.viewmodel
+
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GalleryViewModel : ViewModel() {
+class MHomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+        value = "To be completed"
     }
     val text: LiveData<String> = _text
 }

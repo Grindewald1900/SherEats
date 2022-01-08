@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
             <item
                 android:id="@+id/nav_home"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/ic_antfill_wechat"
                 android:title="@string/menu_home" />
             <item
                 android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_fa5_facebook"
                 android:title="@string/menu_gallery" />
             <item
                 android:id="@+id/nav_slideshow"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_fa5_google"
                 android:title="@string/menu_slideshow" />
 
 <!--    <group android:checkableBehavior="single">-->
