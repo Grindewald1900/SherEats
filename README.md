@@ -131,11 +131,16 @@ Root
 
 <!-- GETTING STARTED -->
 ## Implementation
-Here's some details and code blocks from the project.  
+As mentioned above, this project contains two main branches  
+* **master**: a branch with backend totally based on Firebase.
+* **retrofit2**: a branch with hybrid backend, Login/Register, user/restaurant/badge/ related interfaces are based on Retrofit and HTTP Web server. Others like image and instant message are based on Firebase.
+<p align="center">
+  <img src="https://i.ibb.co/NsbPcDb/Architecture.png" alt="Logo" width="600" >
+</p>
+
+
 
 ### Dependencies
-<details>
-
 ```Bash
     //Common
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -150,31 +155,46 @@ Here's some details and code blocks from the project.
     implementation 'androidx.navigation:navigation-ui:2.3.5'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+```
+
+```Bash
     // Network
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+```
+
+```Bash
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:29.0.2')
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx:20.0.2'
+```
+
+```Bash
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+```
+
+```Bash
     // Google Map
     implementation 'com.google.android.gms:play-services-maps:18.0.1'
+```
 
+```Bash
     // Permission
     implementation 'com.yanzhenjie:permission:2.0.3'
+```
 
+```Bash
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 ```
-</details>
 
 
 ### MVVM
@@ -336,10 +356,10 @@ data class FirebaseDish(
 
 
 ### Retrofit
-1. Build OkHttpClient with Client Builder.
-2. Create Retrofit instance.
-3. Create Endpoint interface.
-4. Make request and deal with callback.
+1. Build `OkHttpClient` with Client Builder.
+2. Create Retrofit `instance`.
+3. Create `Endpoint` interface.
+4. Make `request` and deal with `callback`.
 
 * **Client and instance**
 <details> 
@@ -545,8 +565,12 @@ Realtime database stores and sync data with NoSQL cloud database. Data is synced
 ## Demo
 
 ### Home page
+If user is not logged in
 <p align="center"> 
 <img src="https://i.ibb.co/d4fwq1G/2.gif" alt="Logo" width="300" >   
+<img src="https://i.ibb.co/fSLQfWx/9.gif" alt="Logo" width="300" >   
+
+</p>
 
 ### Search filters 
 <p align="center"> 
@@ -555,22 +579,90 @@ Realtime database stores and sync data with NoSQL cloud database. Data is synced
 <img src="https://i.ibb.co/WN9Cn70/15.gif" alt="Logo" width="300" ></p>
 
 
+
 ### Add item to cart
 <p align="center"> 
-<img src="https://i.ibb.co/9TkM56b/15.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/mN3L876/22.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/zQZhxH1/24.gif" alt="Logo" width="300" >
+</p>
+<p align="center"> 
+<img src="https://i.ibb.co/Xy8DCKg/25.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/6NbpVjn/12.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/vQFkR5S/26.gif" alt="Logo" width="300" >
+
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/VjCxwx8/13.gif" alt="Logo" width="300" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/2t8mNcr/27.gif" alt="Logo" width="300" >
+</p>
+
+<img src="" alt="Logo" width="300" >
+
+### Search page
+<p align="center"> 
+<img src="https://i.ibb.co/Hqqj9H9/28.gif" alt="Logo" width="300" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/KhBgqNG/29.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/Mfh6Cgh/30.gif" alt="Logo" width="300" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/SdGpPmK/31.gif" alt="Logo" width="300" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/CHMSRJ4/32.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/hgm2C8L/33.gif" alt="Logo" width="300" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/wSz2K5x/34.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/f97s50j/35.gif" alt="Logo" width="300" >
 </p>
 
 ### Login and register
+<p align="center"> 
+<img src="https://i.ibb.co/PxMpKkP/16.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/DVk2dJ7/23.gif" alt="Logo" width="300" >
+</p>
 
+<p align="center"> 
+<img src="https://i.ibb.co/zPnJgfS/17.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/C2R3YnH/18.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/0rYg0nK/6.gif" alt="Logo" width="300" >
+</p>
 
 ### User information page
+<p align="center"> 
+<img src="https://i.ibb.co/26RwRK1/41.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/0qFJBw6/21.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/5rMK171/37.gif" alt="Logo" width="300" >
+</p>
 
+<p align="center"> 
+<img src="https://i.ibb.co/hDSgWK0/38.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/f1CqFQn/39.gif" alt="Logo" width="300" >
+<img src="https://i.ibb.co/vVL8qQr/40.gif" alt="Logo" width="300" >
+</p>
 
+<p align="center"> 
+<img src="https://i.ibb.co/TLsXvKb/36.gif" alt="Logo" width="300" >
+</p>
 ### Add friend
+<p align="center"> 
+<img src="" alt="Logo" width="300" >
+</p>
 
 ### Chat page
-
-
+<p align="center"> 
+<img src="" alt="Logo" width="300" >
+</p>
 
 <p align="center">
   <img src="" alt="Logo" width="400" ></p>
