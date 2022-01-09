@@ -173,6 +173,7 @@
     <string name="hint_input_msg">Input message here</string>
     <string name="hint_net_error">Network error!</string>
     <string name="hint_no_image">Please select a image</string>
+    <string name="hint_no_user">Invalid username, please register</string>
     <string name="hint_no_jpg">Please select a image with jpg(jpeg) format</string>
 
 

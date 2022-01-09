@@ -50,10 +50,14 @@ class LoginActivity : BaseActivityNoBar() {
                 }
                 ConstantUtil.ACTIVITY_STATE_LOGIN_FAIL -> {
                     stopAnimeByIsSuccess(false)
+                    
                     ToastUtil.showShortMessage(getString(R.string.hint_invalid_user), this)
                 }
+                ConstantUtil.ACTIVITY_STATE_NO_USER -> {
+                    stopAnimeByIsSuccess(false)
+                    ToastUtil.showShortMessage(getString(R.string.hint_no_user), this)
+                }
             }
-
         }
         viewModel.getUser().observe(this) {
 

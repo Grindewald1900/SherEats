@@ -44,8 +44,11 @@ class LoginViewModel: BaseViewModel() {
                         setState(ConstantUtil.ACTIVITY_STATE_LOGIN_FAIL)
                     }
                 }
+            }else{
+                setState(ConstantUtil.ACTIVITY_STATE_NO_USER)
             }
         }.addOnFailureListener {
+            setState(ConstantUtil.ACTIVITY_STATE_LOGIN_FAIL)
             it.stackTrace
         }
     }

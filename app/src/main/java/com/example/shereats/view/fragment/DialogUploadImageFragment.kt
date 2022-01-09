@@ -107,6 +107,7 @@ class DialogUploadImageFragment: DialogFragment(){
         val childPath = "user/$name.jpg"
         val imageReference = StorageUtil.reference.child(childPath)
         val upLoadTask = imageReference.putFile(imageUri!!)
+        // Upload image asynchronously
         upLoadTask.addOnFailureListener{
             it.stackTrace
         }.addOnSuccessListener {
