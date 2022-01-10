@@ -23,6 +23,9 @@
         android:theme="@style/Theme.SherEats"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.WebViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.WelcomeActivity"
             android:exported="false" />
         <activity

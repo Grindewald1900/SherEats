@@ -1,5 +1,6 @@
 package com.example.shereats.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -35,6 +36,7 @@ class SettingActivity : BaseActivityNoBar(), DialogCheckResult {
         }
         initViewpager()
         setBadgeListener()
+        setContributors()
     }
 
     private fun initViewpager(){
@@ -67,6 +69,18 @@ class SettingActivity : BaseActivityNoBar(), DialogCheckResult {
                 val mDialog = DialogCheckFragment(getString(R.string.hint_add_badge))
                 mDialog.show(supportFragmentManager, ConstantUtil.TAG_DIALOG_CHECK)
             }
+        }
+    }
+
+    private fun setContributors(){
+        val intent = Intent(this, WebViewActivity::class.java)
+        binding.ivActivitySettingYee.setOnClickListener {
+            intent.putExtra(ConstantUtil.ENTITY_URL, "https://github.com/Grindewald1900")
+            startActivity(intent)
+        }
+        binding.ivActivitySettingJo.setOnClickListener {
+            intent.putExtra(ConstantUtil.ENTITY_URL, "https://www.linkedin.com/in/yuxuan-long-96a6b5180/")
+            startActivity(intent)
         }
     }
 

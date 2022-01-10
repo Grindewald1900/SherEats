@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_3"
+        >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -131,5 +136,54 @@
                 android:src="@drawable/badge_9"
                 />
         </GridLayout>
+
+        <TextView
+            android:id="@+id/tv_activity_setting_title_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:textSize="@dimen/text_size_title"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/about"
+            app:layout_constraintTop_toBottomOf="@+id/badge_activity_setting"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="1"
+            android:columnCount="2"
+            android:paddingBottom="@dimen/dimen_20"
+            app:layout_constraintTop_toBottomOf="@+id/tv_activity_setting_title_three"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+            <com.example.shereats.view.custom.RoundImageView
+                android:id="@+id/iv_activity_setting_yee"
+                android:layout_width="@dimen/dimen_80"
+                android:layout_height="@dimen/dimen_80"
+                android:layout_gravity="center"
+                android:layout_columnWeight="1"
+                app:image_border_src="@drawable/img_yee"
+                app:border_width="@dimen/dimen_5"
+                app:image_border_color="@color/facebook"
+                />
+            <com.example.shereats.view.custom.RoundImageView
+                android:id="@+id/iv_activity_setting_jo"
+                android:layout_width="@dimen/dimen_80"
+                android:layout_height="@dimen/dimen_80"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                app:image_border_src="@drawable/img_jo"
+                app:border_width="@dimen/dimen_5"
+                app:image_border_color="@color/google"
+                />
+        </GridLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>

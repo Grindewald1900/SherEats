@@ -48,6 +48,7 @@ object ConstantUtil {
     const val ENTITY_ORDER = "ORDER"
     const val ENTITY_USER = "USER"
     const val ENTITY_CHAT = "CHAT"
+    const val ENTITY_URL = "URL"
 
     const val ATTRIBUTE_POSITION = "POSITION"
 
