@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="@+id/iv_view_order_logo"
         app:layout_constraintRight_toLeftOf="@+id/btn_view_order_contact"
         />
-    <com.example.shereats.view.custom.RoundCornerButton
+    <com.grindewald1900.shereats.view.custom.RoundCornerButton
         android:id="@+id/btn_view_order_contact"
         android:layout_marginEnd="@dimen/dimen_5"
         android:text="@string/contact"

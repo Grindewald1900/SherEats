@@ -20,7 +20,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />
-        <com.example.shereats.view.custom.FavoriteButton
+        <com.grindewald1900.shereats.view.custom.FavoriteButton
             android:id="@+id/ib_restaurant_collect"
             android:layout_width="@dimen/widget_size_large"
             android:layout_height="@dimen/widget_size_large"
@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />
-        <com.example.shereats.view.custom.RoundCornerImageView
+        <com.grindewald1900.shereats.view.custom.RoundCornerImageView
             android:id="@+id/iv_restaurant_image"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_140"
@@ -43,7 +43,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/view_restaurant_background"
             app:layout_constraintRight_toRightOf="@+id/view_restaurant_background"
             />
-        <com.example.shereats.view.custom.RoundImageView
+        <com.grindewald1900.shereats.view.custom.RoundImageView
             android:id="@+id/iv_restaurant_portrait"
             android:layout_width="@dimen/dimen_70"
             android:layout_height="@dimen/dimen_70"

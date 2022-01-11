@@ -155,7 +155,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/et_register_email"
             app:layout_constraintTop_toBottomOf="@+id/et_register_email" />
 
-        <com.example.shereats.view.custom.RoundCornerButton
+        <com.grindewald1900.shereats.view.custom.RoundCornerButton
             android:id="@+id/btn_register_code"
             android:layout_width="@dimen/dimen_80"
             android:layout_height="@dimen/dimen_40"
@@ -168,7 +168,7 @@
             app:background_color="@color/colorPrimary"
             />
 
-        <com.example.shereats.view.custom.TransitionButton
+        <com.grindewald1900.shereats.view.custom.TransitionButton
             android:id="@+id/btn_register_register"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"

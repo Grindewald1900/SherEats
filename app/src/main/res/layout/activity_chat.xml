@@ -114,7 +114,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     />
-                <com.example.shereats.view.custom.TransitionButton
+                <com.grindewald1900.shereats.view.custom.TransitionButton
                     android:id="@+id/btn_activity_chat_send"
                     android:layout_width="@dimen/dimen_60"
                     android:layout_height="wrap_content"

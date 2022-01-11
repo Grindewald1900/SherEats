@@ -15,13 +15,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
-            <com.example.shereats.view.custom.SearchFilterLayout
+            <com.grindewald1900.shereats.view.custom.SearchFilterLayout
                 android:id="@+id/sf_fragment_dish_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_10"
                 app:search_filter_text="@string/price" />
-            <com.example.shereats.view.custom.SearchFilterLayout
+            <com.grindewald1900.shereats.view.custom.SearchFilterLayout
                 android:id="@+id/sf_fragment_dish_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

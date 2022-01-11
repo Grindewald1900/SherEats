@@ -166,7 +166,7 @@
             />
 
 
-        <com.example.shereats.view.custom.TransitionButton
+        <com.grindewald1900.shereats.view.custom.TransitionButton
             android:id="@+id/btn_activity_order_confirm"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"

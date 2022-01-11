@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "676169126253",
+    "firebase_url": "https://shereats-f13b6-default-rtdb.firebaseio.com",
     "project_id": "shereats-f13b6",
     "storage_bucket": "shereats-f13b6.appspot.com"
   },
@@ -13,6 +14,43 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "676169126253-50k02kleijjooo5idcrhv1jsbfdt4uvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9ztNVYWttwat_h4oWaUbJ2ejcbzbjWIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676169126253-50k02kleijjooo5idcrhv1jsbfdt4uvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676169126253:android:4db56d4ff903de7fd54a64",
+        "android_client_info": {
+          "package_name": "com.grindewald1900.shereats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676169126253-m19lp5gkf0maggefuddpjcsl66v335pl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grindewald1900.shereats",
+            "certificate_hash": "008321ede1b4f99d3564b0c8a13c5698ee4f4df7"
+          }
+        },
         {
           "client_id": "676169126253-50k02kleijjooo5idcrhv1jsbfdt4uvh.apps.googleusercontent.com",
           "client_type": 3

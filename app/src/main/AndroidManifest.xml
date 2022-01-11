@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.shereats">
+    package="com.grindewald1900.shereats">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -23,40 +23,40 @@
         android:theme="@style/Theme.SherEats"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.activity.WebViewActivity"
+            android:name="com.grindewald1900.shereats.view.activity.WebViewActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.WelcomeActivity"
+            android:name="com.grindewald1900.shereats.view.activity.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SettingActivity"
+            android:name="com.grindewald1900.shereats.view.activity.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.ChatActivity"
+            android:name="com.grindewald1900.shereats.view.activity.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SearchFriendActivity"
+            android:name="com.grindewald1900.shereats.view.activity.SearchFriendActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.DetailOrderActivity"
+            android:name="com.grindewald1900.shereats.view.activity.DetailOrderActivity"
             android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
-        <activity android:name=".view.activity.DetailDishActivity" />
-        <activity android:name=".view.activity.SearchActivity" />
-        <activity android:name=".view.activity.ResultActivity" />
-        <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name="com.grindewald1900.shereats.view.activity.DetailDishActivity" />
+        <activity android:name="com.grindewald1900.shereats.view.activity.SearchActivity" />
+        <activity android:name="com.grindewald1900.shereats.view.activity.ResultActivity" />
+        <activity android:name="com.grindewald1900.shereats.view.activity.RegisterActivity" />
         <activity
-            android:name=".view.activity.LoginActivity"
+            android:name="com.grindewald1900.shereats.view.activity.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".view.activity.UserInfoActivity"
+            android:name="com.grindewald1900.shereats.view.activity.UserInfoActivity"
             android:label="@string/title_activity_user_info" />
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name="com.grindewald1900.shereats.view.activity.MainActivity"
             android:theme="@style/Theme.SherEats.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

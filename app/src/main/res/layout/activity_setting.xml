@@ -161,7 +161,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
-            <com.example.shereats.view.custom.RoundImageView
+            <com.grindewald1900.shereats.view.custom.RoundImageView
                 android:id="@+id/iv_activity_setting_yee"
                 android:layout_width="@dimen/dimen_80"
                 android:layout_height="@dimen/dimen_80"
@@ -171,7 +171,7 @@
                 app:border_width="@dimen/dimen_5"
                 app:image_border_color="@color/facebook"
                 />
-            <com.example.shereats.view.custom.RoundImageView
+            <com.grindewald1900.shereats.view.custom.RoundImageView
                 android:id="@+id/iv_activity_setting_jo"
                 android:layout_width="@dimen/dimen_80"
                 android:layout_height="@dimen/dimen_80"

@@ -21,7 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <com.example.shereats.view.custom.RoundCornerImageView
+    <com.grindewald1900.shereats.view.custom.RoundCornerImageView
         android:id="@+id/iv_dish_image"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_120"

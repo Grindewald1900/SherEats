@@ -44,7 +44,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:menu="@menu/bottom_navigation" />
 
-            <com.example.shereats.view.custom.RoundFab
+            <com.grindewald1900.shereats.view.custom.RoundFab
                 android:id="@+id/fab_main"
                 android:layout_width="@dimen/dimen_60"
                 android:layout_height="@dimen/dimen_60"

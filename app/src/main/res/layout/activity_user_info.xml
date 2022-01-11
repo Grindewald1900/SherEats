@@ -34,7 +34,7 @@
             app:layout_constraintRight_toRightOf="parent"
             />
 
-        <com.example.shereats.view.custom.RoundCornerImageView
+        <com.grindewald1900.shereats.view.custom.RoundCornerImageView
             android:id="@+id/btn_activity_user_info_portrait"
             android:layout_width="@dimen/dimen_70"
             android:layout_height="@dimen/dimen_70"

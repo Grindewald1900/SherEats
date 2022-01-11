@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             />
-        <com.example.shereats.view.custom.FavoriteButton
+        <com.grindewald1900.shereats.view.custom.FavoriteButton
             android:id="@+id/btn_activity_dish_collect"
             android:layout_width="@dimen/widget_size_little"
             android:layout_height="@dimen/widget_size_little"
@@ -37,7 +37,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/btn_activity_dish_back"
             app:layout_constraintRight_toRightOf="parent"
             />
-        <com.example.shereats.view.custom.RoundImageView
+        <com.grindewald1900.shereats.view.custom.RoundImageView
             android:id="@+id/iv_activity_dish_portrait"
             android:layout_width="@dimen/widget_size_middle"
             android:layout_height="@dimen/widget_size_middle"
@@ -177,7 +177,7 @@
                 android:layout_margin="@dimen/dimen_2"
                 tools:context=".view.DishActivity" />
         </RelativeLayout>
-        <com.example.shereats.view.custom.TransitionButton
+        <com.grindewald1900.shereats.view.custom.TransitionButton
             android:id="@+id/btn_activity_dish_add_cart"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"

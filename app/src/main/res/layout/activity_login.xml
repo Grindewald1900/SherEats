@@ -14,7 +14,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5"
             />
-        <com.example.shereats.view.custom.RoundImageView
+        <com.grindewald1900.shereats.view.custom.RoundImageView
             android:id="@+id/iv_login_portrait"
             android:layout_width="@dimen/dimen_80"
             android:layout_height="@dimen/dimen_80"
@@ -71,7 +71,7 @@
             />
 
 
-        <com.example.shereats.view.custom.TransitionButton
+        <com.grindewald1900.shereats.view.custom.TransitionButton
             android:id="@+id/btn_login_login"
             android:layout_width="@dimen/button_width_middle"
             android:layout_height="@dimen/button_length_middle"

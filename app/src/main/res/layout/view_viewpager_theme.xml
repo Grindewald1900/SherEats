@@ -5,7 +5,7 @@
     android:layout_width="@dimen/dimen_150"
     android:layout_height="@dimen/dimen_340"
     >
-    <com.example.shereats.view.custom.RoundCornerImageView
+    <com.grindewald1900.shereats.view.custom.RoundCornerImageView
         android:id="@+id/iv_viewpager_theme"
         android:layout_width="0dp"
         android:layout_height="0dp"

@@ -51,7 +51,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/tv_shopping_cart_title"
         />
 
-    <com.example.shereats.view.custom.CounterLayout
+    <com.grindewald1900.shereats.view.custom.CounterLayout
         android:id="@+id/counter_shopping_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

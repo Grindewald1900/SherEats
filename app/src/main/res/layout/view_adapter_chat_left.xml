@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/gray_5"
     >
-    <com.example.shereats.view.custom.RoundCornerImageView
+    <com.grindewald1900.shereats.view.custom.RoundCornerImageView
         android:id="@+id/iv_adapter_chat_left"
         android:layout_width="@dimen/dimen_40"
         android:layout_height="@dimen/dimen_40"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         />
-    <com.example.shereats.view.custom.RoundCornerImageView
+    <com.grindewald1900.shereats.view.custom.RoundCornerImageView
         android:id="@+id/iv_adapter_chat_left_image"
         android:layout_width="@dimen/dimen_200"
         android:layout_height="@dimen/dimen_200"

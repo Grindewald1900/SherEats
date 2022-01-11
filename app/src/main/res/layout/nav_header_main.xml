@@ -17,7 +17,7 @@
         android:background="@color/colorPrimary"
         />
 
-    <com.example.shereats.view.custom.RoundImageView
+    <com.grindewald1900.shereats.view.custom.RoundImageView
         android:id="@+id/iv_main_header_portrait"
         android:layout_width="@dimen/dimen_60"
         android:layout_height="@dimen/dimen_60"
