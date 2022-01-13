@@ -14,6 +14,7 @@ import com.grindewald1900.shereats.model.entity.FirebaseUser
 import com.grindewald1900.shereats.model.entity.SingletonUtil
 import com.grindewald1900.shereats.utils.ConstantUtil
 import com.grindewald1900.shereats.utils.LoginStatusUtil
+import com.grindewald1900.shereats.utils.ToastUtil
 import com.grindewald1900.shereats.utils.firebase.RealtimeUtil
 import com.grindewald1900.shereats.utils.firebase.StorageUtil
 import com.grindewald1900.shereats.view.custom.TransitionButton
@@ -36,7 +37,7 @@ class UserAdapter(val data: List<FirebaseUser>): RecyclerView.Adapter<UserAdapte
         val dataSlice = data[position]
         holder.name.text = dataSlice.userName
         holder.btnAdd.setOnClickListener {
-            holder.btnAdd.startAnimation()
+//            holder.btnAdd.startAnimation()
             addFriend(dataSlice)
         }
         if(SingletonUtil.getFriendList().contains(dataSlice.userName)){
@@ -70,6 +71,7 @@ class UserAdapter(val data: List<FirebaseUser>): RecyclerView.Adapter<UserAdapte
             val chatFriend = FirebaseChat(LoginStatusUtil.getUser(),"",ConstantUtil.CURRENT_TIME, false)
             RealtimeUtil.chatReference.child(friend.userName!!).child(name).setValue(chatFriend)
             RealtimeUtil.chatReference.child(name).child(friend.userName).setValue(chatUser)
+            ToastUtil.showShortMessage("Success", mContext)
         }
     }
 }
