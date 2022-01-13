@@ -31,7 +31,7 @@
     <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/ic_dining_room_48.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">SherEats</h3>
+<h2 align="center">SherEats</h2>
 
   <p align="center">
     This is an Android App based on Jetpack, Firebase, Retrofit2 and MVVM architecture :)
@@ -48,8 +48,8 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+
+## Table of Contents
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -91,7 +91,7 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
