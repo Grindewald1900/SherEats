@@ -34,7 +34,7 @@
 <h3 align="center">SherEats</h3>
 
   <p align="center">
-    This is a Android App based on Jetpack, Firebase, Retrofit2 and MVVM architecture :)
+    This is an Android App based on Jetpack, Firebase, Retrofit2 and MVVM architecture :)
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
