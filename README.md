@@ -39,16 +39,17 @@
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=NbUv4j0EZss">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/Grindewald1900/SherEats/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/Grindewald1900/SherEats/issues">Request Feature</a>
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
 
+
+<!-- TABLE OF CONTENTS -->
 ## Table of Contents
   <ol>
     <li>
@@ -86,6 +87,12 @@
     </li>
     <li>
       <a href="#demo">Demo</a>
+        <ul>
+        <li><a href="#video-demo">Video demo</a></li>
+        </ul>
+        <ul>
+        <li><a href="#demo">Image demo</a></li>
+        </ul>     
     </li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -1074,7 +1081,8 @@ class ZoomOutPageTransformer: ViewPager2.PageTransformer {
 
 
 ## Demo
-
+### [Video Demo](https://www.youtube.com/watch?v=NbUv4j0EZss)  
+  
 ### Home page
 If user is not logged in, the shopping cart and order page should be empty.
 <p align="center"> 
