@@ -107,6 +107,11 @@ This is a Android Native project based on Kotlin, Jetpack and MVVM architecture.
 * [Branch with Firebase](https://github.com/Grindewald1900/SherEats) *- current master branch*
 * [Branch with Firebase and Restful API](https://github.com/Grindewald1900/SherEats/tree/Retrofit2) *- only for test on local host*
 
+### Get Early Access
+<p align="center">
+  <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/My_App_3.png?raw=true" alt="Logo" width="300" >
+</p>
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
