@@ -1091,6 +1091,43 @@ If user is not logged in, the shopping cart and order page should be empty.
 </p>
 
 
+<!-- ### Friend page
+<p align="center"> 
+<img src="https://i.ibb.co/7yGwtz5/53.gif" alt="Logo" width="600" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/JkhzVKW/54.gif" alt="Logo" width="600" >
+</p> -->
+
+### Add friend
+<p align="center"> 
+<img src="https://i.ibb.co/TKXhX5F/56.gif" alt="Logo" width="600" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/ZfKg6JY/57.gif" alt="Logo" width="600" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/SsNjvby/58.gif" alt="Logo" width="600" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/6rvxMVg/59.gif" alt="Logo" width="600" >
+</p>
+
+### Chat page
+<p align="center"> 
+<img src="https://i.ibb.co/PQB4D0Q/51.gif" alt="Logo" width="600" >
+</p>
+
+<p align="center"> 
+<img src="https://i.ibb.co/4VdmCBN/52-c.gif" alt="Logo" width="600" >
+</p>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+  
 ### Search filters 
 We provide 3 different filters
 * **Price**: the price of food
@@ -1098,12 +1135,9 @@ We provide 3 different filters
 * **Promotion**: if food is on sale
 
 <p align="center"> 
-<img src="https://i.ibb.co/9TkM56b/5.gif" alt="Logo" width="300" >  </p>
-<p align="center"> 
-<img src="https://i.ibb.co/WN9Cn70/15.gif" alt="Logo" width="300" ></p>
-<p align="center"> 
+<img src="https://i.ibb.co/9TkM56b/5.gif" alt="Logo" width="300" >  
 <img src="https://i.ibb.co/kS0RzPQ/14.gif" alt="Logo" width="300" ></p>
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 
@@ -1145,14 +1179,6 @@ You may click this action bar at:
 * Home page/ dish page/ order page: go to search page.
 * Friend page: go to friend search page  
 
-<p align="center"> 
-<img src="https://i.ibb.co/Hqqj9H9/28.gif" alt="Logo" width="300" >
-</p>
-
-<p align="center"> 
-<img src="https://i.ibb.co/KhBgqNG/29.gif" alt="Logo" width="300" >
-<img src="https://i.ibb.co/Mfh6Cgh/30.gif" alt="Logo" width="300" >
-</p>
 
 Normally, we search a keyword without any filter, the feedback will include every piece of record that contains the keyword.
 <p align="center"> 
@@ -1185,7 +1211,6 @@ Here we search the keyword 'sh'. Obviously the results are different with diffen
 <br></br>
 
 <p align="center"> 
-<img src="https://i.ibb.co/zPnJgfS/17.gif" alt="Logo" width="300" >
 <img src="https://i.ibb.co/C2R3YnH/18.gif" alt="Logo" width="300" >
 <img src="https://i.ibb.co/0rYg0nK/6.gif" alt="Logo" width="300" >
 </p>
@@ -1197,18 +1222,14 @@ Here we search the keyword 'sh'. Obviously the results are different with diffen
 ### User information page
 Here a list of badges will be displayed. New users have nothing to show cause they have no badge. 
 <p align="center"> 
-<img src="https://i.ibb.co/26RwRK1/41.gif" alt="Logo" width="300" ></p>
-<p align="center"> 
-<img src="https://i.ibb.co/TLsXvKb/36.gif" alt="Logo" width="300" >
-</p>
+<!-- <img src="https://i.ibb.co/26RwRK1/41.gif" alt="Logo" width="300" > -->
+  <img src="https://i.ibb.co/TLsXvKb/36.gif" alt="Logo" width="300" ></p>
+
 
 We could add badges at setting page.
 <p align="center"> 
-<img src="https://i.ibb.co/hDSgWK0/38.gif" alt="Logo" width="300" ></p>
-<p align="center"> 
-<img src="https://i.ibb.co/f1CqFQn/39.gif" alt="Logo" width="300" >
-<img src="https://i.ibb.co/vVL8qQr/40.gif" alt="Logo" width="300" >
-</p>
+<img src="https://i.ibb.co/hDSgWK0/38.gif" alt="Logo" width="300" >
+  <img src="https://i.ibb.co/f1CqFQn/39.gif" alt="Logo" width="300" ></p>
 
 Also, we could set profile image from local image library. 
 <p align="center"> 
@@ -1219,42 +1240,6 @@ Also, we could set profile image from local image library.
 
 
 
-<!-- ### Friend page
-<p align="center"> 
-<img src="https://i.ibb.co/7yGwtz5/53.gif" alt="Logo" width="600" >
-</p>
-
-<p align="center"> 
-<img src="https://i.ibb.co/JkhzVKW/54.gif" alt="Logo" width="600" >
-</p> -->
-
-### Add friend
-<p align="center"> 
-<img src="https://i.ibb.co/TKXhX5F/56.gif" alt="Logo" width="600" >
-</p>
-
-<p align="center"> 
-<img src="https://i.ibb.co/ZfKg6JY/57.gif" alt="Logo" width="600" >
-</p>
-
-<p align="center"> 
-<img src="https://i.ibb.co/SsNjvby/58.gif" alt="Logo" width="600" >
-</p>
-
-<p align="center"> 
-<img src="https://i.ibb.co/6rvxMVg/59.gif" alt="Logo" width="600" >
-</p>
-
-### Chat page
-<p align="center"> 
-<img src="https://i.ibb.co/PQB4D0Q/51.gif" alt="Logo" width="600" >
-</p>
-
-<p align="center"> 
-<img src="https://i.ibb.co/4VdmCBN/52-c.gif" alt="Logo" width="600" >
-</p>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
