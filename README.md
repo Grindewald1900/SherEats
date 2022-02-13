@@ -109,7 +109,7 @@ This is a Android Native project based on Kotlin, Jetpack and MVVM architecture.
 
 ### Get Early Access
 <p align="center">
-  <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/My_App_3.png?raw=true" alt="Logo" width="300" >
+  <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/My_App.png?raw=true" alt="Logo" width="300" >
 </p>
 
 
