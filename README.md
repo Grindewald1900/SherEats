@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Grindewald1900/Notebook">
-    <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/Others/Sher.jpg?raw=true" width="900" height="260">
+    <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/SherEats_1024_500.jpg?raw=true" width="1024" height="500">
   </a>
 </p>
 
@@ -28,7 +28,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Grindewald1900/SherEats/">
-    <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/ic_dining_room_48.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/Grindewald1900/Notebook/blob/master/Image/SherEats/shereats.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
 <h2 align="center">SherEats</h2>
